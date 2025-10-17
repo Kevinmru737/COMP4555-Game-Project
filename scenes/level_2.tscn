@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://hl2hix435nib"]
+
+[ext_resource type="Script" uid="uid://pbg0u2jhw6jp" path="res://level_2.gd" id="1_y0kc7"]
+[ext_resource type="Texture2D" uid="uid://df6vjyukseia0" path="res://art/environment/Placeholder_Platform_1.png" id="2_ne2mo"]
+[ext_resource type="Texture2D" uid="uid://pdu17mojx4bm" path="res://art/environment/Placeholder_Background_4.png" id="3_6cvei"]
+[ext_resource type="Texture2D" uid="uid://dylyga68q8gb8" path="res://art/environment/Placeholder_Background_3.png" id="4_que50"]
+[ext_resource type="Texture2D" uid="uid://y5se2ypuvdhk" path="res://art/environment/Placeholder_Background_2.png" id="5_hey2k"]
+[ext_resource type="PackedScene" uid="uid://d03mf0utraa5l" path="res://scenes/player_tater_po.tscn" id="6_172wr"]
+[ext_resource type="Texture2D" uid="uid://bfpeo5nl6l670" path="res://art/environment/Placeholder_Background_1.png" id="6_g2hoc"]
+[ext_resource type="PackedScene" uid="uid://dgsomjatjlw3e" path="res://scenes/end_of_level.tscn" id="7_g2hoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7ypv"]
+size = Vector2(630.5, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0s5r2"]
+size = Vector2(400, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7j8ne"]
+size = Vector2(423, 91)
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_y0kc7")
+
+[node name="ForeGround" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ForeGround"]
+z_index = 4
+position = Vector2(960, -548)
+texture = ExtResource("2_ne2mo")
+
+[node name="LeftGround" type="CollisionShape2D" parent="ForeGround"]
+z_index = 4
+position = Vector2(317.75, -121.5)
+shape = SubResource("RectangleShape2D_n7ypv")
+
+[node name="RightGround" type="CollisionShape2D" parent="ForeGround"]
+z_index = 4
+position = Vector2(1622, -115)
+shape = SubResource("RectangleShape2D_n7ypv")
+
+[node name="Platform" type="CollisionShape2D" parent="ForeGround"]
+z_index = 4
+position = Vector2(961, -299)
+shape = SubResource("RectangleShape2D_0s5r2")
+one_way_collision = true
+
+[node name="Platform2" type="CollisionShape2D" parent="ForeGround"]
+z_index = 4
+position = Vector2(1341.5, -582.5)
+shape = SubResource("RectangleShape2D_7j8ne")
+
+[node name="Backgrounds" type="Node" parent="."]
+
+[node name="BackgroundClosest" type="Parallax2D" parent="Backgrounds"]
+z_index = 3
+scroll_scale = Vector2(0.4, 1)
+scroll_offset = Vector2(960, -548)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundClosest"]
+texture = ExtResource("3_6cvei")
+
+[node name="Background2" type="Parallax2D" parent="Backgrounds"]
+z_index = 2
+scroll_scale = Vector2(0.3, 1)
+scroll_offset = Vector2(-1894, 692)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background2"]
+position = Vector2(2854, -1235)
+texture = ExtResource("4_que50")
+
+[node name="Background3" type="Parallax2D" parent="Backgrounds"]
+z_index = 1
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(960, -540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background3"]
+texture = ExtResource("5_hey2k")
+
+[node name="BackgroundFarthest" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0, 1)
+scroll_offset = Vector2(960, -548)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundFarthest"]
+texture = ExtResource("6_g2hoc")
+
+[node name="player_tater_po" parent="." instance=ExtResource("6_172wr")]
+z_index = 5
+position = Vector2(187, -350)
+scale = Vector2(1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="player_tater_po"]
+limit_left = 0
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 0
+limit_smoothed = true
+
+[node name="EndOfLevel" parent="." instance=ExtResource("7_g2hoc")]

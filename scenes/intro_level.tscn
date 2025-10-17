@@ -1,0 +1,153 @@
+[gd_scene load_steps=14 format=3 uid="uid://u8yq4rsfu80n"]
+
+[ext_resource type="Script" uid="uid://cc2vm66uppdcx" path="res://scripts/intro_level.gd" id="1_aimfc"]
+[ext_resource type="PackedScene" uid="uid://d03mf0utraa5l" path="res://scenes/player_tater_po.tscn" id="1_hab1w"]
+[ext_resource type="PackedScene" uid="uid://deeg2jo67gcya" path="res://scenes/environment.tscn" id="1_jjk5a"]
+[ext_resource type="PackedScene" uid="uid://dlcdqlifcysws" path="res://scenes/platform_vertical.tscn" id="3_jq56v"]
+[ext_resource type="PackedScene" uid="uid://qh71ikdbvkor" path="res://scenes/KillZone.tscn" id="4_jjk5a"]
+[ext_resource type="PackedScene" uid="uid://dgsomjatjlw3e" path="res://scenes/end_of_level.tscn" id="5_q6uy0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jjk5a"]
+
+[sub_resource type="Animation" id="Animation_jjk5a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(177, 136)]
+}
+
+[sub_resource type="Animation" id="Animation_jq56v"]
+resource_name = "move_up_and_down"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(177, 136), Vector2(177, 87)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6uy0"]
+_data = {
+&"RESET": SubResource("Animation_jjk5a"),
+&"move_up_and_down": SubResource("Animation_jq56v")
+}
+
+[sub_resource type="Animation" id="Animation_aimfc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-63, 88)]
+}
+
+[sub_resource type="Animation" id="Animation_q6uy0"]
+resource_name = "move"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-63, 88), Vector2(-63, 23)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmhdb"]
+_data = {
+&"RESET": SubResource("Animation_aimfc"),
+&"move": SubResource("Animation_q6uy0")
+}
+
+[node name="intro_level" type="Node2D"]
+script = ExtResource("1_aimfc")
+
+[node name="Environment" parent="." instance=ExtResource("1_jjk5a")]
+
+[node name="player_tater_po" parent="." instance=ExtResource("1_hab1w")]
+z_index = 5
+position = Vector2(253, 66)
+
+[node name="Camera2D" type="Camera2D" parent="player_tater_po"]
+position = Vector2(213.33333, -33.333344)
+scale = Vector2(24.076155, 84.59335)
+zoom = Vector2(3.5, 3.5)
+limit_left = -99
+limit_top = -50
+limit_right = 340
+limit_bottom = 177
+
+[node name="KillZone" parent="." instance=ExtResource("4_jjk5a")]
+position = Vector2(-29, 59)
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="platform" parent="Platforms" instance=ExtResource("3_jq56v")]
+position = Vector2(177, 136)
+physics_material_override = SubResource("PhysicsMaterial_jjk5a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/platform"]
+libraries = {
+&"": SubResource("AnimationLibrary_q6uy0")
+}
+autoplay = "move_up_and_down"
+
+[node name="platform2" parent="Platforms" instance=ExtResource("3_jq56v")]
+position = Vector2(-63, 88)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/platform2"]
+libraries = {
+&"": SubResource("AnimationLibrary_nmhdb")
+}
+autoplay = "move"
+
+[node name="platform3" parent="Platforms" instance=ExtResource("3_jq56v")]
+position = Vector2(-59, 135)
+
+[node name="EndOfLevel" parent="." instance=ExtResource("5_q6uy0")]
+z_index = 3
+position = Vector2(292, 88)
+
+[node name="CollisionShape2D" parent="EndOfLevel" index="0"]
+position = Vector2(19, 6)
+
+[node name="SceneTransitionAnimation" parent="EndOfLevel" index="2"]
+z_as_relative = false
+position = Vector2(-529, -222)
+
+[node name="ColorRect" parent="EndOfLevel/SceneTransitionAnimation" index="0"]
+z_index = -1
+z_as_relative = false
+offset_left = 14.0
+offset_top = 3.0
+offset_right = 723.0
+offset_bottom = 381.0
+
+[editable path="EndOfLevel"]
+[editable path="EndOfLevel/SceneTransitionAnimation"]
