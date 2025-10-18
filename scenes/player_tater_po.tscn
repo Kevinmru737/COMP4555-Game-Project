@@ -27,6 +27,7 @@ animations = [{
 radius = 24.020824
 
 [node name="player_tater_po" type="CharacterBody2D"]
+position = Vector2(133, -180)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_kenoj")
 
@@ -39,3 +40,10 @@ animation = &"side_walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(43, 75)
 shape = SubResource("CircleShape2D_v5r62")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 0
+limit_smoothed = true

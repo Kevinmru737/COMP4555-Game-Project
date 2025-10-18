@@ -13,12 +13,16 @@ config_version=5
 config/name="COMP 4555 Game Project"
 run/main_scene="uid://hl2hix435nib"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+MultiplayerManager="*res://scripts/multiplayer_manager.gd"
 
 [display]
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
+window/size/always_on_top=true
 window/per_pixel_transparency/allowed=true
 
 [input]

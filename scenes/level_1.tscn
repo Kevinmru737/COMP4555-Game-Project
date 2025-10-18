@@ -157,13 +157,6 @@ region_rect = Rect2(824, 73, 638, 352)
 z_index = 5
 position = Vector2(42, -102)
 
-[node name="Camera2D" type="Camera2D" parent="player_tater_po"]
-zoom = Vector2(3, 3)
-limit_left = 0
-limit_top = -245
-limit_right = 444
-limit_bottom = 0
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAAHAPz/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAPz/AAAAAAAAAAAKAPz/AAAAAAAAAAALAPz/AAAAAAAAAAAMAPz/AAAAAAAAAAANAPz/AAAAAAAAAAANAP3/AAABAAAAAAAMAP3/AAABAAAAAAALAP3/AAABAAAAAAAKAP3/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_4nkto")

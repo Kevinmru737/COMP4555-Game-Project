@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://hl2hix435nib"]
+[gd_scene load_steps=14 format=3 uid="uid://hl2hix435nib"]
 
-[ext_resource type="Script" uid="uid://pbg0u2jhw6jp" path="res://level_2.gd" id="1_y0kc7"]
+[ext_resource type="Script" uid="uid://pbg0u2jhw6jp" path="res://scripts/level_2.gd" id="1_6cvei"]
+[ext_resource type="Script" uid="uid://d00jrigit6kdy" path="res://scripts/game_manager.gd" id="2_6cvei"]
 [ext_resource type="Texture2D" uid="uid://df6vjyukseia0" path="res://art/environment/Placeholder_Platform_1.png" id="2_ne2mo"]
 [ext_resource type="Texture2D" uid="uid://pdu17mojx4bm" path="res://art/environment/Placeholder_Background_4.png" id="3_6cvei"]
 [ext_resource type="Texture2D" uid="uid://dylyga68q8gb8" path="res://art/environment/Placeholder_Background_3.png" id="4_que50"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d03mf0utraa5l" path="res://scenes/player_tater_po.tscn" id="6_172wr"]
 [ext_resource type="Texture2D" uid="uid://bfpeo5nl6l670" path="res://art/environment/Placeholder_Background_1.png" id="6_g2hoc"]
 [ext_resource type="PackedScene" uid="uid://dgsomjatjlw3e" path="res://scenes/end_of_level.tscn" id="7_g2hoc"]
+[ext_resource type="PackedScene" uid="uid://qh71ikdbvkor" path="res://scenes/KillZone.tscn" id="10_que50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7ypv"]
 size = Vector2(630.5, 205)
@@ -19,7 +21,11 @@ size = Vector2(400, 88)
 size = Vector2(423, 91)
 
 [node name="Level2" type="Node2D"]
-script = ExtResource("1_y0kc7")
+script = ExtResource("1_6cvei")
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_6cvei")
 
 [node name="ForeGround" type="StaticBody2D" parent="."]
 
@@ -83,16 +89,67 @@ scroll_offset = Vector2(960, -548)
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundFarthest"]
 texture = ExtResource("6_g2hoc")
 
+[node name="KillZone" parent="." instance=ExtResource("10_que50")]
+position = Vector2(606, -161)
+collision_layer = 3
+
 [node name="player_tater_po" parent="." instance=ExtResource("6_172wr")]
 z_index = 5
 position = Vector2(187, -350)
 scale = Vector2(1, 1)
 
-[node name="Camera2D" type="Camera2D" parent="player_tater_po"]
-limit_left = 0
-limit_top = -1080
-limit_right = 1920
-limit_bottom = 0
-limit_smoothed = true
-
 [node name="EndOfLevel" parent="." instance=ExtResource("7_g2hoc")]
+position = Vector2(-439, 183)
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D" parent="EndOfLevel" index="0"]
+z_index = 4
+position = Vector2(490.75, -106.5)
+
+[node name="Multiplayer HUD" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="Multiplayer HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 363.0
+offset_top = -382.0
+offset_right = 363.0
+offset_bottom = -382.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Multiplayer HUD/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HostGame" type="Button" parent="Multiplayer HUD/Panel/VBoxContainer"]
+z_index = 4
+layout_mode = 2
+text = "Host New Game"
+
+[node name="JoinAsPlayer2" type="Button" parent="Multiplayer HUD/Panel/VBoxContainer"]
+z_index = 5
+layout_mode = 2
+text = "Join As Player 2"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://b6bi0e0j6c1l5")
+spawn_path = NodePath("../Players")
+spawn_limit = 2
+
+[node name="Players" type="Node2D" parent="."]
+z_index = 5
+z_as_relative = false
+position = Vector2(363, -347)
+
+[connection signal="pressed" from="Multiplayer HUD/Panel/VBoxContainer/HostGame" to="GameManager" method="become_host"]
+[connection signal="pressed" from="Multiplayer HUD/Panel/VBoxContainer/JoinAsPlayer2" to="GameManager" method="join_as_player_2"]
+
+[editable path="KillZone"]
+[editable path="EndOfLevel"]

@@ -94,15 +94,6 @@ script = ExtResource("1_aimfc")
 z_index = 5
 position = Vector2(253, 66)
 
-[node name="Camera2D" type="Camera2D" parent="player_tater_po"]
-position = Vector2(213.33333, -33.333344)
-scale = Vector2(24.076155, 84.59335)
-zoom = Vector2(3.5, 3.5)
-limit_left = -99
-limit_top = -50
-limit_right = 340
-limit_bottom = 177
-
 [node name="KillZone" parent="." instance=ExtResource("4_jjk5a")]
 position = Vector2(-29, 59)
 

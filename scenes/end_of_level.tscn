@@ -7,6 +7,7 @@
 size = Vector2(50, 8)
 
 [node name="EndOfLevel" type="Area2D"]
+position = Vector2(-138, 97)
 script = ExtResource("1_grefp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
