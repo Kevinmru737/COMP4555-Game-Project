@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6bi0e0j6c1l5"]
+[gd_scene load_steps=19 format=3 uid="uid://b6bi0e0j6c1l5"]
 
 [ext_resource type="Script" uid="uid://hw6aeqsbyii1" path="res://scripts/multiplayer_controller.gd" id="1_4u0qd"]
-[ext_resource type="Texture2D" uid="uid://d10n2usy68gwo" path="res://art/characters/Tater_Po.png" id="2_ul4w0"]
-[ext_resource type="Texture2D" uid="uid://bo4h5t6wp7ydn" path="res://art/characters/Tater_Po_Side.png" id="3_ugd4r"]
+[ext_resource type="Texture2D" uid="uid://b3l8q14gbayjn" path="res://art/characters/Tater_Po_Still_Pose_Anim_Adjusted.png" id="3_k8tkd"]
+[ext_resource type="Texture2D" uid="uid://bam1xsg5lfl0u" path="res://art/characters/Tater_Po_Right_Walk_Anim_Adjusted.png" id="4_jlq18"]
 [ext_resource type="Script" uid="uid://djbswriipf6jv" path="res://scripts/multiplayer_input.gd" id="4_k8tkd"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k8tkd"]
@@ -27,27 +27,91 @@ properties/0/path = NodePath("InputSynchronizer:input_direction")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vrcl2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmf0f"]
+atlas = ExtResource("3_k8tkd")
+region = Rect2(5, 11, 100, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spmcy"]
+atlas = ExtResource("3_k8tkd")
+region = Rect2(104, 11, 100, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w5q2"]
+atlas = ExtResource("4_jlq18")
+region = Rect2(5, 0, 97, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjam5"]
+atlas = ExtResource("4_jlq18")
+region = Rect2(102, 0, 97, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so63g"]
+atlas = ExtResource("4_jlq18")
+region = Rect2(199, 0, 97, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m8bp"]
+atlas = ExtResource("4_jlq18")
+region = Rect2(296, 0, 97, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u27hq"]
+atlas = ExtResource("4_jlq18")
+region = Rect2(393, 0, 97, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58ffa"]
+atlas = ExtResource("4_jlq18")
+region = Rect2(490, 0, 97, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcty0"]
+atlas = ExtResource("4_jlq18")
+region = Rect2(587, 0, 97, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24rij"]
+atlas = ExtResource("4_jlq18")
+region = Rect2(684, 0, 97, 154)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xk3hh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ul4w0")
+"texture": SubResource("AtlasTexture_fmf0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spmcy")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ugd4r")
+"texture": SubResource("AtlasTexture_8w5q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjam5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so63g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m8bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u27hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58ffa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcty0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24rij")
 }],
 "loop": true,
 "name": &"side_walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l5x5f"]
-radius = 24.020824
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4ka2"]
+radius = 34.0147
 
 [node name="MultiPlayerPlayer" type="CharacterBody2D"]
 collision_layer = 2
@@ -62,14 +126,13 @@ replication_config = SubResource("SceneReplicationConfig_jlq18")
 script = ExtResource("4_k8tkd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(43.999996, 54.999996)
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_vrcl2")
+position = Vector2(87, 130)
+sprite_frames = SubResource("SpriteFrames_xk3hh")
 animation = &"side_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(43, 75)
-shape = SubResource("CircleShape2D_l5x5f")
+position = Vector2(86, 158)
+shape = SubResource("CircleShape2D_m4ka2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
@@ -80,3 +143,5 @@ limit_smoothed = true
 
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_respawn"]

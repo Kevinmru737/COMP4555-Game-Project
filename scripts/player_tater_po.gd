@@ -29,6 +29,7 @@ func movement(delta):
 		animated_sprite.flip_h = true
 		animated_sprite.play("side_walk")
 	else:
+		animated_sprite.flip_h = false
 		animated_sprite.play("idle")
 		
 	
