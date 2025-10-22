@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://bvm1hn2q5qw00"]
+
+[ext_resource type="Script" uid="uid://cq7qk7v1qcv7l" path="res://scripts/player_della_daisy.gd" id="1_vrmip"]
+[ext_resource type="Texture2D" uid="uid://bi4wnc4mixwyj" path="res://art/characters/Della_Anim.png" id="2_dfo0x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrmip"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(20, 47, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfo0x"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(268, 47, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai8ee"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(20, 297, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omsln"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(255, 297, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyyfs"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(493, 297, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4w8s"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(724, 297, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuwik"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(956, 297, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25wfg"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(1191, 297, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8mwu"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(1424, 297, 234, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1vwf"]
+atlas = ExtResource("2_dfo0x")
+region = Rect2(1666, 297, 234, 206)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vnm7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrmip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfo0x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai8ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omsln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyyfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4w8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuwik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25wfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8mwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1vwf")
+}],
+"loop": true,
+"name": &"side_walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrmip"]
+size = Vector2(26, 155)
+
+[node name="player_della_daisy" type="CharacterBody2D"]
+position = Vector2(133, -180)
+script = ExtResource("1_vrmip")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(45.999996, 53.999996)
+sprite_frames = SubResource("SpriteFrames_0vnm7")
+animation = &"side_walk"
+frame_progress = 0.95956063
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(37, 72.5)
+shape = SubResource("RectangleShape2D_vrmip")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 0
+limit_smoothed = true

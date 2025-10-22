@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://b6bi0e0j6c1l5"]
 
-[ext_resource type="Script" uid="uid://hw6aeqsbyii1" path="res://scripts/multiplayer_controller.gd" id="1_4u0qd"]
-[ext_resource type="Texture2D" uid="uid://b3l8q14gbayjn" path="res://art/characters/Tater_Po_Still_Pose_Anim_Adjusted.png" id="3_k8tkd"]
-[ext_resource type="Texture2D" uid="uid://cklgefp4ajh3" path="res://art/characters/Tater_Po_Right_Walk_Anim.png" id="4_jlq18"]
-[ext_resource type="Script" uid="uid://djbswriipf6jv" path="res://scripts/multiplayer_input.gd" id="4_k8tkd"]
+[ext_resource type="Script" uid="uid://hw6aeqsbyii1" path="res://scripts/multiplayer_controller.gd" id="1_14ow7"]
+[ext_resource type="Script" uid="uid://djbswriipf6jv" path="res://scripts/multiplayer_input.gd" id="2_ug2so"]
+[ext_resource type="Texture2D" uid="uid://b3l8q14gbayjn" path="res://art/characters/Tater_Po_Still_Pose_Anim_Adjusted.png" id="3_deokw"]
+[ext_resource type="Texture2D" uid="uid://cklgefp4ajh3" path="res://art/characters/Tater_Po_Right_Walk_Anim.png" id="4_eeswt"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k8tkd"]
 properties/0/path = NodePath(".:player_id")
@@ -28,43 +28,43 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmf0f"]
-atlas = ExtResource("3_k8tkd")
+atlas = ExtResource("3_deokw")
 region = Rect2(5, 11, 100, 152)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spmcy"]
-atlas = ExtResource("3_k8tkd")
+atlas = ExtResource("3_deokw")
 region = Rect2(104, 11, 100, 152)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8w5q2"]
-atlas = ExtResource("4_jlq18")
+atlas = ExtResource("4_eeswt")
 region = Rect2(502, 462, 96, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjam5"]
-atlas = ExtResource("4_jlq18")
+atlas = ExtResource("4_eeswt")
 region = Rect2(612, 462, 96, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_so63g"]
-atlas = ExtResource("4_jlq18")
+atlas = ExtResource("4_eeswt")
 region = Rect2(732, 462, 96, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m8bp"]
-atlas = ExtResource("4_jlq18")
+atlas = ExtResource("4_eeswt")
 region = Rect2(853, 462, 96, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u27hq"]
-atlas = ExtResource("4_jlq18")
+atlas = ExtResource("4_eeswt")
 region = Rect2(973, 462, 96, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58ffa"]
-atlas = ExtResource("4_jlq18")
+atlas = ExtResource("4_eeswt")
 region = Rect2(1092, 462, 96, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dcty0"]
-atlas = ExtResource("4_jlq18")
+atlas = ExtResource("4_eeswt")
 region = Rect2(1210, 462, 96, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24rij"]
-atlas = ExtResource("4_jlq18")
+atlas = ExtResource("4_eeswt")
 region = Rect2(1322, 462, 96, 154)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xk3hh"]
@@ -113,9 +113,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_m4ka2"]
 radius = 34.0147
 
-[node name="MultiPlayerPlayer" type="CharacterBody2D"]
+[node name="MultiPlayerPlayer1" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_4u0qd")
+script = ExtResource("1_14ow7")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_k8tkd")
@@ -123,7 +123,7 @@ replication_config = SubResource("SceneReplicationConfig_k8tkd")
 [node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="."]
 unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_jlq18")
-script = ExtResource("4_k8tkd")
+script = ExtResource("2_ug2so")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(43.999996, 54.999996)

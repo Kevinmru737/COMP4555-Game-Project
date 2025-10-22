@@ -3,7 +3,8 @@ extends Node
 const SERVER_PORT = 8080
 const SERVER_IP = "10.0.0.33" #local host
 
-var multiplayer_scene = preload("res://scenes/multiplayer_player.tscn")
+var multiplayer_scene1 = preload("res://scenes/multiplayer_player1.tscn")
+var multiplayer_scene2 = preload("res://scenes/multiplayer_player2.tscn")
 
 var _player_spawn_node
 var host_mode_enabled = false
@@ -23,12 +24,12 @@ func become_host():
 	
 	multiplayer.multiplayer_peer = server_peer
 	
-	multiplayer.peer_connected.connect(_add_player_to_game)
+	multiplayer.peer_connected.connect(_add_player_to_game.bind(2))
 	multiplayer.peer_disconnected.connect(_del_player)
 	
 	#Removes the host single player entity and adds a multiplayer player entity
 	_remove_single_player()
-	_add_player_to_game(1)
+	_add_player_to_game(1, 1)
 	
 func join_as_player_2():
 	print("Player 2 joining")
@@ -41,9 +42,16 @@ func join_as_player_2():
 	#Removes client single player entity
 	_remove_single_player()
 	
-func _add_player_to_game(id: int):
+	# character = 1 = tater_po, character = 2 = della_daisy
+func _add_player_to_game(id: int, character: int):
 	print("Player %s joined the game." % id)
-	var player_to_add = multiplayer_scene.instantiate()
+	var player_to_add
+	if character == 1:
+		player_to_add = multiplayer_scene1.instantiate()
+	elif character == 2:
+		player_to_add = multiplayer_scene2.instantiate()
+	else:
+		return
 	player_to_add.player_id = id
 	player_to_add.name = str(id)
 	

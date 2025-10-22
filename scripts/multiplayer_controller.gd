@@ -21,7 +21,6 @@ func _ready():
 		$Camera2D.make_current()
 	else:
 		$Camera2D.enabled = false
-	add_to_group("players")
 	
 func _physics_process(delta):
 	if multiplayer.is_server():

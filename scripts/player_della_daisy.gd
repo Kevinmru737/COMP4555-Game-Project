@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name player_della_daisy
+class_name player_tater_po
 const MOVEMENT_SPEED = 300.0
 const JUMP_VELOCITY = -800.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

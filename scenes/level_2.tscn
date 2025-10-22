@@ -133,7 +133,7 @@ layout_mode = 2
 text = "Join As Player 2"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://b6bi0e0j6c1l5")
+_spawnable_scenes = PackedStringArray("uid://b6bi0e0j6c1l5", "uid://cgm3o7qy8mlsm")
 spawn_path = NodePath("../Players")
 spawn_limit = 2
 
