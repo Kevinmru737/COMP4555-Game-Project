@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 const MOVEMENT_SPEED = 300.0
-const JUMP_VELOCITY = -800.0
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const JUMP_VELOCITY = -1500.0
+var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
 
 #multiplayer variables
@@ -33,14 +33,20 @@ func _physics_process(delta):
 	
 func _apply_animations(delta):
 	if direction > 0:
-		animated_sprite.flip_h = false
-		animated_sprite.play("side_walk")
+		if _is_on_floor:
+			animated_sprite.play("right_walk")
+		else:
+			animated_sprite.play("jump_right")
 	elif direction < 0:
-		animated_sprite.flip_h = true
-		animated_sprite.play("side_walk")
+		if _is_on_floor:
+			animated_sprite.play("left_walk")
+		else:
+			animated_sprite.play("jump_left")
 	else:
-		animated_sprite.flip_h = false
-		animated_sprite.play("idle")
+		if _is_on_floor:
+			animated_sprite.play("idle")
+		else:
+			animated_sprite.play("jump_right")
 		
 func _movement(delta):
 	if not is_on_floor():
@@ -56,10 +62,6 @@ func _movement(delta):
 		velocity.x = direction * MOVEMENT_SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, MOVEMENT_SPEED)
-	#var x_mov = Input.get_action_strength("d_move_right") -  Input.get_action_strength("a_move_left")
-	#var y_mov = Input.get_action_strength("s_move_down") - Input.get_action_strength("w_move_up")
-	#var mov = Vector2(x_mov, y_mov)
-	#velocity = mov.normalized() * MOVEMENT_SPEED
 	move_and_slide()
 
 func mark_dead():

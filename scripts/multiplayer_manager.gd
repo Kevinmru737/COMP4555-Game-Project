@@ -10,6 +10,7 @@ var _player_spawn_node
 var host_mode_enabled = false
 var multiplayer_mode_enabled = false
 var respawn_point = Vector2(187, -350)
+var players = {}
 
 
 func become_host():
@@ -27,8 +28,6 @@ func become_host():
 	multiplayer.peer_connected.connect(_add_player_to_game.bind(2))
 	multiplayer.peer_disconnected.connect(_del_player)
 	
-	#Removes the host single player entity and adds a multiplayer player entity
-	_remove_single_player()
 	_add_player_to_game(1, 1)
 	
 func join_as_player_2():
@@ -39,10 +38,7 @@ func join_as_player_2():
 	
 	multiplayer.multiplayer_peer = client_peer
 	
-	#Removes client single player entity
-	_remove_single_player()
-	
-	# character = 1 = tater_po, character = 2 = della_daisy
+# character = 1 = tater_po, character = 2 = della_daisy
 func _add_player_to_game(id: int, character: int):
 	print("Player %s joined the game." % id)
 	var player_to_add
@@ -63,8 +59,43 @@ func _del_player(id: int):
 		return
 	_player_spawn_node.get_node(str(id)).queue_free()
 	
-func _remove_single_player():
-	print("Remove single player")
-	var player_to_remove = get_tree().get_current_scene().get_node("player_tater_po")
-	player_to_remove.queue_free()
+func request_scene_change(new_scene_path):
+	
+	if multiplayer.is_server():
+		print("Server scene change request")
+		server_receive_scene_request(new_scene_path)
+	else:
+		print("Client scene change request")
+		server_receive_scene_request(new_scene_path)
+		#rpc_id(1, "server_receive_scene_request", new_scene_path)
+
+#@rpc("any_peer", "reliable")
+func server_receive_scene_request(new_scene_path):
+	if multiplayer.is_server():
+		#var sender = multiplayer.get_remote_sender_id()
+		#if sender == 0:
+			# Server local call
+		print("Server scene change requested")
+		var game_manager = get_tree().get_first_node_in_group("GameManager")
+		game_manager.load_scene(load(new_scene_path))
+	else:
+		print("Client scene change requested")
+		# Tell client to load scene
+		var game_manager = get_tree().get_first_node_in_group("GameManager")
+		game_manager.load_scene(load(new_scene_path))
+		#rpc_id(multiplayer.get_remote_sender_id(), "client_load_scene", new_scene_path)
+
+#@rpc("any_peer", "reliable")
+func client_load_scene(new_scene_path):
+	print("Client scene load requested")
+	var game_manager = get_tree().get_first_node_in_group("GameManager")
+	game_manager.load_scene(load(new_scene_path))
+	
+	
+@rpc("reliable")
+func client_remove_scene(old_node_path):
+	var old_scene = get_node(old_node_path)
+	if old_scene:
+		print("removed old scene")
+		old_scene.queue_free()
 	
