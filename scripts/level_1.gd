@@ -1,11 +1,11 @@
-extends Node2D
-@onready var scene_transition_animation = $EndOfLevel/SceneTransitionAnimation/ColorRect
-@onready var scene_transition_animation_player = $EndOfLevel/SceneTransitionAnimation/AnimationPlayer
+extends Node
+
+var spawn_point = Vector2(400, -350)
+
 func _ready():
 	print("level 1 started")
-	scene_transition_animation.z_index = 6
-	scene_transition_animation_player.play("fade out")
-	await get_tree().create_timer(1).timeout
+	print(spawn_point)
+	MultiplayerManager.respawn_point = spawn_point
 	
 	
 	

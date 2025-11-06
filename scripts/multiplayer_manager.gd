@@ -12,7 +12,6 @@ var multiplayer_mode_enabled = false
 var respawn_point = Vector2(187, -350)
 var players = {}
 
-
 func become_host():
 	print("Starting Host!")
 	

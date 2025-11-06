@@ -1,3 +1,59 @@
-[gd_scene format=3 uid="uid://fhjyjo4ktynl"]
+[gd_scene load_steps=9 format=4 uid="uid://fhjyjo4ktynl"]
+
+[ext_resource type="Texture2D" uid="uid://desftaoda5mi2" path="res://art/tiles/Tiles_Placeholder_1.png" id="1_5xbjy"]
+[ext_resource type="Script" uid="uid://cw0xlm2suhn2y" path="res://scripts/level_1.gd" id="1_fcfvj"]
+[ext_resource type="Texture2D" uid="uid://bpv0pl7fxhndd" path="res://art/tiles/Tiles_Placeholder_tile_dirt_energy.png" id="3_rus8k"]
+[ext_resource type="Texture2D" uid="uid://0equh8bejvx7" path="res://art/tiles/Tiles_Placeholder_tile_grass.png" id="4_5xbjy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bswci"]
+resource_name = "Place Holder"
+texture = ExtResource("1_5xbjy")
+texture_region_size = Vector2i(90, 90)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xbjy"]
+resource_name = "Dirt PH"
+texture = ExtResource("3_rus8k")
+margins = Vector2i(42, 0)
+texture_region_size = Vector2i(90, 90)
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nkto"]
+resource_name = "Grass PH"
+texture = ExtResource("4_5xbjy")
+margins = Vector2i(0, 60)
+texture_region_size = Vector2i(90, 90)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, 45, 45, 45, 45, 45, -45, 45)
+
+[sub_resource type="TileSet" id="TileSet_rus8k"]
+tile_size = Vector2i(90, 90)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bswci")
+sources/1 = SubResource("TileSetAtlasSource_5xbjy")
+sources/2 = SubResource("TileSetAtlasSource_4nkto")
 
 [node name="Level1" type="Node"]
+script = ExtResource("1_fcfvj")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(444, -420)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAP//AAAFAAUAAAABAP//AAAFAAUAAAACAP//AAAFAAUAAAADAP//AAAFAAUAAAAEAP//AAAFAAUAAAAFAP//AAAFAAUAAAAGAP//AAAFAAUAAAAHAP//AAAFAAUAAAAIAP//AAAFAAUAAAAJAP//AAAFAAUAAAAKAP//AAAFAAUAAAALAP//AAAFAAUAAAAMAP//AAAFAAUAAAANAP//AAAFAAUAAAAOAP//AAAFAAUAAAAAAAAAAQAHAAUAAAABAAAAAQAHAAUAAAACAAAAAQAHAAUAAAADAAAAAQAHAAUAAAAEAAAAAQAHAAUAAAAFAAAAAQAHAAUAAAAGAAAAAQAHAAUAAAAHAAAAAQAHAAUAAAAIAAAAAQAHAAUAAAAJAAAAAQAHAAUAAAAKAAAAAQAHAAUAAAALAAAAAQAHAAUAAAAMAAAAAQAHAAUAAAANAAAAAQAHAAUAAAAOAAAAAQAHAAUAAAAAAP7/AgAFAAMAAAABAP7/AgAFAAMAAAACAP7/AgAFAAMAAAADAP7/AgAFAAMAAAAEAP7/AgAFAAMAAAAFAP7/AgAFAAMAAAAGAP7/AgAFAAMAAAAHAP7/AgAFAAMAAAAIAP7/AgAFAAMAAAAJAP7/AgAFAAMAAAAKAP7/AgAFAAMAAAALAP7/AgAFAAMAAAAMAP7/AgAFAAMAAAANAP7/AgAFAAMAAAAOAP7/AgAFAAMAAAA=")
+tile_set = SubResource("TileSet_rus8k")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 160.0
+offset_top = -311.0
+offset_right = 759.0
+offset_bottom = -127.0
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_right = 599.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 60
+text = "INSERT LEVEL HERE"

@@ -21,6 +21,21 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath(".:direction")
 properties/4/spawn = true
 properties/4/replication_mode = 1
+properties/5/path = NodePath("AnimatedSprite2D:animation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:prev_y")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:is_jumping")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath(".:can_move_during_jump")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath(".:input_allowed")
+properties/9/spawn = true
+properties/9/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jlq18"]
 properties/0/path = NodePath("InputSynchronizer:input_direction")
@@ -272,6 +287,62 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_svbwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxdm0")
+}],
+"loop": true,
+"name": &"jump_left_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1khf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkir2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kbh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cupgs")
+}],
+"loop": false,
+"name": &"jump_left_land",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_675ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebija")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymhwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt468")
+}],
+"loop": false,
+"name": &"jump_left_pre",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdeoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svbwc")
+}],
+"loop": true,
+"name": &"jump_left_up",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pistx")
 }, {
 "duration": 1.0,
@@ -307,6 +378,62 @@ animations = [{
 "loop": true,
 "name": &"jump_right",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ylll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7tln")
+}],
+"loop": true,
+"name": &"jump_right_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pistx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50xw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp6qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot1qt")
+}],
+"loop": false,
+"name": &"jump_right_land",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g54vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_476x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j03x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g7fa")
+}],
+"loop": false,
+"name": &"jump_right_pre",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7tln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndyp4")
+}],
+"loop": true,
+"name": &"jump_right_up",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -414,7 +541,9 @@ script = ExtResource("2_0p76c")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(60, 51)
 sprite_frames = SubResource("SpriteFrames_2gq5w")
-animation = &"jump_right"
+animation = &"jump_right_down"
+frame = 1
+frame_progress = 0.15860455
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(55, 66)

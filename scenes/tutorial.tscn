@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7jkaemvndaqc"]
+[gd_scene load_steps=12 format=3 uid="uid://c7jkaemvndaqc"]
 
 [ext_resource type="Texture2D" uid="uid://df6vjyukseia0" path="res://art/environment/Placeholder_Platform_1.png" id="1_6yjpi"]
 [ext_resource type="Texture2D" uid="uid://pdu17mojx4bm" path="res://art/environment/Placeholder_Background_4.png" id="2_gbqnl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://y5se2ypuvdhk" path="res://art/environment/Placeholder_Background_2.png" id="4_nlqja"]
 [ext_resource type="Texture2D" uid="uid://bfpeo5nl6l670" path="res://art/environment/Placeholder_Background_1.png" id="5_0epgs"]
 [ext_resource type="PackedScene" uid="uid://qh71ikdbvkor" path="res://scenes/KillZone.tscn" id="6_g2equ"]
+[ext_resource type="PackedScene" uid="uid://dgsomjatjlw3e" path="res://scenes/end_of_level.tscn" id="7_gbqnl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbcdj"]
 size = Vector2(630.5, 205)
@@ -15,6 +16,9 @@ size = Vector2(400, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hilk"]
 size = Vector2(423, 91)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gbqnl"]
+a = Vector2(0, -348)
 
 [node name="Tutorial" type="Node"]
 
@@ -45,6 +49,13 @@ one_way_collision = true
 z_index = 4
 position = Vector2(1341.5, -582.5)
 shape = SubResource("RectangleShape2D_0hilk")
+
+[node name="GameBoundary" type="StaticBody2D" parent="ForeGround"]
+position = Vector2(0, -273)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForeGround/GameBoundary"]
+position = Vector2(0, 34)
+shape = SubResource("SegmentShape2D_gbqnl")
 
 [node name="Backgrounds" type="Node" parent="."]
 
@@ -88,4 +99,12 @@ collision_mask = 3
 [node name="CollisionShape2D" parent="KillZone" index="0"]
 z_index = 6
 
+[node name="EndOfLevel" parent="." instance=ExtResource("7_gbqnl")]
+position = Vector2(-494, -970)
+
+[node name="CollisionShape2D" parent="EndOfLevel" index="0"]
+z_index = 2
+position = Vector2(2313, 671)
+
 [editable path="KillZone"]
+[editable path="EndOfLevel"]
