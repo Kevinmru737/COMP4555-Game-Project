@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dai0cp3labye2"]
+
+[ext_resource type="Texture2D" uid="uid://biejmbvqfj2wx" path="res://art/characters/GRUNCLE_DANDELION_STILL_ANIM.png" id="1_bm2je"]
+[ext_resource type="Script" uid="uid://chg1a7edkp4gl" path="res://scripts/gruncle_dandelion.gd" id="2_axagq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6y56"]
+atlas = ExtResource("1_bm2je")
+region = Rect2(48, 781, 170, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm2je"]
+atlas = ExtResource("1_bm2je")
+region = Rect2(211, 781, 163, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vwcn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6y56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm2je")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="GruncleDandelion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8vwcn")
+frame_progress = 0.11977438
+script = ExtResource("2_axagq")

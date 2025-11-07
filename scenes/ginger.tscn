@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b63056dcjyfh7"]
+
+[ext_resource type="Script" uid="uid://chg1a7edkp4gl" path="res://scripts/gruncle_dandelion.gd" id="1_hvdev"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjlh2"]
+
+[node name="Ginger" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fjlh2")
+script = ExtResource("1_hvdev")

@@ -1,7 +1,7 @@
 extends Node
 
 const SERVER_PORT = 8080
-const SERVER_IP = "10.0.0.33"
+const SERVER_IP = "10.243.117.7"
 
  #local host
 
@@ -44,7 +44,7 @@ func _add_player_to_game(id: int, character: int):
 	print("Player %s joined the game." % id)
 	var player_to_add
 	if character == 1:
-		player_to_add = multiplayer_scene1.instantiate()
+		player_to_add = multiplayer_scene2.instantiate()
 	elif character == 2:
 		player_to_add = multiplayer_scene2.instantiate()
 	else:

@@ -147,13 +147,13 @@ func _process_jump(delta):
 	#print("Process jump - anim:", curr_anim, "frame:", curr_frame, "is_jumping:", is_jumping)  # DEBUG
 	
 	if curr_anim in ["jump_right_pre", "jump_left_pre"]:
-		if curr_frame == 3 and not jump_velocity_applied:  # Only apply once
+		if curr_frame == 1 and not jump_velocity_applied:  # Only apply once
 			velocity.y = JUMP_VELOCITY
 			jump_velocity_applied = true
 			print("Applied jump velocity")
 	elif curr_anim in ["jump_right_land", "jump_left_land"]:
 		input_allowed = false
-		if curr_frame == 3:  # Last frame of landing
+		if curr_frame == 1:  # Last frame of landing
 			print("jump landing end")
 			is_jumping = false
 			input_allowed = true

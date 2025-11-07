@@ -32,7 +32,7 @@ func become_host():
 	print("Become host pressed")
 	MultiplayerManager.become_host()
 	# Request scene change via network
-	MultiplayerManager.request_scene_change("res://scenes/tutorial.tscn")
+	MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
 
 func join_as_player_2():
 	print("Join as player 2 pressed")

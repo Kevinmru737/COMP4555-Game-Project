@@ -287,14 +287,33 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_y1khf")
+}],
+"loop": false,
+"name": &"jump_left_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_svbwc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qxdm0")
 }],
 "loop": true,
-"name": &"jump_left_down",
+"name": &"jump_left_down1",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkir2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cupgs")
+}],
+"loop": false,
+"name": &"jump_left_land",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -310,7 +329,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_cupgs")
 }],
 "loop": false,
-"name": &"jump_left_land",
+"name": &"jump_left_land1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_675ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymhwq")
+}],
+"loop": false,
+"name": &"jump_left_pre",
 "speed": 10.0
 }, {
 "frames": [{
@@ -327,8 +357,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_vt468")
 }],
 "loop": false,
-"name": &"jump_left_pre",
+"name": &"jump_left_pre1",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svbwc")
+}],
+"loop": true,
+"name": &"jump_left_up",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -338,7 +376,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_svbwc")
 }],
 "loop": true,
-"name": &"jump_left_up",
+"name": &"jump_left_up1",
 "speed": 8.0
 }, {
 "frames": [{
@@ -381,14 +419,33 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ot1qt")
+}],
+"loop": false,
+"name": &"jump_right_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2ylll")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p7tln")
 }],
 "loop": true,
-"name": &"jump_right_down",
+"name": &"jump_right_down1",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp6qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pistx")
+}],
+"loop": false,
+"name": &"jump_right_land",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -404,7 +461,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_ot1qt")
 }],
 "loop": false,
-"name": &"jump_right_land",
+"name": &"jump_right_land1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_476x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g7fa")
+}],
+"loop": false,
+"name": &"jump_right_pre",
 "speed": 10.0
 }, {
 "frames": [{
@@ -421,8 +489,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_1g7fa")
 }],
 "loop": false,
-"name": &"jump_right_pre",
+"name": &"jump_right_pre1",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7tln")
+}],
+"loop": true,
+"name": &"jump_right_up",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -432,7 +508,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ndyp4")
 }],
 "loop": true,
-"name": &"jump_right_up",
+"name": &"jump_right_up1",
 "speed": 8.0
 }, {
 "frames": [{
@@ -540,11 +616,9 @@ script = ExtResource("2_0p76c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(60, 51)
-scale = Vector2(1.005, 1)
 sprite_frames = SubResource("SpriteFrames_2gq5w")
-animation = &"jump_right_down"
-frame = 1
-frame_progress = 0.15860455
+animation = &"jump_left"
+frame_progress = 0.47119996
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(55, 66)

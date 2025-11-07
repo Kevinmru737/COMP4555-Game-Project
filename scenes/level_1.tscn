@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://y5se2ypuvdhk" path="res://art/environment/Placeholder_Background_2.png" id="7_2y5yt"]
 [ext_resource type="Texture2D" uid="uid://dylyga68q8gb8" path="res://art/environment/Placeholder_Background_3.png" id="8_2os1m"]
 [ext_resource type="Texture2D" uid="uid://pdu17mojx4bm" path="res://art/environment/Placeholder_Background_4.png" id="9_go7sj"]
-[ext_resource type="Texture2D" uid="uid://dsq46bbovr2y1" path="res://art/characters/Gruncle_Final_Portrait.png" id="10_2y5yt"]
 [ext_resource type="Script" uid="uid://cscw02wg1k7l7" path="res://scenes/kill_box.gd" id="11_2os1m"]
 [ext_resource type="Script" uid="uid://b8ykilyg7317l" path="res://scripts/spring_jump.gd" id="12_go7sj"]
+[ext_resource type="PackedScene" uid="uid://dai0cp3labye2" path="res://scenes/gruncle_dandelion.tscn" id="13_2aecg"]
 [ext_resource type="PackedScene" uid="uid://dgsomjatjlw3e" path="res://scenes/end_of_level.tscn" id="13_7gny6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
@@ -106,12 +106,6 @@ repeat_times = 7
 position = Vector2(962, -547)
 texture = ExtResource("9_go7sj")
 
-[node name="GruncleFinalPortrait" type="Sprite2D" parent="."]
-z_index = 5
-position = Vector2(825.9998, -301)
-scale = Vector2(0.1714876, 0.14975303)
-texture = ExtResource("10_2y5yt")
-
 [node name="Cameras" type="Node" parent="."]
 
 [node name="Camera1" type="Camera2D" parent="Cameras"]
@@ -133,7 +127,7 @@ position = Vector2(3562, -176.5)
 shape = SubResource("RectangleShape2D_go7sj")
 
 [node name="ColorRect" type="ColorRect" parent="KillBox"]
-z_index = 6
+z_index = 4
 offset_left = 3424.0
 offset_top = -270.0
 offset_right = 3708.0
@@ -175,6 +169,11 @@ position = Vector2(572, 684)
 [node name="SceneTransitionAnimation" parent="EndOfLevel" index="2"]
 position = Vector2(-2679, -1119)
 scale = Vector2(10, 10)
+
+[node name="GruncleDandelion" parent="." instance=ExtResource("13_2aecg")]
+z_index = 5
+position = Vector2(735, -212)
+frame_progress = 0.04050529
 
 [connection signal="body_entered" from="KillBox" to="KillBox" method="_on_body_entered"]
 [connection signal="body_entered" from="SpringJump" to="SpringJump" method="_on_body_entered"]
