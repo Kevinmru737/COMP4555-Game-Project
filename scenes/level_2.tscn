@@ -98,7 +98,6 @@ position = Vector2(-324, -67)
 
 [node name="SceneTransitionAnimation" parent="EndOfLevel" index="2"]
 position = Vector2(-111, -1201)
-scale = Vector2(4, 4)
 
 [node name="Multiplayer HUD" type="Control" parent="."]
 unique_name_in_owner = true

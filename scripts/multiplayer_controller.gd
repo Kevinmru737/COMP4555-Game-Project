@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+#was 300
 const MOVEMENT_SPEED = 300.0
 const JUMP_VELOCITY = -1000.0
 var gravity = 2 * ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -38,6 +38,7 @@ func _ready():
 		$Camera2D.make_current()
 	else:
 		$Camera2D.enabled = false
+	add_to_group("Players")
 	
 func _physics_process(delta):
 	if multiplayer.is_server():
@@ -156,6 +157,13 @@ func _process_jump(delta):
 			print("jump landing end")
 			is_jumping = false
 			input_allowed = true
+
+func change_camera_limit(left, top, bottom, right):
+	print("Changing camera limits...")
+	$Camera2D.limit_left = left
+	$Camera2D.limit_top = top
+	$Camera2D.limit_right = right
+	$Camera2D.limit_bottom = bottom
 
 func mark_dead():
 	print("Mark player dead!")

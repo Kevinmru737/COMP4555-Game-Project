@@ -21,19 +21,19 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath(".:direction")
 properties/4/spawn = true
 properties/4/replication_mode = 1
-properties/5/path = NodePath("AnimatedSprite2D:animation")
+properties/5/path = NodePath(".:prev_y")
 properties/5/spawn = true
 properties/5/replication_mode = 1
-properties/6/path = NodePath(".:prev_y")
+properties/6/path = NodePath(".:is_jumping")
 properties/6/spawn = true
 properties/6/replication_mode = 1
-properties/7/path = NodePath(".:is_jumping")
+properties/7/path = NodePath(".:can_move_during_jump")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath(".:can_move_during_jump")
+properties/8/path = NodePath(".:input_allowed")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath(".:input_allowed")
+properties/9/path = NodePath("AnimatedSprite2D:animation")
 properties/9/spawn = true
 properties/9/replication_mode = 1
 
@@ -540,6 +540,7 @@ script = ExtResource("2_0p76c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(60, 51)
+scale = Vector2(1.005, 1)
 sprite_frames = SubResource("SpriteFrames_2gq5w")
 animation = &"jump_right_down"
 frame = 1

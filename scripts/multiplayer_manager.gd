@@ -1,7 +1,9 @@
 extends Node
 
 const SERVER_PORT = 8080
-const SERVER_IP = "10.0.0.33" #local host
+const SERVER_IP = "10.0.0.33"
+
+ #local host
 
 var multiplayer_scene1 = preload("res://scenes/multiplayer_player1.tscn")
 var multiplayer_scene2 = preload("res://scenes/multiplayer_player2.tscn")
@@ -49,6 +51,8 @@ func _add_player_to_game(id: int, character: int):
 		return
 	player_to_add.player_id = id
 	player_to_add.name = str(id)
+	player_to_add.add_to_group("Players")
+	PlayerRef.player_ref.append(player_to_add)
 	
 	_player_spawn_node.add_child(player_to_add, true)
 	
