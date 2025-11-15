@@ -33,9 +33,12 @@ properties/7/replication_mode = 1
 properties/8/path = NodePath(".:input_allowed")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath("AnimatedSprite2D:animation")
+properties/9/path = NodePath(".:target_anim")
 properties/9/spawn = true
 properties/9/replication_mode = 1
+properties/10/path = NodePath(".:last_anim")
+properties/10/spawn = true
+properties/10/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jlq18"]
 properties/0/path = NodePath("InputSynchronizer:input_direction")
@@ -289,9 +292,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y1khf")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump_left_down",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -421,9 +424,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ot1qt")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump_right_down",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -617,8 +620,7 @@ script = ExtResource("2_0p76c")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(60, 51)
 sprite_frames = SubResource("SpriteFrames_2gq5w")
-animation = &"jump_left"
-frame_progress = 0.47119996
+animation = &"jump_left_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(55, 66)

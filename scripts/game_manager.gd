@@ -32,7 +32,7 @@ func become_host():
 	print("Become host pressed")
 	MultiplayerManager.become_host()
 	# Request scene change via network
-	MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
+	MultiplayerManager.request_scene_change("res://scenes/tutorial.tscn")
 
 func join_as_player_2():
 	print("Join as player 2 pressed")
@@ -40,31 +40,3 @@ func join_as_player_2():
 	# Request scene change via network
 	MultiplayerManager.request_scene_change("res://scenes/tutorial.tscn")
 	
-	
-	
-'''
-	# Store a player node by ID or unique name
-func register_player(player_id: int, player_node: Node):
-	if player_id == 1:
-		group_lists.player_data["tater_po"] = player_node
-	else:
-		group_lists.player_data["della_daisy"] = player_node
-	print("Registered player:", player_id)
-	print(group_lists.player_data)
-
-# Retrieve a player node safely
-func get_player(player_id: int) -> Node:
-	return group_lists.player_data.get(player_id)
-
-# Rebuild the Players group after scene reload
-func restore_players_group():
-	print("trying to restore player group")
-	print(group_lists.player_data)
-	for name in group_lists.player_data.keys():
-		var node = group_lists.player_data[name]
-		print(name)
-		print(node)
-		if is_instance_valid(node):
-			node.add_to_group("Players")
-			print("Restored:", name)
-'''

@@ -8,13 +8,13 @@ func _ready():
 		set_process(false)
 		set_physics_process(false)
 		
-	input_direction = Input.get_axis("a_move_left", "d_move_right") 
+	input_direction = Input.get_axis("move_left", "move_right") 
 	
 func _physics_process(delta):
-	input_direction = Input.get_axis("a_move_left", "d_move_right") 
+	input_direction = Input.get_axis("move_left", "move_right") 
 	
 func _process(delta):
-	if Input.is_action_just_pressed("space_jump"):
+	if Input.is_action_just_pressed("jump"):
 		jump.rpc()
 
 @rpc("call_local")

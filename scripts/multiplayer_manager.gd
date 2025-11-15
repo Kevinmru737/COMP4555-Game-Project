@@ -1,7 +1,7 @@
 extends Node
 
 const SERVER_PORT = 8080
-const SERVER_IP = "10.243.117.7"
+const SERVER_IP = "127.0.0.1"
 
  #local host
 
@@ -12,7 +12,6 @@ var _player_spawn_node
 var host_mode_enabled = false
 var multiplayer_mode_enabled = false
 var respawn_point = Vector2(187, -350)
-var players = {}
 
 func become_host():
 	print("Starting Host!")
@@ -44,7 +43,7 @@ func _add_player_to_game(id: int, character: int):
 	print("Player %s joined the game." % id)
 	var player_to_add
 	if character == 1:
-		player_to_add = multiplayer_scene2.instantiate()
+		player_to_add = multiplayer_scene1.instantiate()
 	elif character == 2:
 		player_to_add = multiplayer_scene2.instantiate()
 	else:
@@ -52,8 +51,14 @@ func _add_player_to_game(id: int, character: int):
 	player_to_add.player_id = id
 	player_to_add.name = str(id)
 	player_to_add.add_to_group("Players")
-	PlayerRef.player_ref.append(player_to_add)
-	
+	PlayerRef.player_ref.append({
+		"id": id,
+		"character": character
+	})
+	# After spawning the new player on the server
+	if multiplayer.is_server():
+		# Send entire player list to the new client
+		rpc_id(id, "send_player_list", PlayerRef.player_ref)
 	_player_spawn_node.add_child(player_to_add, true)
 	
 func _del_player(id: int):
@@ -94,7 +99,24 @@ func client_load_scene(new_scene_path):
 	var game_manager = get_tree().get_first_node_in_group("GameManager")
 	game_manager.load_scene(load(new_scene_path))
 	
+@rpc("authority", "reliable")
+func send_player_list(players):
+	PlayerRef.player_ref = players
 	
+@rpc("any_peer", "reliable")
+func _sync_animation(target_anim, player_id):
+	#Player nodes are placed under "Players" and named with their player_id
+	var players_root = get_tree().get_current_scene().get_node("Players")
+	
+	if players_root.has_node(str(player_id)):
+		var player_node = players_root.get_node(str(player_id))
+		var sprite = player_node.get_node("AnimatedSprite2D")
+		sprite.play(target_anim)
+	else:
+		print("Player node", player_id, "not found on this peer.")
+			
+			
+			
 @rpc("reliable")
 func client_remove_scene(old_node_path):
 	var old_scene = get_node(old_node_path)

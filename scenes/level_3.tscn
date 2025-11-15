@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dylyga68q8gb8" path="res://art/environment/Placeholder_Background_3.png" id="7_8uepa"]
 [ext_resource type="Texture2D" uid="uid://pdu17mojx4bm" path="res://art/environment/Placeholder_Background_4.png" id="8_q7pjq"]
 [ext_resource type="Texture2D" uid="uid://rbslcrlthnsn" path="res://art/characters/Gingy_.png" id="9_q2dsb"]
-[ext_resource type="Script" uid="uid://cscw02wg1k7l7" path="res://scenes/kill_box.gd" id="10_sx8yt"]
+[ext_resource type="Script" uid="uid://cscw02wg1k7l7" path="res://scripts/kill_box.gd" id="10_sx8yt"]
 [ext_resource type="Script" uid="uid://b8ykilyg7317l" path="res://scripts/spring_jump.gd" id="11_k5r18"]
 [ext_resource type="PackedScene" uid="uid://dgsomjatjlw3e" path="res://scenes/end_of_level.tscn" id="12_w5nkq"]
 
