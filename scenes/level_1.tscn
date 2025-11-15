@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://bbanjvntipfqt" path="res://scripts/spawn_point.gd" id="2_4nkto"]
 [ext_resource type="Texture2D" uid="uid://bpv0pl7fxhndd" path="res://art/tiles/Tiles_Placeholder_tile_dirt_energy.png" id="3_rus8k"]
 [ext_resource type="Texture2D" uid="uid://0equh8bejvx7" path="res://art/tiles/Tiles_Placeholder_tile_grass.png" id="4_5xbjy"]
-[ext_resource type="Texture2D" uid="uid://bfpeo5nl6l670" path="res://art/environment/Placeholder_Background_1.png" id="6_e3sih"]
-[ext_resource type="Texture2D" uid="uid://y5se2ypuvdhk" path="res://art/environment/Placeholder_Background_2.png" id="7_2y5yt"]
-[ext_resource type="Texture2D" uid="uid://dylyga68q8gb8" path="res://art/environment/Placeholder_Background_3.png" id="8_2os1m"]
-[ext_resource type="Texture2D" uid="uid://pdu17mojx4bm" path="res://art/environment/Placeholder_Background_4.png" id="9_go7sj"]
+[ext_resource type="Texture2D" uid="uid://ef7rfdbh44fk" path="res://art/environment/Fall_BG_1.png" id="6_7gny6"]
+[ext_resource type="Texture2D" uid="uid://cnbydivbdjslm" path="res://art/environment/Fall_BG_2.png" id="7_2aecg"]
+[ext_resource type="Texture2D" uid="uid://c0mxv2y1vvvo0" path="res://art/environment/Fall_BG_3.png" id="8_6dial"]
+[ext_resource type="Texture2D" uid="uid://bumk8uc34lwqg" path="res://art/environment/Fall_BG_4_variation_2.png" id="9_7nomh"]
 [ext_resource type="Script" uid="uid://cscw02wg1k7l7" path="res://scripts/kill_box.gd" id="11_2os1m"]
 [ext_resource type="Script" uid="uid://b8ykilyg7317l" path="res://scripts/spring_jump.gd" id="12_go7sj"]
 [ext_resource type="PackedScene" uid="uid://dai0cp3labye2" path="res://scenes/gruncle_dandelion.tscn" id="13_2aecg"]
@@ -74,7 +74,7 @@ repeat_times = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D"]
 position = Vector2(962, -547)
-texture = ExtResource("6_e3sih")
+texture = ExtResource("6_7gny6")
 
 [node name="Parallax2D2" type="Parallax2D" parent="Backgrounds"]
 z_index = 2
@@ -84,7 +84,7 @@ repeat_times = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D2"]
 position = Vector2(962, -547)
-texture = ExtResource("7_2y5yt")
+texture = ExtResource("7_2aecg")
 
 [node name="Parallax2D3" type="Parallax2D" parent="Backgrounds"]
 z_index = 3
@@ -94,7 +94,7 @@ repeat_times = 7
 
 [node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Parallax2D3"]
 position = Vector2(962, -547)
-texture = ExtResource("8_2os1m")
+texture = ExtResource("8_6dial")
 
 [node name="Parallax2D4" type="Parallax2D" parent="Backgrounds"]
 z_index = 4
@@ -104,7 +104,7 @@ repeat_times = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
 position = Vector2(962, -547)
-texture = ExtResource("9_go7sj")
+texture = ExtResource("9_7nomh")
 
 [node name="Cameras" type="Node" parent="."]
 
@@ -179,3 +179,4 @@ frame_progress = 0.04050529
 [connection signal="body_entered" from="SpringJump" to="SpringJump" method="_on_body_entered"]
 
 [editable path="EndOfLevel"]
+[editable path="EndOfLevel/SceneTransitionAnimation"]

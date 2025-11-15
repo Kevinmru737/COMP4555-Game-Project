@@ -25,18 +25,21 @@ func become_host():
 	
 	multiplayer.multiplayer_peer = server_peer
 	
-	multiplayer.peer_connected.connect(_add_player_to_game.bind(2))
+	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_del_player)
 	
 	_add_player_to_game(1, 1)
 	
-func join_as_player_2():
-	print("Player 2 joining")
+func join_as_player_2(ip):
+	print("Player 2 creation attempt")
 	multiplayer_mode_enabled = true
 	var client_peer =  ENetMultiplayerPeer.new()
-	client_peer.create_client(SERVER_IP, SERVER_PORT)
+	print("join ip:", ip)
+	client_peer.create_client(ip, SERVER_PORT)
 	
 	multiplayer.multiplayer_peer = client_peer
+	
+	multiplayer.connected_to_server.connect(_on_client_connected)
 	
 # character = 1 = tater_po, character = 2 = della_daisy
 func _add_player_to_game(id: int, character: int):
@@ -55,12 +58,24 @@ func _add_player_to_game(id: int, character: int):
 		"id": id,
 		"character": character
 	})
+
 	# After spawning the new player on the server
 	if multiplayer.is_server():
 		# Send entire player list to the new client
 		rpc_id(id, "send_player_list", PlayerRef.player_ref)
 	_player_spawn_node.add_child(player_to_add, true)
 	
+# On client after create_client
+func _on_client_connected():
+	print("Client connected to server")
+	var game_manager = get_tree().get_first_node_in_group("GameManager")
+	game_manager.join_as_player_2_connected()
+	
+	
+func _on_peer_connected(id: int):
+	print("Peer Connected")
+	_add_player_to_game(id, 2)
+
 func _del_player(id: int):
 	print("Player %s has left the game." % id)
 	if not _player_spawn_node.has_node(str(id)):
@@ -68,7 +83,6 @@ func _del_player(id: int):
 	_player_spawn_node.get_node(str(id)).queue_free()
 	
 func request_scene_change(new_scene_path):
-	
 	if multiplayer.is_server():
 		print("Server scene change request")
 		server_receive_scene_request(new_scene_path)
@@ -101,7 +115,18 @@ func client_load_scene(new_scene_path):
 	
 @rpc("authority", "reliable")
 func send_player_list(players):
+	print("sendingList")
 	PlayerRef.player_ref = players
+	_player_spawn_node = get_tree().get_current_scene().get_node("Players")
+	
+	# Find existing player nodes and add them to group
+	for player_data in players:
+		if _player_spawn_node.has_node(str(player_data["id"])):
+			var player_node = _player_spawn_node.get_node(str(player_data["id"]))
+			player_node.add_to_group("Players")
+	
+	var game_manager = get_tree().get_first_node_in_group("GameManager")
+	game_manager.init_player_after_load()
 	
 @rpc("any_peer", "reliable")
 func _sync_animation(target_anim, player_id):
@@ -113,9 +138,7 @@ func _sync_animation(target_anim, player_id):
 		var sprite = player_node.get_node("AnimatedSprite2D")
 		sprite.play(target_anim)
 	else:
-		print("Player node", player_id, "not found on this peer.")
-			
-			
+		print("Player node", player_id, "not found on this peer.")	
 			
 @rpc("reliable")
 func client_remove_scene(old_node_path):

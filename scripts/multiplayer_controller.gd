@@ -148,8 +148,7 @@ func change_camera_limit(left, top, bottom, right):
 	$Camera2D.limit_top = top
 	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
-
-
+	
 
 func mark_dead():
 	print("Mark player dead!")

@@ -5,7 +5,7 @@ extends Node
 @onready var scene_container = $"Scene Container"
 @onready var title_node = title_scene.instantiate()
 #All Scenes to be loaded in chronological order
-var scene_list = ["res://scenes/level_1.tscn", "res://scenes/level_3.tscn"]
+var scene_list = ["res://scenes/level_3.tscn"]
 
 
 func _ready():
@@ -32,11 +32,19 @@ func become_host():
 	print("Become host pressed")
 	MultiplayerManager.become_host()
 	# Request scene change via network
-	MultiplayerManager.request_scene_change("res://scenes/tutorial.tscn")
+	MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
 
-func join_as_player_2():
+func join_as_player_2(ip):
 	print("Join as player 2 pressed")
-	MultiplayerManager.join_as_player_2()
+	MultiplayerManager.join_as_player_2(ip)
+	
+@rpc("any_peer", "reliable")
+func join_as_player_2_connected():
+	print("connected player 2")
 	# Request scene change via network
-	MultiplayerManager.request_scene_change("res://scenes/tutorial.tscn")
+	
+	
+func init_player_after_load():
+	await get_tree().process_frame # make a better solution future kevin
+	MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
 	

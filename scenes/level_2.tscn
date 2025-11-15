@@ -153,4 +153,5 @@ z_index = 6
 [connection signal="pressed" from="Multiplayer HUD/Panel/VBoxContainer/JoinAsPlayer2" to="GameManager" method="join_as_player_2"]
 
 [editable path="EndOfLevel"]
+[editable path="EndOfLevel/SceneTransitionAnimation"]
 [editable path="KillZone"]
