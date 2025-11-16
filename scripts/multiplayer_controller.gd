@@ -161,8 +161,8 @@ func spawn_player():
 	position = MultiplayerManager.respawn_point
 
 func _respawn():
-	print("respawned!")
 	position = MultiplayerManager.respawn_point
+	print("respawned at:", position)
 	$CollisionShape2D.set_deferred("disabled", false)
 	
 func _set_alive():

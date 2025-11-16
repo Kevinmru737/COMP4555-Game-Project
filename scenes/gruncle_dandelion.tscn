@@ -1,31 +1,60 @@
-[gd_scene load_steps=6 format=3 uid="uid://dai0cp3labye2"]
+[gd_scene load_steps=7 format=3 uid="uid://dai0cp3labye2"]
 
 [ext_resource type="Texture2D" uid="uid://biejmbvqfj2wx" path="res://art/characters/GRUNCLE_DANDELION_STILL_ANIM.png" id="1_bm2je"]
 [ext_resource type="Script" uid="uid://chg1a7edkp4gl" path="res://scripts/gruncle_dandelion.gd" id="2_axagq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6y56"]
 atlas = ExtResource("1_bm2je")
-region = Rect2(48, 781, 170, 250)
+region = Rect2(51, 783, 170, 250)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bm2je"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fkuv"]
 atlas = ExtResource("1_bm2je")
-region = Rect2(211, 781, 163, 250)
+region = Rect2(210, 783, 170, 250)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8vwcn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdfhc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j6y56")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bm2je")
+"texture": SubResource("AtlasTexture_4fkuv")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 2.0
 }]
 
-[node name="GruncleDandelion" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_8vwcn")
-frame_progress = 0.11977438
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm2je"]
+size = Vector2(552, 334)
+
+[node name="GruncleDandelion" type="AnimatableBody2D"]
 script = ExtResource("2_axagq")
+
+[node name="AnimatableBody2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wdfhc")
+animation = &"idle"
+
+[node name="DialogueDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueDetection"]
+position = Vector2(1, -17)
+shape = SubResource("RectangleShape2D_bm2je")
+debug_color = Color(0.061213233, 0.62820005, 0.48186225, 0.41960785)
+
+[node name="BubbleMarker" type="Marker2D" parent="."]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = -107.0
+offset_top = -240.0
+offset_right = 119.0
+offset_bottom = -187.0
+theme_override_colors/caret_background_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+text = "Hit \"Enter\" "
+editable = false
+
+[connection signal="body_entered" from="DialogueDetection" to="." method="_on_dialogue_detection_body_entered"]
+[connection signal="body_exited" from="DialogueDetection" to="." method="_on_dialogue_detection_body_exited"]

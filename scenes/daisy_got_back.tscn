@@ -21,9 +21,9 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 4.0
 }]
 
 [node name="DaisyGotBack" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ia435")
-frame_progress = 0.4056499
+frame_progress = 0.7779392
