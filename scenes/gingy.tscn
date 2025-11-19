@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpx7663ahh1sb"]
+
+[ext_resource type="Texture2D" uid="uid://vkrfjfhim4v1" path="res://art/characters/GINGY_ANIM_SEQUENCES.png" id="1_lclac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_una4e"]
+atlas = ExtResource("1_lclac")
+region = Rect2(54, 418, 116, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ema3p"]
+atlas = ExtResource("1_lclac")
+region = Rect2(178, 418, 116, 190)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8uepa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_una4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ema3p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7pjq"]
+size = Vector2(552, 334)
+
+[node name="Gingy" type="AnimatableBody2D"]
+z_index = 5
+
+[node name="AnimatableBody2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8uepa")
+animation = &"idle"
+frame_progress = 0.25843522
+
+[node name="DialogueDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueDetection"]
+position = Vector2(1, -17)
+shape = SubResource("RectangleShape2D_q7pjq")
+debug_color = Color(0.061213233, 0.62820005, 0.48186225, 0.41960785)
+
+[node name="BubbleMarker" type="Marker2D" parent="."]

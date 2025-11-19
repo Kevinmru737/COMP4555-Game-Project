@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://fhjyjo4ktynl"]
+[gd_scene load_steps=36 format=4 uid="uid://fhjyjo4ktynl"]
 
 [ext_resource type="Texture2D" uid="uid://desftaoda5mi2" path="res://art/tiles/Tiles_Placeholder_1.png" id="1_5xbjy"]
 [ext_resource type="Script" uid="uid://cw0xlm2suhn2y" path="res://scripts/level_1.gd" id="1_fcfvj"]
@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b1ttkhijic0vx" path="res://art/environment/Fall_BG_house_4.png" id="14_wbtxt"]
 [ext_resource type="PackedScene" uid="uid://qh71ikdbvkor" path="res://scenes/KillZone.tscn" id="15_6dial"]
 [ext_resource type="Texture2D" uid="uid://cb16qrjpldns0" path="res://art/environment/Fall_BG_house_5.png" id="15_x2fux"]
-[ext_resource type="Texture2D" uid="uid://5vtq5nioy4td" path="res://art/environment/Fall_BG_tiles_log__1.png" id="24_wbtxt"]
+[ext_resource type="PackedScene" uid="uid://jlvx2tk8j4jp" path="res://scenes/log.tscn" id="24_wbtxt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gny6"]
 resource_name = "Place Holder"
@@ -54,69 +54,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7gny6")
 sources/1 = SubResource("TileSetAtlasSource_2aecg")
 sources/2 = SubResource("TileSetAtlasSource_6dial")
-
-[sub_resource type="Animation" id="Animation_d5akn"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Parallax2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Parallax2D2:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Parallax2D3:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Parallax2D4:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ParallaxLayer:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_wbtxt"]
 length = 0.001
@@ -181,14 +118,77 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_d5akn"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Parallax2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Parallax2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parallax2D3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parallax2D4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ParallaxLayer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x2fux"]
 _data = {
 &"RESET": SubResource("Animation_wbtxt"),
 &"fade_out": SubResource("Animation_d5akn")
 }
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_so66j"]
-length = 245.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbtxt"]
+size = Vector2(20, 256)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2aecg"]
 a = Vector2(13.5, -57)
@@ -199,10 +199,6 @@ size = Vector2(246, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2os1m"]
 size = Vector2(233, 54)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_wbtxt"]
-a = Vector2(1, -673)
-b = Vector2(-2, -4)
 
 [node name="Level1" type="Node"]
 script = ExtResource("1_fcfvj")
@@ -343,13 +339,24 @@ libraries = {
 }
 
 [node name="BGSwitch" type="Area2D" parent="."]
+position = Vector2(282, 6)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BGSwitch"]
 z_index = 5
-position = Vector2(2071, -446)
-shape = SubResource("SeparationRayShape2D_so66j")
+position = Vector2(2071, -328)
+shape = SubResource("RectangleShape2D_wbtxt")
+
+[node name="BGSwitch2" type="Area2D" parent="."]
+position = Vector2(76, 6)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BGSwitch2"]
+z_index = 5
+position = Vector2(2071, -328)
+shape = SubResource("RectangleShape2D_wbtxt")
 
 [node name="Cameras" type="Node" parent="."]
 
@@ -393,6 +400,14 @@ position = Vector2(1859, 105)
 z_index = 5
 position = Vector2(9632, -367)
 
+[node name="EndOfLevel2" parent="." instance=ExtResource("13_7gny6")]
+z_index = 6
+position = Vector2(-7640, 463)
+
+[node name="CollisionShape2D" parent="EndOfLevel2" index="0"]
+z_index = 5
+position = Vector2(9632, -367)
+
 [node name="SpringJump" type="Area2D" parent="."]
 position = Vector2(894, -80)
 collision_layer = 2
@@ -425,25 +440,15 @@ position = Vector2(1288, -295)
 
 [node name="KillZone" parent="." instance=ExtResource("15_6dial")]
 
-[node name="FallBgTilesLog1" type="Sprite2D" parent="."]
-z_index = 5
+[node name="FallBgTilesLog1" parent="." instance=ExtResource("24_wbtxt")]
 position = Vector2(10888, -622)
-texture = ExtResource("24_wbtxt")
-
-[node name="LogCeiling" type="CollisionShape2D" parent="FallBgTilesLog1"]
-position = Vector2(271, -57)
-rotation = 1.5707964
-shape = SubResource("SegmentShape2D_wbtxt")
-
-[node name="Sprite2D" type="Sprite2D" parent="FallBgTilesLog1"]
-z_index = 5
-position = Vector2(606, 0)
-texture = ExtResource("24_wbtxt")
 region_enabled = true
-region_rect = Rect2(1220, 0, 700, 1080)
+region_rect = Rect2(0, 0, 1920, 1080)
 
 [connection signal="body_entered" from="BGSwitch" to="." method="_on_bg_switch_body_entered"]
+[connection signal="body_entered" from="BGSwitch2" to="." method="_on_bg_switch_2_body_entered"]
 [connection signal="body_entered" from="KillBox" to="KillBox" method="_on_body_entered"]
 [connection signal="body_entered" from="SpringJump" to="SpringJump" method="_on_body_entered"]
 
 [editable path="EndOfLevel"]
+[editable path="EndOfLevel2"]

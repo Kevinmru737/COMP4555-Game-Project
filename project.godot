@@ -24,9 +24,11 @@ SceneTransitionAnimation="*res://scenes/scene_transition_animation.tscn"
 [dialogic]
 
 directories/dch_directory={
+"Gingy": "res://dialogue/characters/Gingy.dch",
 "GruncleDandelion": "res://dialogue/characters/GruncleDandelion.dch"
 }
 directories/dtl_directory={
+"GingyIntro": "res://dialogue/timelines/GingyIntro.dtl",
 "GruncleIdle": "res://dialogue/timelines/GruncleIdle.dtl",
 "GruncleIntro": "res://dialogue/timelines/GruncleIntro.dtl"
 }

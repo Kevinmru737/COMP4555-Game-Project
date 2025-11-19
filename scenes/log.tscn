@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://jlvx2tk8j4jp"]
+
+[ext_resource type="Texture2D" uid="uid://5vtq5nioy4td" path="res://art/environment/Fall_BG_tiles_log__1.png" id="1_spugk"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wbtxt"]
+a = Vector2(1, -673)
+b = Vector2(-2, -4)
+
+[node name="FallBgTilesLog1" type="Sprite2D"]
+z_index = 5
+texture = ExtResource("1_spugk")
+
+[node name="LogCeiling" type="CollisionShape2D" parent="."]
+position = Vector2(271, -57)
+rotation = 1.5707964
+shape = SubResource("SegmentShape2D_wbtxt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(606, 0)
+texture = ExtResource("1_spugk")
+region_enabled = true
+region_rect = Rect2(1220, 0, 700, 1080)

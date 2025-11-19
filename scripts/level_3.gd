@@ -10,9 +10,12 @@ func _ready():
 	MultiplayerManager.respawn_point = spawn_point
 	print(PlayerRef.player_ref)
 	SceneTransitionAnimation.fade_out()
+	init_player_after_load()
+	$"BelowGroundBG".fade_in()
+	$"AboveGroundBG".fade_in()
 
 func init_player_after_load():
-	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 11750)
+	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 3060)
 
 
 func switch_backgrounds(old_bg: String, new_bg: String):

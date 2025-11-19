@@ -107,6 +107,7 @@ func server_receive_scene_request(new_scene_path):
 		game_manager.load_scene(load(new_scene_path))
 		#rpc_id(multiplayer.get_remote_sender_id(), "client_load_scene", new_scene_path)
 
+
 #@rpc("any_peer", "reliable")
 func client_load_scene(new_scene_path):
 	print("Client scene load requested")

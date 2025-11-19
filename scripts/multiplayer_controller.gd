@@ -155,6 +155,9 @@ func mark_dead():
 	alive = false
 	$CollisionShape2D.set_deferred("disabled", true)
 	$DeathTimer.start()
+	
+func teleport_player(new_position: Vector2):
+	self.position = new_position
 
 func spawn_player():
 	print("spawning player")
