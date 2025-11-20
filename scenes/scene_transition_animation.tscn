@@ -2,21 +2,6 @@
 
 [ext_resource type="Script" uid="uid://5b776jnxoxet" path="res://scripts/scene_transition_animation.gd" id="1_4f13n"]
 
-[sub_resource type="Animation" id="Animation_4f13n"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_6engn"]
 resource_name = "RESET"
 tracks/0/type = "value"
@@ -30,6 +15,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4f13n"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_my01g"]
@@ -61,10 +61,10 @@ script = ExtResource("1_4f13n")
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 10
-offset_left = -908.0
-offset_top = -13950.0
-offset_right = 21835.0
-offset_bottom = 2871.0
+offset_left = -59020.0
+offset_top = -43134.0
+offset_right = 73547.0
+offset_bottom = 24375.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 

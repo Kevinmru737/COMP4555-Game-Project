@@ -96,9 +96,6 @@ position = Vector2(187, -350)
 [node name="EndOfLevel" parent="." instance=ExtResource("7_g2hoc")]
 position = Vector2(-324, -67)
 
-[node name="SceneTransitionAnimation" parent="EndOfLevel" index="2"]
-position = Vector2(-111, -1201)
-
 [node name="Multiplayer HUD" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
@@ -153,5 +150,4 @@ z_index = 6
 [connection signal="pressed" from="Multiplayer HUD/Panel/VBoxContainer/JoinAsPlayer2" to="GameManager" method="join_as_player_2"]
 
 [editable path="EndOfLevel"]
-[editable path="EndOfLevel/SceneTransitionAnimation"]
 [editable path="KillZone"]

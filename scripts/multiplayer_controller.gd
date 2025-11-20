@@ -32,7 +32,7 @@ func _ready():
 	else:
 		$Camera2D.enabled = false
 	add_to_group("Players")
-	MultiplayerManager._sync_animation.rpc("idle", player_id)
+	
 func _physics_process(delta):
 	_is_on_floor = is_on_floor()
 	prev_y = velocity.y

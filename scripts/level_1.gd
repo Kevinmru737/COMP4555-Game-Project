@@ -11,7 +11,11 @@ func _ready():
 	get_tree().create_timer(0.1).timeout.connect(init_player_after_load) #fix race condition
 	SceneTransitionAnimation.fade_out()
 	switch_backgrounds("Backgrounds", "GruncHouse")
-	
+	#Fix idle animation not playing on load
+	#if multiplayer.is_server():
+	#	for player in get_tree().get_nodes_in_group("Players"):
+	#		MultiplayerManager._sync_animation("idle", 1)
+		
 func init_player_after_load():
 	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 11750)
 

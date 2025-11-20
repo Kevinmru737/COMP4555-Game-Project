@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cvnsbdraimctu"]
+[gd_scene load_steps=49 format=4 uid="uid://cvnsbdraimctu"]
 
 [ext_resource type="Script" uid="uid://bbanjvntipfqt" path="res://scripts/spawn_point.gd" id="1_ax3dk"]
 [ext_resource type="Script" uid="uid://pjbics028if2" path="res://scripts/level_3.gd" id="1_p3r0x"]
@@ -28,6 +28,17 @@
 [ext_resource type="Texture2D" uid="uid://cuenx6ow1o58l" path="res://art/environment/main_level/Main AG 2-4.png" id="20_365g5"]
 [ext_resource type="Texture2D" uid="uid://eq6m0ys4oj8l" path="res://art/environment/main_level/Main AG 1-5.png" id="21_50287"]
 [ext_resource type="Texture2D" uid="uid://753qd4w3pd2a" path="res://art/environment/main_level/Main AG 2-5.png" id="22_os8re"]
+[ext_resource type="Texture2D" uid="uid://chmahqvi2anr2" path="res://art/environment/main_level/Main UG 0.png" id="23_detxl"]
+[ext_resource type="Texture2D" uid="uid://dbg3r7fto1qug" path="res://art/environment/main_level/Main UG 1-1.png" id="24_58p72"]
+[ext_resource type="Texture2D" uid="uid://ds21thejb3te6" path="res://art/environment/main_level/Main UG 2-1.png" id="25_365g5"]
+[ext_resource type="Texture2D" uid="uid://bwytkjih67mwt" path="res://art/environment/main_level/Main UG 1-2.png" id="26_365g5"]
+[ext_resource type="Texture2D" uid="uid://mm5hacscl4ic" path="res://art/environment/main_level/Main UG 2-2.png" id="27_50287"]
+[ext_resource type="Texture2D" uid="uid://bt6ba3hui2uhp" path="res://art/environment/main_level/Main UG 1-3.png" id="28_0vrl8"]
+[ext_resource type="Texture2D" uid="uid://n7jh30cc2oig" path="res://art/environment/main_level/Main UG 2-3.png" id="29_1ke33"]
+[ext_resource type="Texture2D" uid="uid://c4rcv8ckmkabu" path="res://art/environment/main_level/Main UG 1-4.png" id="30_mnu1b"]
+[ext_resource type="Texture2D" uid="uid://bvabtc2j1scfv" path="res://art/environment/main_level/Main UG 2-4.png" id="31_be7ao"]
+[ext_resource type="Texture2D" uid="uid://cahqiyrxssvkn" path="res://art/environment/main_level/Main UG 1-5.png" id="32_1x8o1"]
+[ext_resource type="Texture2D" uid="uid://coebvymh07o2r" path="res://art/environment/main_level/Main UG 2-5.png" id="33_nvr1i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bk4f1"]
 resource_name = "Place Holder"
@@ -63,7 +74,7 @@ sources/2 = SubResource("TileSetAtlasSource_vv2vh")
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Parallax2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -75,7 +86,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Parallax2D2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -87,7 +98,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("Parallax2D3:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -99,7 +110,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("Parallax2D4:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -111,7 +122,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath("ParallaxLayer:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -191,26 +202,6 @@ _data = {
 &"fade_out": SubResource("Animation_d5akn")
 }
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_detxl"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_58p72"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_365g5"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50287"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_os8re"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ciptj"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jnlnj"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nhai6"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0vrl8"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ke33"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjw4u"]
 size = Vector2(246, 159)
 
@@ -233,13 +224,13 @@ tile_set = SubResource("TileSet_5kn0t")
 
 [node name="Above" type="TileMapLayer" parent="Tiles"]
 z_index = 5
-position = Vector2(-1700, -1400)
+position = Vector2(-1746, -1544)
 tile_map_data = PackedByteArray("AAAAAP7/AAAFAAUAAAAAAP//AQAHAAUAAAAAAAAAAQAHAAUAAAABAP7/AAAFAAUAAAABAP//AQAHAAUAAAABAAAAAQAHAAUAAAACAP7/AgAFAAMAAAACAP//AQAHAAUAAAACAAAAAQAHAAUAAAADAP7/AgAFAAMAAAADAP//AQAHAAUAAAADAAAAAQAHAAUAAAAEAP7/AgAFAAMAAAAEAP//AQAHAAUAAAAEAAAAAQAHAAUAAAAFAP7/AgAFAAMAAAAFAP//AQAHAAUAAAAFAAAAAQAHAAUAAAAGAP7/AgAFAAMAAAAGAP//AQAHAAUAAAAGAAAAAQAHAAUAAAAHAP7/AgAFAAMAAAAHAP//AQAHAAUAAAAHAAAAAQAHAAUAAAAIAP7/AgAFAAMAAAAIAP//AQAHAAUAAAAIAAAAAQAHAAUAAAAJAP7/AgAFAAMAAAAJAP//AQAHAAUAAAAJAAAAAQAHAAUAAAAKAP7/AgAFAAMAAAAKAP//AQAHAAUAAAAKAAAAAQAHAAUAAAALAP7/AgAFAAMAAAALAP//AQAHAAUAAAALAAAAAQAHAAUAAAAMAP7/AgAFAAMAAAAMAP//AQAHAAUAAAAMAAAAAQAHAAUAAAANAP7/AgAFAAMAAAANAP//AQAHAAUAAAANAAAAAQAHAAUAAAAOAP7/AgAFAAMAAAAOAP//AQAHAAUAAAAOAAAAAQAHAAUAAAAPAP7/AgAFAAMAAAAPAP//AQAHAAUAAAAPAAAAAQAHAAUAAAAQAP7/AgAFAAMAAAAQAP//AQAHAAUAAAAQAAAAAQAHAAUAAAARAP//AQAHAAUAAAARAAAAAQAHAAUAAAASAP//AQAHAAUAAAASAAAAAQAHAAUAAAATAP//AQAHAAUAAAATAAAAAQAHAAUAAAAUAP//AQAHAAUAAAAUAAAAAQAHAAUAAAAVAP//AQAHAAUAAAAVAAAAAQAHAAUAAAAWAP//AQAHAAUAAAAWAAAAAQAHAAUAAAAXAP//AQAHAAUAAAAXAAAAAQAHAAUAAAAYAP//AQAHAAUAAAAYAAAAAQAHAAUAAAAiAP//AQAHAAUAAAAiAAAAAQAHAAUAAAAjAP//AQAHAAUAAAAjAAAAAQAHAAUAAAAkAP//AQAHAAUAAAAkAAAAAQAHAAUAAAAlAP//AQAHAAUAAAAlAAAAAQAHAAUAAAAmAP//AQAHAAUAAAAmAAAAAQAHAAUAAAAnAP//AQAHAAUAAAAnAAAAAQAHAAUAAAAoAP//AQAHAAUAAAAoAAAAAQAHAAUAAAApAP//AQAHAAUAAAApAAAAAQAHAAUAAAAjAP7/AgAFAAMAAAAiAP7/AgAFAAMAAAAkAP7/AgAFAAMAAAAlAP7/AgAFAAMAAAAbAP7/AgAFAAMAAAAcAP7/AgAFAAMAAAAdAP7/AgAFAAMAAAAeAP7/AgAFAAMAAAAfAP7/AgAFAAMAAAARAP7/AgAFAAMAAAASAP7/AgAFAAMAAAATAP7/AgAFAAMAAAAUAP7/AgAFAAMAAAAVAP7/AgAFAAMAAAAWAP7/AgAFAAMAAAAXAP7/AgAFAAMAAAAYAP7/AgAFAAMAAAAZAAAAAQAHAAUAAAAZAP7/AgAFAAMAAAAaAP7/AgAFAAMAAAAgAP7/AgAFAAMAAAAhAP7/AgAFAAMAAAAaAP//AQAHAAUAAAAbAP//AQAHAAUAAAAcAP//AQAHAAUAAAAdAP//AQAHAAUAAAAeAP//AQAHAAUAAAAfAP//AQAHAAUAAAAgAP//AQAHAAUAAAAhAP//AQAHAAUAAAAhAAAAAQAHAAUAAAAgAAAAAQAHAAUAAAAfAAAAAQAHAAUAAAAeAAAAAQAHAAUAAAAdAAAAAQAHAAUAAAAcAAAAAQAHAAUAAAAbAAAAAQAHAAUAAAAaAAAAAQAHAAUAAAAmAP7/AgAFAAMAAAAnAP7/AgAFAAMAAAAoAP7/AgAFAAMAAAApAP7/AgAFAAMAAAAqAP7/AgAFAAMAAAArAP7/AgAFAAMAAAAsAP7/AgAFAAMAAAAtAP7/AgAFAAMAAAAuAP7/AgAFAAMAAAAvAP7/AgAFAAMAAAAwAP7/AgAFAAMAAAAxAP7/AgAFAAMAAAAyAP7/AgAFAAMAAAAzAP7/AgAFAAMAAAAZAP//AQAHAAUAAAAqAP//AQAHAAUAAAArAP//AQAHAAUAAAAsAP//AQAHAAUAAAAtAP//AQAHAAUAAAAuAP//AQAHAAUAAAAvAP//AQAHAAUAAAAwAP//AQAHAAUAAAAxAP//AQAHAAUAAAAyAP//AQAHAAUAAAAzAP//AQAHAAUAAAA0AP//AQAHAAUAAAA1AP//AQAHAAUAAAA2AP//AQAHAAUAAAA3AP//AQAHAAUAAAA4AP//AQAHAAUAAAA5AP//AQAHAAUAAAA6AP//AQAHAAUAAAA7AP//AQAHAAUAAAA8AP//AQAHAAUAAAA9AP//AQAHAAUAAAA+AP//AQAHAAUAAAA/AP//AQAHAAUAAABAAP//AQAHAAUAAABBAP//AQAHAAUAAABCAP//AQAHAAUAAAAxAAAAAQAHAAUAAAAyAAAAAQAHAAUAAAAzAAAAAQAHAAUAAAA0AAAAAQAHAAUAAAA1AAAAAQAHAAUAAAA2AAAAAQAHAAUAAAA3AAAAAQAHAAUAAAA4AAAAAQAHAAUAAAA5AAAAAQAHAAUAAAA6AAAAAQAHAAUAAAA7AAAAAQAHAAUAAAA8AAAAAQAHAAUAAAA9AAAAAQAHAAUAAAA+AAAAAQAHAAUAAAAwAAAAAQAHAAUAAAAvAAAAAQAHAAUAAAAuAAAAAQAHAAUAAAAtAAAAAQAHAAUAAAAsAAAAAQAHAAUAAAArAAAAAQAHAAUAAAAqAAAAAQAHAAUAAAA=")
 tile_set = SubResource("TileSet_5kn0t")
 
 [node name="Below" type="TileMapLayer" parent="Tiles"]
 z_index = 5
-position = Vector2(-1700, 1588)
+position = Vector2(-1700, 1421)
 tile_map_data = PackedByteArray("AAAAAP7/AAAFAAUAAAAAAP//AQAHAAUAAAAAAAAAAQAHAAUAAAABAP7/AAAFAAUAAAABAP//AQAHAAUAAAABAAAAAQAHAAUAAAACAP7/AgAFAAMAAAACAP//AQAHAAUAAAACAAAAAQAHAAUAAAADAP7/AgAFAAMAAAADAP//AQAHAAUAAAADAAAAAQAHAAUAAAAEAP7/AgAFAAMAAAAEAP//AQAHAAUAAAAEAAAAAQAHAAUAAAAFAP7/AgAFAAMAAAAFAP//AQAHAAUAAAAFAAAAAQAHAAUAAAAGAP7/AgAFAAMAAAAGAP//AQAHAAUAAAAGAAAAAQAHAAUAAAAHAP7/AgAFAAMAAAAHAP//AQAHAAUAAAAHAAAAAQAHAAUAAAAIAP7/AgAFAAMAAAAIAP//AQAHAAUAAAAIAAAAAQAHAAUAAAAJAP7/AgAFAAMAAAAJAP//AQAHAAUAAAAJAAAAAQAHAAUAAAAKAP7/AgAFAAMAAAAKAP//AQAHAAUAAAAKAAAAAQAHAAUAAAALAP7/AgAFAAMAAAALAP//AQAHAAUAAAALAAAAAQAHAAUAAAAMAP7/AgAFAAMAAAAMAP//AQAHAAUAAAAMAAAAAQAHAAUAAAANAP7/AgAFAAMAAAANAP//AQAHAAUAAAANAAAAAQAHAAUAAAAOAP7/AgAFAAMAAAAOAP//AQAHAAUAAAAOAAAAAQAHAAUAAAAPAP7/AgAFAAMAAAAPAP//AQAHAAUAAAAPAAAAAQAHAAUAAAAQAP7/AgAFAAMAAAAQAP//AQAHAAUAAAAQAAAAAQAHAAUAAAARAP//AQAHAAUAAAARAAAAAQAHAAUAAAASAP//AQAHAAUAAAASAAAAAQAHAAUAAAATAP//AQAHAAUAAAATAAAAAQAHAAUAAAAUAP//AQAHAAUAAAAUAAAAAQAHAAUAAAAVAP//AQAHAAUAAAAVAAAAAQAHAAUAAAAWAP//AQAHAAUAAAAWAAAAAQAHAAUAAAAXAP//AQAHAAUAAAAXAAAAAQAHAAUAAAAYAP//AQAHAAUAAAAYAAAAAQAHAAUAAAAiAP//AQAHAAUAAAAiAAAAAQAHAAUAAAAjAP//AQAHAAUAAAAjAAAAAQAHAAUAAAAkAP//AQAHAAUAAAAkAAAAAQAHAAUAAAAlAP//AQAHAAUAAAAlAAAAAQAHAAUAAAAmAP//AQAHAAUAAAAmAAAAAQAHAAUAAAAnAP//AQAHAAUAAAAnAAAAAQAHAAUAAAAoAP//AQAHAAUAAAAoAAAAAQAHAAUAAAApAP//AQAHAAUAAAApAAAAAQAHAAUAAAAjAP7/AgAFAAMAAAAiAP7/AgAFAAMAAAAkAP7/AgAFAAMAAAAlAP7/AgAFAAMAAAAbAP7/AgAFAAMAAAAcAP7/AgAFAAMAAAAdAP7/AgAFAAMAAAAeAP7/AgAFAAMAAAAfAP7/AgAFAAMAAAARAP7/AgAFAAMAAAASAP7/AgAFAAMAAAATAP7/AgAFAAMAAAAUAP7/AgAFAAMAAAAVAP7/AgAFAAMAAAAWAP7/AgAFAAMAAAAXAP7/AgAFAAMAAAAYAP7/AgAFAAMAAAAZAAAAAQAHAAUAAAAZAP7/AgAFAAMAAAAaAP7/AgAFAAMAAAAgAP7/AgAFAAMAAAAhAP7/AgAFAAMAAAAaAP//AQAHAAUAAAAbAP//AQAHAAUAAAAcAP//AQAHAAUAAAAdAP//AQAHAAUAAAAeAP//AQAHAAUAAAAfAP//AQAHAAUAAAAgAP//AQAHAAUAAAAhAP//AQAHAAUAAAAhAAAAAQAHAAUAAAAgAAAAAQAHAAUAAAAfAAAAAQAHAAUAAAAeAAAAAQAHAAUAAAAdAAAAAQAHAAUAAAAcAAAAAQAHAAUAAAAbAAAAAQAHAAUAAAAaAAAAAQAHAAUAAAAmAP7/AgAFAAMAAAAnAP7/AgAFAAMAAAAoAP7/AgAFAAMAAAApAP7/AgAFAAMAAAAqAP7/AgAFAAMAAAArAP7/AgAFAAMAAAAsAP7/AgAFAAMAAAAtAP7/AgAFAAMAAAAuAP7/AgAFAAMAAAAvAP7/AgAFAAMAAAAwAP7/AgAFAAMAAAAxAP7/AgAFAAMAAAAyAP7/AgAFAAMAAAAzAP7/AgAFAAMAAAAZAP//AQAHAAUAAAAqAP//AQAHAAUAAAArAP//AQAHAAUAAAAsAP//AQAHAAUAAAAtAP//AQAHAAUAAAAuAP//AQAHAAUAAAAvAP//AQAHAAUAAAAwAP//AQAHAAUAAAAxAP//AQAHAAUAAAAyAP//AQAHAAUAAAAzAP//AQAHAAUAAAA0AP//AQAHAAUAAAA1AP//AQAHAAUAAAA2AP//AQAHAAUAAAA3AP//AQAHAAUAAAA4AP//AQAHAAUAAAA5AP//AQAHAAUAAAA6AP//AQAHAAUAAAA7AP//AQAHAAUAAAA8AP//AQAHAAUAAAA9AP//AQAHAAUAAAA+AP//AQAHAAUAAAA/AP//AQAHAAUAAABAAP//AQAHAAUAAABBAP//AQAHAAUAAABCAP//AQAHAAUAAAAxAAAAAQAHAAUAAAAyAAAAAQAHAAUAAAAzAAAAAQAHAAUAAAA0AAAAAQAHAAUAAAA1AAAAAQAHAAUAAAA2AAAAAQAHAAUAAAA3AAAAAQAHAAUAAAA4AAAAAQAHAAUAAAA5AAAAAQAHAAUAAAA6AAAAAQAHAAUAAAA7AAAAAQAHAAUAAAA8AAAAAQAHAAUAAAA9AAAAAQAHAAUAAAA+AAAAAQAHAAUAAAAwAAAAAQAHAAUAAAAvAAAAAQAHAAUAAAAuAAAAAQAHAAUAAAAtAAAAAQAHAAUAAAAsAAAAAQAHAAUAAAArAAAAAQAHAAUAAAAqAAAAAQAHAAUAAAA=")
 tile_set = SubResource("TileSet_5kn0t")
 
@@ -302,7 +293,6 @@ script = ExtResource("11_w5nkq")
 [node name="Parallax2D0" type="Parallax2D" parent="AboveGroundBG"]
 z_index = 1
 scroll_scale = Vector2(0.2, 1)
-scroll_offset = Vector2(4018, 0)
 repeat_size = Vector2(1920, 0)
 repeat_times = 11
 
@@ -313,46 +303,42 @@ position = Vector2(5500, -2000)
 texture = ExtResource("12_wa6ex")
 
 [node name="Parallax2D" type="Parallax2D" parent="AboveGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 1
 scroll_scale = Vector2(0.2, 1)
-scroll_offset = Vector2(-2099, 6)
 repeat_size = Vector2(3840, 0)
-repeat_times = 2
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="AboveGroundBG/Parallax2D"]
 
-[node name="Sprite2D2" type="Sprite2D" parent="AboveGroundBG/Parallax2D/Node2D"]
-position = Vector2(7420, -2000)
-texture = ExtResource("13_sx8yt")
-
 [node name="Sprite2D" type="Sprite2D" parent="AboveGroundBG/Parallax2D/Node2D"]
 position = Vector2(5500, -2000)
+texture = ExtResource("13_sx8yt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AboveGroundBG/Parallax2D/Node2D"]
+position = Vector2(7420, -2000)
 texture = ExtResource("14_k5r18")
 
 [node name="Parallax2D2" type="Parallax2D" parent="AboveGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 2
 scroll_scale = Vector2(0.4, 1)
 repeat_size = Vector2(3840, 0)
-repeat_times = 2
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="AboveGroundBG/Parallax2D2"]
 
-[node name="Sprite2D" type="Sprite2D" parent="AboveGroundBG/Parallax2D2/Node2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="AboveGroundBG/Parallax2D2/Node2D"]
 position = Vector2(5500, -2000)
 texture = ExtResource("15_bjw4u")
 
-[node name="Sprite2D2" type="Sprite2D" parent="AboveGroundBG/Parallax2D2/Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="AboveGroundBG/Parallax2D2/Node2D"]
 position = Vector2(7420, -2000)
 texture = ExtResource("16_1rxxv")
 
 [node name="Parallax2D3" type="Parallax2D" parent="AboveGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 3
 scroll_scale = Vector2(0.6, 1)
 repeat_size = Vector2(3840, 0)
-repeat_times = 2
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="AboveGroundBG/Parallax2D3"]
 
@@ -365,11 +351,10 @@ position = Vector2(7420, -2000)
 texture = ExtResource("18_detxl")
 
 [node name="Parallax2D4" type="Parallax2D" parent="AboveGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 4
 scroll_scale = Vector2(0.8, 1)
 repeat_size = Vector2(3840, 0)
-repeat_times = 2
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="AboveGroundBG/Parallax2D4"]
 
@@ -382,11 +367,10 @@ position = Vector2(7420, -2000)
 texture = ExtResource("20_365g5")
 
 [node name="ParallaxLayer" type="Parallax2D" parent="AboveGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 6
 scroll_scale = Vector2(1.2, 1)
 repeat_size = Vector2(3840, 0)
-repeat_times = 2
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="AboveGroundBG/ParallaxLayer"]
 
@@ -409,101 +393,94 @@ script = ExtResource("11_w5nkq")
 [node name="Parallax2D0" type="Parallax2D" parent="BelowGroundBG"]
 z_index = 1
 scroll_scale = Vector2(0.2, 1)
-scroll_offset = Vector2(4018, 0)
-repeat_size = Vector2(2880, 0)
+repeat_size = Vector2(1920, 0)
 repeat_times = 11
 
 [node name="Node2D" type="Node2D" parent="BelowGroundBG/Parallax2D0"]
 
 [node name="Sprite2D" type="Sprite2D" parent="BelowGroundBG/Parallax2D0/Node2D"]
 position = Vector2(5500, 1000)
-texture = SubResource("CompressedTexture2D_detxl")
+texture = ExtResource("23_detxl")
 
 [node name="Parallax2D" type="Parallax2D" parent="BelowGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 1
 scroll_scale = Vector2(0.2, 1)
-scroll_offset = Vector2(-2099, 6)
-repeat_size = Vector2(5760, 0)
-repeat_times = 2
+repeat_size = Vector2(3840, 0)
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="BelowGroundBG/Parallax2D"]
 
-[node name="Sprite2D2" type="Sprite2D" parent="BelowGroundBG/Parallax2D/Node2D"]
-position = Vector2(8380, 1000)
-texture = SubResource("CompressedTexture2D_58p72")
-
 [node name="Sprite2D" type="Sprite2D" parent="BelowGroundBG/Parallax2D/Node2D"]
 position = Vector2(5500, 1000)
-texture = SubResource("CompressedTexture2D_365g5")
+texture = ExtResource("24_58p72")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BelowGroundBG/Parallax2D/Node2D"]
+position = Vector2(7420, 1000)
+texture = ExtResource("25_365g5")
 
 [node name="Parallax2D2" type="Parallax2D" parent="BelowGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 2
 scroll_scale = Vector2(0.4, 1)
-repeat_size = Vector2(5760, 0)
-repeat_times = 2
+repeat_size = Vector2(3840, 0)
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="BelowGroundBG/Parallax2D2"]
 
-[node name="Sprite2D2" type="Sprite2D" parent="BelowGroundBG/Parallax2D2/Node2D"]
-position = Vector2(8380, 1000)
-texture = SubResource("CompressedTexture2D_50287")
-
 [node name="Sprite2D" type="Sprite2D" parent="BelowGroundBG/Parallax2D2/Node2D"]
 position = Vector2(5500, 1000)
-texture = SubResource("CompressedTexture2D_os8re")
+texture = ExtResource("26_365g5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BelowGroundBG/Parallax2D2/Node2D"]
+position = Vector2(7420, 1000)
+texture = ExtResource("27_50287")
 
 [node name="Parallax2D3" type="Parallax2D" parent="BelowGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 3
 scroll_scale = Vector2(0.6, 1)
-repeat_size = Vector2(5760, 0)
-repeat_times = 2
+repeat_size = Vector2(3840, 0)
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="BelowGroundBG/Parallax2D3"]
 
 [node name="Sprite2D" type="Sprite2D" parent="BelowGroundBG/Parallax2D3/Node2D"]
-position = Vector2(8380, 1000)
-texture = SubResource("CompressedTexture2D_ciptj")
+position = Vector2(7420, 1000)
+texture = ExtResource("28_0vrl8")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BelowGroundBG/Parallax2D3/Node2D"]
 position = Vector2(5500, 1000)
-texture = SubResource("CompressedTexture2D_jnlnj")
+texture = ExtResource("29_1ke33")
 
 [node name="Parallax2D4" type="Parallax2D" parent="BelowGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 4
 scroll_scale = Vector2(0.8, 1)
-repeat_size = Vector2(5760, 0)
-repeat_times = 2
+repeat_size = Vector2(3840, 0)
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="BelowGroundBG/Parallax2D4"]
 
-[node name="Sprite2D2" type="Sprite2D" parent="BelowGroundBG/Parallax2D4/Node2D"]
-position = Vector2(8380, 1000)
-texture = SubResource("CompressedTexture2D_nhai6")
-
 [node name="Sprite2D" type="Sprite2D" parent="BelowGroundBG/Parallax2D4/Node2D"]
 position = Vector2(5500, 1000)
-texture = SubResource("CompressedTexture2D_0vrl8")
+texture = ExtResource("30_mnu1b")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BelowGroundBG/Parallax2D4/Node2D"]
+position = Vector2(7420, 1000)
+texture = ExtResource("31_be7ao")
 
 [node name="ParallaxLayer" type="Parallax2D" parent="BelowGroundBG"]
-modulate = Color(1, 1, 1, 0)
 z_index = 6
 scroll_scale = Vector2(1.2, 1)
-repeat_size = Vector2(5760, 0)
-repeat_times = 2
+repeat_size = Vector2(3840, 0)
+repeat_times = 4
 
 [node name="Node2D" type="Node2D" parent="BelowGroundBG/ParallaxLayer"]
 
 [node name="ForeGround" type="Sprite2D" parent="BelowGroundBG/ParallaxLayer/Node2D"]
 position = Vector2(5500, 1000)
-texture = SubResource("CompressedTexture2D_1ke33")
+texture = ExtResource("32_1x8o1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BelowGroundBG/ParallaxLayer/Node2D"]
-position = Vector2(8380, 1000)
-texture = SubResource("CompressedTexture2D_nhai6")
+position = Vector2(7420, 1000)
+texture = ExtResource("33_nvr1i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BelowGroundBG"]
 libraries = {

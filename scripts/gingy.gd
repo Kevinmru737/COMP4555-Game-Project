@@ -35,16 +35,25 @@ func run_dialogue():
 	
 func _on_timeline_ended():
 	print("Go Save Garlic")
+	if not PlayerRef.player_in_transit:
+		rpc("move_players")
+		
+		
 	
-	rpc("move_players")
+
 	
 @rpc("any_peer", "call_local")
 func move_players():
+	SceneTransitionAnimation.fade_in()
+	await get_tree().create_timer(1).timeout
 	var players = get_tree().get_nodes_in_group("Players")
 	
-	players[0].position = Vector2(-800, 1200)
-	players[0].change_camera_limit(-1670, -1080, 1670, 11750)
+	if players[0]:
+		players[0].position = Vector2(-800, 1200)
+		players[0].change_camera_limit(-1670, -1080, 1670, 11750)
 	
-	
-	players[1].position = Vector2(-1000, -1670)
-	players[1].change_camera_limit(-1670, -3000, -1330, 11750)
+	if players.size() > 1:
+		players[1].position = Vector2(-1000, -1670)
+		players[1].change_camera_limit(-1670, -3000, -1330, 11750)
+	SceneTransitionAnimation.fade_out()
+	await get_tree().create_timer(1).timeout

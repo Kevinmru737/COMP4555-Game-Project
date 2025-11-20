@@ -58,9 +58,8 @@ func _add_player_to_game(id: int, character: int):
 		"id": id,
 		"character": character
 	})
-
 	# After spawning the new player on the server
-	if multiplayer.is_server():
+	if multiplayer.is_server() and id != multiplayer.get_unique_id():
 		# Send entire player list to the new client
 		rpc_id(id, "send_player_list", PlayerRef.player_ref)
 	_player_spawn_node.add_child(player_to_add, true)
@@ -131,6 +130,7 @@ func send_player_list(players):
 	
 @rpc("any_peer", "reliable")
 func _sync_animation(target_anim, player_id):
+	print("syncing:", target_anim, player_id)
 	#Player nodes are placed under "Players" and named with their player_id
 	var players_root = get_tree().get_current_scene().get_node("Players")
 	

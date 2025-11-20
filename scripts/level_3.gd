@@ -13,6 +13,10 @@ func _ready():
 	init_player_after_load()
 	$"BelowGroundBG".fade_in()
 	$"AboveGroundBG".fade_in()
+	
+	# To prevent the timeline_ending move player rpc from triggering
+	await get_tree().create_timer(1).timeout
+	PlayerRef.player_in_transit = false
 
 func init_player_after_load():
 	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 3060)
