@@ -28,6 +28,8 @@ func _ready():
 		join_button.focus_mode = Control.FOCUS_NONE
 		
 	
+
+	
 func join_enter_ip():
 	print("client entering ip...")
 	join_ui.visible = true

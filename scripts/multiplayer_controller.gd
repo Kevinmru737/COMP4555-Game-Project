@@ -40,7 +40,8 @@ func _physics_process(delta):
 	if is_multiplayer_authority():
 		_movement(delta)
 		_anim_handler(prev_y)
-
+	
+	
 func _anim_handler(prev_y_vel):
 	var new_anim = ""
 
