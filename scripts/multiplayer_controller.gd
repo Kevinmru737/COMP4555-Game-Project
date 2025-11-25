@@ -41,6 +41,9 @@ func _physics_process(delta):
 		_movement(delta)
 		_anim_handler(prev_y)
 	
+	if multiplayer.is_server():
+		if not alive && is_on_floor():
+			_set_alive()
 	
 func _anim_handler(prev_y_vel):
 	var new_anim = ""
@@ -73,12 +76,12 @@ func _apply_jump_anim(prev_velocity):
 	var curr_anim = animated_sprite.animation
 
 	# Pre-jump
-	if _is_on_floor and curr_anim != "jump_" + anim_suffix + "_land" and is_jumping:
+	if _is_on_floor and curr_anim != "jump_" + anim_suffix + "_land" and is_jumping and input_allowed:
 		can_move_during_jump = false
 		return "jump_" + anim_suffix + "_pre"
 
 	# Rising
-	elif velocity.y < 0:
+	elif velocity.y < 0 and not _is_on_floor:
 		can_move_during_jump = true
 		return "jump_" + anim_suffix + "_up"
 
@@ -137,12 +140,14 @@ func _process_jump(delta):
 
 	# Landing completed
 	elif curr_anim in ["jump_right_land", "jump_left_land"]:
-		input_allowed = false
-		if curr_frame == 1:
+		# Only set to false once at the start
+		if curr_frame == 0:
+			input_allowed = false
+		# Re-enable input when animation stops playing
+		elif not animated_sprite.is_playing():
 			is_jumping = false
 			input_allowed = true
-
-
+			
 func change_camera_limit(left, top, bottom, right):
 	print("Changing camera limits...")
 	$Camera2D.limit_left = left

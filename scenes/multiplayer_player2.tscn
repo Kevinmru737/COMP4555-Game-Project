@@ -1,9 +1,10 @@
-[gd_scene load_steps=57 format=3 uid="uid://cgm3o7qy8mlsm"]
+[gd_scene load_steps=59 format=3 uid="uid://cgm3o7qy8mlsm"]
 
 [ext_resource type="Script" uid="uid://hw6aeqsbyii1" path="res://scripts/multiplayer_controller.gd" id="1_pistx"]
 [ext_resource type="Script" uid="uid://djbswriipf6jv" path="res://scripts/multiplayer_input.gd" id="2_0p76c"]
 [ext_resource type="Texture2D" uid="uid://bi4wnc4mixwyj" path="res://art/characters/Della_Anim.png" id="3_2gq5w"]
 [ext_resource type="Texture2D" uid="uid://incclpjolruq" path="res://art/characters/DELLA_DAISY_ANIM.png" id="3_pistx"]
+[ext_resource type="Script" uid="uid://bbjnwd861cumu" path="res://scripts/breakable_tile_detector.gd" id="5_0p76c"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k8tkd"]
 properties/0/path = NodePath(".:player_id")
@@ -39,6 +40,9 @@ properties/9/replication_mode = 1
 properties/10/path = NodePath(".:last_anim")
 properties/10/spawn = true
 properties/10/replication_mode = 1
+properties/11/path = NodePath(".:alive")
+properties/11/spawn = true
+properties/11/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jlq18"]
 properties/0/path = NodePath("InputSynchronizer:input_direction")
@@ -605,8 +609,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pistx"]
 size = Vector2(26, 155)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0p76c"]
+size = Vector2(28, 158)
+
 [node name="MultiPlayerPlayer2" type="CharacterBody2D"]
+position = Vector2(-1, 0)
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_pistx")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -618,12 +627,12 @@ replication_config = SubResource("SceneReplicationConfig_jlq18")
 script = ExtResource("2_0p76c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(60, 51)
+position = Vector2(0, -52)
 sprite_frames = SubResource("SpriteFrames_2gq5w")
-animation = &"jump_left_down"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(55, 66)
+position = Vector2(0, -47)
 shape = SubResource("RectangleShape2D_pistx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -636,4 +645,15 @@ limit_smoothed = true
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="TileDetector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("5_0p76c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector"]
+position = Vector2(0, -47)
+shape = SubResource("RectangleShape2D_0p76c")
+debug_color = Color(0.7803942, 0.43447652, 0.13396496, 0.41960785)
+
 [connection signal="timeout" from="DeathTimer" to="." method="_respawn"]
+[connection signal="body_shape_entered" from="TileDetector" to="TileDetector" method="_on_body_shape_entered"]

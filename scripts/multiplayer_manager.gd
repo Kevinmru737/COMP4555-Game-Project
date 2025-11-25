@@ -130,7 +130,6 @@ func send_player_list(players):
 	
 @rpc("any_peer", "reliable")
 func _sync_animation(target_anim, player_id):
-	print("syncing:", target_anim, player_id)
 	#Player nodes are placed under "Players" and named with their player_id
 	var players_root = get_tree().get_current_scene().get_node("Players")
 	

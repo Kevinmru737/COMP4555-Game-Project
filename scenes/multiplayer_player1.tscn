@@ -1,9 +1,10 @@
-[gd_scene load_steps=50 format=3 uid="uid://b6bi0e0j6c1l5"]
+[gd_scene load_steps=51 format=3 uid="uid://b6bi0e0j6c1l5"]
 
 [ext_resource type="Script" uid="uid://hw6aeqsbyii1" path="res://scripts/multiplayer_controller.gd" id="1_14ow7"]
 [ext_resource type="Script" uid="uid://djbswriipf6jv" path="res://scripts/multiplayer_input.gd" id="2_ug2so"]
 [ext_resource type="Texture2D" uid="uid://c2aehgi3ppu3i" path="res://art/characters/Tater_Po_Anim.png" id="3_5nooe"]
 [ext_resource type="Script" uid="uid://bbjnwd861cumu" path="res://scripts/breakable_tile_detector.gd" id="4_14ow7"]
+[ext_resource type="Texture2D" uid="uid://dlnfidbh2hvxj" path="res://art/ui/YouDied_Screen.png" id="5_ug2so"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k8tkd"]
 properties/0/path = NodePath(".:player_id")
@@ -42,6 +43,9 @@ properties/10/replication_mode = 1
 properties/11/path = NodePath(".:last_anim")
 properties/11/spawn = true
 properties/11/replication_mode = 1
+properties/12/path = NodePath(".:alive")
+properties/12/spawn = true
+properties/12/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jlq18"]
 properties/0/path = NodePath("InputSynchronizer:input_direction")
@@ -550,14 +554,16 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m4ka2"]
-radius = 34.0147
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug2so"]
+size = Vector2(56.5, 57.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_14ow7"]
-radius = 38.118237
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deokw"]
+size = Vector2(58, 63)
 
 [node name="MultiPlayerPlayer1" type="CharacterBody2D"]
+position = Vector2(1, 0)
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_14ow7")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -569,13 +575,12 @@ replication_config = SubResource("SceneReplicationConfig_jlq18")
 script = ExtResource("2_ug2so")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(43.999996, 54.999996)
+position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_xk3hh")
-animation = &"jump_left_down"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(44, 83)
-shape = SubResource("CircleShape2D_m4ka2")
+shape = SubResource("RectangleShape2D_ug2so")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
@@ -587,15 +592,21 @@ limit_smoothed = true
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="BreakableTileDetector" type="Area2D" parent="."]
+[node name="TileDetector" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("4_14ow7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BreakableTileDetector"]
-position = Vector2(44, 83)
-shape = SubResource("CircleShape2D_14ow7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector"]
+shape = SubResource("RectangleShape2D_deokw")
 debug_color = Color(0.61521935, 0.5350814, 0.12503779, 0.41960785)
 
+[node name="DeathScreen" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+texture = ExtResource("5_ug2so")
+
 [connection signal="timeout" from="DeathTimer" to="." method="_respawn"]
-[connection signal="body_shape_entered" from="BreakableTileDetector" to="BreakableTileDetector" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileDetector" to="TileDetector" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="TileDetector" to="TileDetector" method="_on_body_shape_exited"]

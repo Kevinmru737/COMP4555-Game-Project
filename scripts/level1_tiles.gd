@@ -1,6 +1,6 @@
 extends Node
 
-@onready var obstacle_tiles = $TileMapLayer2
+@onready var obstacle_tiles = $SpecialInteract
 func _on_stone_activator_stone_activated() -> void:
 	
 	

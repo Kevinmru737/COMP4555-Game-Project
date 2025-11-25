@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://c35i518q26sbe"]
+
+[ext_resource type="Script" uid="uid://b8ykilyg7317l" path="res://scripts/spring_jump.gd" id="1_35cep"]
+[ext_resource type="Texture2D" uid="uid://w1hwijtwmna5" path="res://art/props/MUSHROOM_PROPS2.png" id="2_nt14l"]
+[ext_resource type="Texture2D" uid="uid://cnepnqguuhl4d" path="res://art/props/MUSHROOM_PROPS.png" id="3_2b80s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2os1m"]
+size = Vector2(216, 42.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35cep"]
+atlas = ExtResource("2_nt14l")
+region = Rect2(113, 59, 230, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt14l"]
+atlas = ExtResource("3_2b80s")
+region = Rect2(113, 59, 230, 260)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2b80s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35cep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt14l")
+}],
+"loop": false,
+"name": &"spring",
+"speed": 5.0
+}]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_35cep"]
+properties/0/path = NodePath("AnimatedSprite2D:frame")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="SpringJump" type="Area2D"]
+z_index = 5
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_35cep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(0, -53)
+shape = SubResource("RectangleShape2D_2os1m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2b80s")
+animation = &"spring"
+
+[node name="SpringSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_35cep")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

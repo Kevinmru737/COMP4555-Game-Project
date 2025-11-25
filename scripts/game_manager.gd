@@ -5,7 +5,7 @@ extends Node
 @onready var scene_container = $"Scene Container"
 @onready var title_node = title_scene.instantiate()
 #All Scenes to be loaded in chronological order
-var scene_list = ["res://scenes/level_3.tscn"]
+var scene_list = ["res://scenes/level_2.tscn", "res://scenes/level_3.tscn"]
 
 
 func _ready():
