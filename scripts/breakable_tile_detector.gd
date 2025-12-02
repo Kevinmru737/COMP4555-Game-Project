@@ -67,7 +67,6 @@ func sync_break_tile(tilemap_path: NodePath, tile_pos: Vector2i) -> void:
 @rpc("any_peer", "reliable", "call_local")
 func sync_poison_tile(tilemap_path: NodePath, tile_pos: Vector2i) -> void:
 	var tilemap = get_node(tilemap_path) as TileMapLayer
-	print(player.alive)
 	if tilemap and player.alive:
 		var tile_data = tilemap.get_cell_tile_data(tile_pos)
 		if tile_data:
@@ -84,7 +83,7 @@ func tile_poison(tilemap: TileMapLayer, tile_data: TileData, tile_pos: Vector2i)
 	for i in range(10):
 		tween.tween_interval(0.05)
 	tween.tween_property(player, "modulate", Color.TRANSPARENT, 0.4)
-	tween.tween_callback(func(): player.mark_dead())
+	tween.tween_callback(func(): get_tree().call_group("Players", "mark_dead"))
 	
 	tween.tween_interval(1.0)
 	tween.tween_callback(func(): 
@@ -95,6 +94,7 @@ func tile_poison(tilemap: TileMapLayer, tile_data: TileData, tile_pos: Vector2i)
 	
 	await tween.finished
 	in_death = false
+	get_tree().get_first_node_in_group("GameManager").reset_tilemap()
 
 func tile_break(tilemap: TileMapLayer, tile_data: TileData, tile_pos: Vector2i):
 	var source_id = tilemap.get_cell_source_id(tile_pos)

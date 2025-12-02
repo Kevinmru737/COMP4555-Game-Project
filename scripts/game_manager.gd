@@ -6,7 +6,7 @@ extends Node
 @onready var title_node = title_scene.instantiate()
 #All Scenes to be loaded in chronological order
 var scene_list = ["res://scenes/level_2.tscn", "res://scenes/level_3.tscn"]
-
+var tilemap_original_state = {}
 
 func _ready():
 	add_to_group("GameManager")
@@ -37,6 +37,25 @@ func become_host():
 func join_as_player_2(ip):
 	print("Join as player 2 pressed")
 	MultiplayerManager.join_as_player_2(ip)
+	
+func save_spec_tiles():
+	var tilemap = get_tree().get_first_node_in_group("SpecialInteract")
+	tilemap_original_state.clear()
+	
+	# Get all cells in the tilemap
+	for cell in tilemap.get_used_cells():
+		var source_id = tilemap.get_cell_source_id(cell)
+		var atlas_coords = tilemap.get_cell_atlas_coords(cell)
+		tilemap_original_state[cell] = {"source": source_id, "atlas": atlas_coords}
+
+func reset_tilemap():
+	var tilemap = get_tree().get_first_node_in_group("SpecialInteract")
+	tilemap.clear()
+	
+	# Restore all tiles from the saved state
+	for cell in tilemap_original_state:
+		var data = tilemap_original_state[cell]
+		tilemap.set_cell(cell, data["source"], data["atlas"])
 	
 @rpc("any_peer", "reliable")
 func join_as_player_2_connected():

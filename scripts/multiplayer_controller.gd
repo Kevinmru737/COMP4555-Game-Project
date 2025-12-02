@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 const MOVEMENT_SPEED = 300.0
-const JUMP_VELOCITY = -1000.0
-var gravity = 2 * ProjectSettings.get_setting("physics/2d/default_gravity")
+var jump_velocity = -1000.0
+var DEFAULT_GRAVITY =  2 * ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = DEFAULT_GRAVITY
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -32,6 +33,8 @@ func _ready():
 	else:
 		$Camera2D.enabled = false
 	add_to_group("Players")
+	if player_id == 1:
+		jump_velocity = -800
 	
 func _physics_process(delta):
 	_is_on_floor = is_on_floor()
@@ -135,7 +138,7 @@ func _process_jump(delta):
 	# Apply jump velocity during pre-jump
 	if curr_anim in ["jump_right_pre", "jump_left_pre"]:
 		if curr_frame == 1 and not jump_velocity_applied:
-			velocity.y = JUMP_VELOCITY
+			velocity.y = jump_velocity
 			jump_velocity_applied = true
 
 	# Landing completed
@@ -159,8 +162,10 @@ func change_camera_limit(left, top, bottom, right):
 func mark_dead():
 	print("Mark player dead!")
 	alive = false
+	SceneTransitionAnimation.fade_in()
 	$CollisionShape2D.set_deferred("disabled", true)
 	$DeathTimer.start()
+	gravity = 0
 	
 func teleport_player(new_position: Vector2):
 	self.position = new_position
@@ -168,11 +173,14 @@ func teleport_player(new_position: Vector2):
 func spawn_player():
 	print("spawning player")
 	position = MultiplayerManager.respawn_point
+	
 
 func _respawn():
 	position = MultiplayerManager.respawn_point
+	gravity = DEFAULT_GRAVITY
 	print("respawned at:", position)
 	$CollisionShape2D.set_deferred("disabled", false)
+	SceneTransitionAnimation.fade_out()
 	
 func _set_alive():
 	print("actually alive")
