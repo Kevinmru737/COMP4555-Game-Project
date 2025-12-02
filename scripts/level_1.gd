@@ -4,6 +4,7 @@ extends Node
 @onready var game_manager = get_tree().get_first_node_in_group("GameManager")
 
 var curr_bg = "Backgrounds"
+var tilemap_original_state = {}
 
 func _ready():
 	print("level 1 started")
@@ -11,10 +12,27 @@ func _ready():
 	get_tree().create_timer(0.1).timeout.connect(init_player_after_load) #fix race condition
 	SceneTransitionAnimation.fade_out()
 	switch_backgrounds("Backgrounds", "GruncHouse")
-	#Fix idle animation not playing on load
-	#if multiplayer.is_server():
-	#	for player in get_tree().get_nodes_in_group("Players"):
-	#		MultiplayerManager._sync_animation("idle", 1)
+	save_tilemap_state()
+
+func save_tilemap_state():
+	var tilemap = get_node("Tiles/SpecialInteract")  # Adjust path
+	tilemap_original_state.clear()
+	
+	# Get all cells in the tilemap
+	for cell in tilemap.get_used_cells():
+		var source_id = tilemap.get_cell_source_id(cell)
+		var atlas_coords = tilemap.get_cell_atlas_coords(cell)
+		tilemap_original_state[cell] = {"source": source_id, "atlas": atlas_coords}
+
+func reset_tilemap():
+	var tilemap = get_node("path/to/tilemap")
+	tilemap.clear()
+	
+	# Restore all tiles from the saved state
+	for cell in tilemap_original_state:
+		var data = tilemap_original_state[cell]
+		tilemap.set_cell(cell, data["source"], data["atlas"])
+
 		
 func init_player_after_load():
 	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 11750)

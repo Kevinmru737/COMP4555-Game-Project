@@ -558,7 +558,7 @@ animations = [{
 size = Vector2(56.5, 57.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_deokw"]
-size = Vector2(58, 63)
+size = Vector2(61, 63)
 
 [node name="MultiPlayerPlayer1" type="CharacterBody2D"]
 position = Vector2(1, 0)
@@ -577,7 +577,7 @@ script = ExtResource("2_ug2so")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_xk3hh")
-animation = &"idle"
+animation = &"right_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ug2so")
@@ -598,6 +598,7 @@ collision_mask = 12
 script = ExtResource("4_14ow7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector"]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_deokw")
 debug_color = Color(0.61521935, 0.5350814, 0.12503779, 0.41960785)
 
@@ -608,5 +609,6 @@ z_index = 10
 texture = ExtResource("5_ug2so")
 
 [connection signal="timeout" from="DeathTimer" to="." method="_respawn"]
+[connection signal="body_entered" from="TileDetector" to="TileDetector" method="_on_body_entered"]
 [connection signal="body_shape_entered" from="TileDetector" to="TileDetector" method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="TileDetector" to="TileDetector" method="_on_body_shape_exited"]
