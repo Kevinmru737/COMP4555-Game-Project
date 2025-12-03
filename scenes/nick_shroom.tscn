@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://1tq10v2x7yk5"]
+
+[ext_resource type="Texture2D" uid="uid://ftlkvb73cip4" path="res://art/characters/NICK_MUSHROOM.png" id="1_lneyk"]
+[ext_resource type="Texture2D" uid="uid://026jgrodcrkg" path="res://art/characters/NICK_MUSHROOM2.png" id="2_mt7u2"]
+[ext_resource type="Script" uid="uid://ceq8opaqdcejl" path="res://scripts/nick_shroom.gd" id="3_mt7u2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mft2n"]
+atlas = ExtResource("1_lneyk")
+region = Rect2(1279, 168, 220, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa0ci"]
+atlas = ExtResource("2_mt7u2")
+region = Rect2(1279, 168, 220, 260)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ly0l8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mft2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa0ci")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="NickShroom" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ly0l8")
+frame_progress = 0.9391893
+script = ExtResource("3_mt7u2")

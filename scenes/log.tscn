@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://jlvx2tk8j4jp"]
 
-[ext_resource type="Texture2D" uid="uid://5vtq5nioy4td" path="res://art/environment/Fall_BG_tiles_log__1.png" id="1_spugk"]
+[ext_resource type="Texture2D" uid="uid://5vtq5nioy4td" path="res://art/environment/fall_level/Fall_BG_tiles_log__1.png" id="1_spugk"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wbtxt"]
 a = Vector2(1, -673)

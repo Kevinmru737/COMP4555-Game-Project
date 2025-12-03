@@ -320,7 +320,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_left_land",
-"speed": 10.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -452,7 +452,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_right_land",
-"speed": 10.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -629,7 +629,7 @@ script = ExtResource("2_0p76c")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -52)
 sprite_frames = SubResource("SpriteFrames_2gq5w")
-animation = &"idle"
+animation = &"jump_right_land"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -47)

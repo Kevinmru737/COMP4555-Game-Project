@@ -146,4 +146,3 @@ func client_remove_scene(old_node_path):
 	if old_scene:
 		print("removed old scene")
 		old_scene.queue_free()
-	

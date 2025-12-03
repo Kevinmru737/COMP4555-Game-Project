@@ -78,7 +78,7 @@ glossary/default_case_sensitive=true
 
 [display]
 
-window/size/viewport_width=1366
+window/size/viewport_width=1368
 window/size/viewport_height=768
 window/size/always_on_top=true
 window/per_pixel_transparency/allowed=true
@@ -127,4 +127,6 @@ interact_object={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
 2d/snap/snap_2d_transforms_to_pixel=true

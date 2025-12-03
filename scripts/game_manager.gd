@@ -8,6 +8,8 @@ extends Node
 var scene_list = ["res://scenes/level_2.tscn", "res://scenes/level_3.tscn"]
 var tilemap_original_state = {}
 
+var game_started = false
+
 func _ready():
 	add_to_group("GameManager")
 	load_scene(title_scene)
@@ -57,10 +59,6 @@ func reset_tilemap():
 		var data = tilemap_original_state[cell]
 		tilemap.set_cell(cell, data["source"], data["atlas"])
 	
-@rpc("any_peer", "reliable")
-func join_as_player_2_connected():
-	print("connected player 2")
-	# Request scene change via network
 	
 	
 func init_player_after_load():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://deeg2jo67gcya"]
 
-[ext_resource type="Texture2D" uid="uid://ukdco1k14ehv" path="res://art/environment/image.png" id="1_fm4en"]
+[ext_resource type="Texture2D" uid="uid://ukdco1k14ehv" path="res://art/environment/placeholders/image.png" id="1_fm4en"]
 [ext_resource type="Texture2D" uid="uid://cni5xr30v6rgb" path="res://art/tiles/world_tileset.png" id="2_d5dl1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47enk"]

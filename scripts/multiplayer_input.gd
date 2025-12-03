@@ -20,5 +20,5 @@ func _process(delta):
 @rpc("call_local")
 func jump():
 	if multiplayer.is_server():
-		if not player.is_jumping:
+		if not player.is_jumping and player.gravity != 0:
 			player.do_jump = true
