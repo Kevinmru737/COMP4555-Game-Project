@@ -28,10 +28,11 @@ var last_anim = ""
 		%InputSynchronizer.set_multiplayer_authority(id)
 
 func _ready():
-	if multiplayer.get_unique_id() == player_id:
-		$Camera2D.make_current()
-	else:
-		$Camera2D.enabled = false
+	#if multiplayer.get_unique_id() == player_id:
+	#	$Camera2D.make_current()
+	#else:
+	$Camera2D.enabled = false
+	self.hide()
 	add_to_group("Players")
 	if player_id == 1:
 		jump_velocity = -800
@@ -131,7 +132,7 @@ func _movement(delta):
 
 	move_and_slide()
 
-func _process_jump(delta):
+func _process_jump(_delta):
 	var curr_anim = animated_sprite.animation
 	var curr_frame = animated_sprite.frame
 
@@ -171,7 +172,8 @@ func teleport_player(new_position: Vector2):
 	self.position = new_position
 
 func spawn_player():
-	print("spawning player")
+	print("spawning player:", player_id)
+	print(player_id, "position", self.position)
 	position = MultiplayerManager.respawn_point
 	
 

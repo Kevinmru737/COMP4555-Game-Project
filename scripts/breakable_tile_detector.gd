@@ -12,7 +12,7 @@ var last_detected_tilemap: TileMapLayer = null
 func _ready():
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Cast downward to detect tiles beneath the player
 	check_tiles_below()
 
@@ -74,7 +74,7 @@ func sync_poison_tile(tilemap_path: NodePath, tile_pos: Vector2i) -> void:
 	else:
 		print("Tilemap not found at path or maybe dead: ", tilemap_path)
 
-func tile_poison(tilemap: TileMapLayer, tile_data: TileData, tile_pos: Vector2i):
+func tile_poison(_tilemap: TileMapLayer, _tile_data: TileData, _tile_pos: Vector2i):
 	player.modulate = Color.WHITE
 	in_death = true
 	
@@ -96,7 +96,7 @@ func tile_poison(tilemap: TileMapLayer, tile_data: TileData, tile_pos: Vector2i)
 	in_death = false
 	get_tree().get_first_node_in_group("GameManager").reset_tilemap()
 
-func tile_break(tilemap: TileMapLayer, tile_data: TileData, tile_pos: Vector2i):
+func tile_break(tilemap: TileMapLayer, _tile_data: TileData, tile_pos: Vector2i):
 	var source_id = tilemap.get_cell_source_id(tile_pos)
 	var atlas_coords = tilemap.get_cell_atlas_coords(tile_pos)
 	var tileset = tilemap.tile_set

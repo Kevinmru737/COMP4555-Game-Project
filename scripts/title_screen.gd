@@ -2,14 +2,14 @@ extends Node
 
 
 @onready var game_manager = get_tree().get_first_node_in_group("GameManager")
-
+@onready var cam_switcher = $CameraSwitcher
 #Main UI Buttons
 @onready var host_button = $"Multiplayer HUD/Panel/HBoxContainer/HostGame"
 @onready var join_button = $"Multiplayer HUD/Panel/HBoxContainer/JoinAsPlayer2"
 @onready var quit_button = $"Multiplayer HUD/Panel/HBoxContainer/QuitGame"
 
 #Title (img)
-@onready var title = $TitleScreenBG/Title
+@onready var title = $TitleScreenBG/Parallax2DTitle/Title
 
 #Join UI Buttons
 @onready var join_ui = $"Multiplayer HUD/Panel/JoinUI"
@@ -30,38 +30,45 @@ var tween: Tween
 func _ready():
 	join_ui.visible = false
 	join_ui.focus_mode = Control.FOCUS_NONE
-	
+	$Camera2D.add_to_group("cameras")
 	if game_manager:
 		#chat gpt stuff - i think the problem was something else but this fixed some stuf?
+		var host_method1 = Callable(game_manager, "become_host")
+		if not host_button.is_connected("pressed", host_method1):
+			host_button.pressed.connect(host_method1)
 		var host_method = Callable(self, "waiting_for_player_2")
 		if not host_button.is_connected("pressed", host_method):
 			host_button.pressed.connect(host_method)
 		var join_method = Callable(self, "join_enter_ip")
 		if not join_button.is_connected("pressed", join_method):
 			join_button.pressed.connect(join_method)
-		#var quit_method = Callable(self, "join_enter_ip")
-		#if not join_button.is_connected("pressed", join_method):
-		#	join_button.pressed.connect(join_method)
+		var quit_method = Callable(self, "quit_game")
+		if not join_button.is_connected("pressed", quit_method):
+			quit_button.pressed.connect(quit_method)
+		
+		game_manager.players_connected_signal.connect(_on_players_connected)
+		
 		host_button.focus_mode = Control.FOCUS_NONE
 		join_button.focus_mode = Control.FOCUS_NONE
 		add_fake_players()
 	
+
+func _on_players_connected():
+	rpc("start_intro_walk")
+
+@rpc("any_peer", "reliable", "call_local")
+func start_intro_walk():
+	make_run()
+	
 func waiting_for_player_2():
 	var main_ui = $"Multiplayer HUD/Panel/HBoxContainer"
 	main_ui.hide()
-	#$"Multiplayer HUD/Panel/HostWaiting".show()
+	$"Multiplayer HUD/Panel/HostWaiting".show()
 	title.hide()
-	make_run()
 	
 func make_run():
-	var tween = create_tween()
-	var current_cam = get_viewport().get_camera_2d()
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(current_cam, "global_position", current_cam.global_position + Vector2(372, 0), 1)
+	cam_switcher.blend_to(get_tree().get_first_node_in_group("FakePlayers").get_node("Camera2D"), 3)
 	await get_tree().create_timer(3).timeout
-	
-	var new_cam = get_tree().get_first_node_in_group("FakePlayers").get_node("Camera2D")
-	new_cam.make_current()
 	for player in get_tree().get_nodes_in_group("FakePlayers"):
 		player.walk_right()
 		
@@ -80,7 +87,6 @@ func _on_join_button_pressed() -> void:
 	var ip = host_ip_input.text.strip_edges()
 	if ip != "":
 		print(ip)
-		var game_manager = get_tree().get_first_node_in_group("GameManager")
 		game_manager.join_as_player_2(ip)
 	else:
 		print("Invalid IP Address")
@@ -96,5 +102,9 @@ func add_fake_players():
 	var fake_po_spawn = $FakePlayerSpawn/Spawn.global_position
 	fake_po.global_position = fake_po_spawn
 	print(fake_po_spawn)
-	fake_daisy.global_position = fake_po_spawn + Vector2(200, 0)
+	fake_daisy.global_position = fake_po_spawn + Vector2(150, 0)
 	
+
+
+func _on_quit_game_pressed() -> void:
+	pass # Replace with function body.

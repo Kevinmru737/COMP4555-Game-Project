@@ -565,6 +565,7 @@ animations = [{
 size = Vector2(26, 155)
 
 [node name="player_della_daisy" type="CharacterBody2D"]
+z_index = 5
 position = Vector2(1, -1)
 script = ExtResource("1_vrmip")
 
@@ -576,3 +577,11 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -45)
 shape = SubResource("RectangleShape2D_vrmip")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.715, 0.715)
+limit_left = 0
+limit_top = -1080
+limit_right = 3840
+limit_bottom = 0
+limit_smoothed = true

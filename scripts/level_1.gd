@@ -13,9 +13,23 @@ func _ready():
 	SceneTransitionAnimation.fade_out()
 	switch_backgrounds("Backgrounds", "GruncHouse")
 	game_manager.save_spec_tiles()
-		
+	
+	PlayerRef.player_in_transit = false
+
 func init_player_after_load():
+	rpc("turn_on_camera")
 	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 11750)
+	get_tree().call_group("Players", "spawn_player")
+	get_tree().call_group("Players", "show")
+
+@rpc("any_peer", "reliable", "call_local")
+func turn_on_camera():
+	for player in get_tree().get_nodes_in_group("Players"):
+		if multiplayer.get_unique_id() == player.player_id:
+			print("found player to turn camera on")
+			var player_cam = player.get_node("Camera2D")
+			player_cam.enabled = true
+			player_cam.make_current()
 
 
 func switch_backgrounds(old_bg: String, new_bg: String):

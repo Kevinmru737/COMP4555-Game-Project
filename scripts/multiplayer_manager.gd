@@ -75,6 +75,7 @@ func _on_peer_connected(id: int):
 	print("Peer Connected")
 	_add_player_to_game(id, 2)
 
+
 func _del_player(id: int):
 	print("Player %s has left the game." % id)
 	if not _player_spawn_node.has_node(str(id)):

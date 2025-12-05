@@ -509,6 +509,7 @@ animations = [{
 size = Vector2(56.5, 57.5)
 
 [node name="player_tater_po" type="CharacterBody2D"]
+z_index = 5
 position = Vector2(1, -1)
 script = ExtResource("1_8w5q2")
 

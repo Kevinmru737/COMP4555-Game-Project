@@ -1,13 +1,17 @@
 extends Node
 
+signal game_started_signal
+signal players_connected_signal
+
 @onready var title_scene = preload("res://scenes/title_screen.tscn")
 @onready var tutorial_scene = preload("res://scenes/tutorial.tscn")
 @onready var scene_container = $"Scene Container"
 @onready var title_node = title_scene.instantiate()
 #All Scenes to be loaded in chronological order
-var scene_list = ["res://scenes/level_2.tscn", "res://scenes/level_3.tscn"]
+var scene_list = ["res://scenes/level_1.tscn", "res://scenes/level_2.tscn", "res://scenes/level_3.tscn"]
 var tilemap_original_state = {}
-
+var player2_id
+var players_connected = false
 var game_started = false
 
 func _ready():
@@ -15,8 +19,9 @@ func _ready():
 	load_scene(title_scene)
 	
 func next_scene():
-	print(scene_list)
 	var scene_to_load = scene_list[0]
+	if scene_to_load == "res://scenes/level_1.tscn":
+		rpc_id(1, "start_game")
 	if scene_to_load:
 		MultiplayerManager.request_scene_change(scene_list[0])
 		scene_list.remove_at(0)
@@ -33,12 +38,19 @@ func load_scene(scene_resource):
 func become_host():
 	print("Become host pressed")
 	MultiplayerManager.become_host()
-	# Request scene change via network
+	
+@rpc("authority", "reliable")
+func start_game():
 	MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
 
 func join_as_player_2(ip):
 	print("Join as player 2 pressed")
 	MultiplayerManager.join_as_player_2(ip)
+	
+@rpc("any_peer", "reliable")
+func join_as_player_2_connected():
+	print("connected player 2")
+	players_connected_signal.emit()
 	
 func save_spec_tiles():
 	var tilemap = get_tree().get_first_node_in_group("SpecialInteract")
@@ -62,6 +74,7 @@ func reset_tilemap():
 	
 	
 func init_player_after_load():
-	await get_tree().process_frame # make a better solution future kevin
-	MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
+	pass
+	#await get_tree().process_frame # make a better solution future kevin
+	#MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
 	
