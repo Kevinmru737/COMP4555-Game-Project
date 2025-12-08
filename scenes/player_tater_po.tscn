@@ -1,7 +1,16 @@
-[gd_scene load_steps=45 format=3 uid="uid://d03mf0utraa5l"]
+[gd_scene load_steps=48 format=3 uid="uid://d03mf0utraa5l"]
 
 [ext_resource type="Script" uid="uid://bpljigsfe88c1" path="res://scripts/fake_player_intro.gd" id="1_8w5q2"]
 [ext_resource type="Texture2D" uid="uid://c2aehgi3ppu3i" path="res://art/characters/Tater_Po_Anim.png" id="2_8w5q2"]
+[ext_resource type="Texture2D" uid="uid://devu4yngn10j4" path="res://art/characters/Tater_Po_Back_Idle.png" id="2_l78cm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w5q2"]
+atlas = ExtResource("2_l78cm")
+region = Rect2(56, 258, 100, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjam5"]
+atlas = ExtResource("2_l78cm")
+region = Rect2(180, 258, 100, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14ow7"]
 atlas = ExtResource("2_8w5q2")
@@ -165,6 +174,17 @@ region = Rect2(894, 435, 98, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xjam5"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w5q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjam5")
+}],
+"loop": true,
+"name": &"back_idle",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_14ow7")
@@ -516,10 +536,10 @@ script = ExtResource("1_8w5q2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_xjam5")
-animation = &"idle"
+animation = &"back_idle"
+frame_progress = 0.87132746
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.715, 0.715)
 limit_left = 0
 limit_top = -1080
 limit_right = 3840

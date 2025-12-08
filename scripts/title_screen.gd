@@ -50,7 +50,7 @@ func _ready():
 		
 		host_button.focus_mode = Control.FOCUS_NONE
 		join_button.focus_mode = Control.FOCUS_NONE
-		#add_fake_players()
+		add_fake_players()
 	
 
 func _on_players_connected():
@@ -59,6 +59,8 @@ func _on_players_connected():
 @rpc("any_peer", "reliable", "call_local")
 func start_intro_walk():
 	make_run()
+	join_ui.hide()
+	$"Multiplayer HUD/Panel/HostWaiting".hide()
 	
 func waiting_for_player_2():
 	var main_ui = $"Multiplayer HUD/Panel/HBoxContainer"
@@ -71,6 +73,7 @@ func make_run():
 	await get_tree().create_timer(3).timeout
 	for player in get_tree().get_nodes_in_group("FakePlayers"):
 		player.walk_right()
+	
 		
 			
 	
@@ -107,4 +110,4 @@ func add_fake_players():
 
 
 func _on_quit_game_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().quit()

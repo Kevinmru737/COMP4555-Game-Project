@@ -1,10 +1,11 @@
-[gd_scene load_steps=59 format=3 uid="uid://cgm3o7qy8mlsm"]
+[gd_scene load_steps=60 format=3 uid="uid://cgm3o7qy8mlsm"]
 
 [ext_resource type="Script" uid="uid://hw6aeqsbyii1" path="res://scripts/multiplayer_controller.gd" id="1_pistx"]
 [ext_resource type="Script" uid="uid://djbswriipf6jv" path="res://scripts/multiplayer_input.gd" id="2_0p76c"]
 [ext_resource type="Texture2D" uid="uid://bi4wnc4mixwyj" path="res://art/characters/Della_Anim.png" id="3_2gq5w"]
 [ext_resource type="Texture2D" uid="uid://incclpjolruq" path="res://art/characters/DELLA_DAISY_ANIM.png" id="3_pistx"]
 [ext_resource type="Script" uid="uid://bbjnwd861cumu" path="res://scripts/breakable_tile_detector.gd" id="5_0p76c"]
+[ext_resource type="AudioStream" uid="uid://hwouoh3uqn56" path="res://sound/effects/Maraj_Tashya_GrowingTiny_DellaDaisy_Walk_Grass.wav" id="6_nov17"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k8tkd"]
 properties/0/path = NodePath(".:player_id")
@@ -43,6 +44,9 @@ properties/10/replication_mode = 1
 properties/11/path = NodePath(".:alive")
 properties/11/spawn = true
 properties/11/replication_mode = 1
+properties/12/path = NodePath(".:is_walking")
+properties/12/spawn = true
+properties/12/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jlq18"]
 properties/0/path = NodePath("InputSynchronizer:input_direction")
@@ -654,6 +658,9 @@ script = ExtResource("5_0p76c")
 position = Vector2(0, -47)
 shape = SubResource("RectangleShape2D_0p76c")
 debug_color = Color(0.7803942, 0.43447652, 0.13396496, 0.41960785)
+
+[node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_nov17")
 
 [connection signal="timeout" from="DeathTimer" to="." method="_respawn"]
 [connection signal="body_shape_entered" from="TileDetector" to="TileDetector" method="_on_body_shape_entered"]

@@ -1,9 +1,6 @@
 extends AnimatableBody2D
 
 @onready var sprite = $AnimatableBody2D
-@onready var gruncle_intro_timeline = Dialogic.preload_timeline("GruncleIntro")
-@onready var gruncle_idle_timeline = Dialogic.preload_timeline("GruncleIdle")
-@onready var gruncle_resource= load("res://dialogue/characters/GruncleDandelion.dch")
 @onready var camera_switcher = $"../CameraSwitcher"
 # Dialogue Variables
 var player_in_area = false
@@ -30,10 +27,9 @@ func _on_dialogue_detection_body_entered(body: Node2D) -> void:
 	if body.has_method("spawn_player"):
 		print("npc range entered")
 		player_in_area = true
-		#run_dialogue(target_dialogue)
 		$InteractHint.show()
 
-@rpc ("any_peer", "call_local")
+@rpc ("any_peer", "call_local", "reliable")
 func initiate_dialogue():
 	print("dialogue initiated")
 	dialogue_in_prog = true
@@ -62,18 +58,3 @@ func _on_dialogue_detection_body_exited(body: Node2D) -> void:
 		Dialogic.end_timeline()
 		$InteractHint.hide()
 		
-func run_dialogue(dialogue: String):
-	Dialogic.start(dialogue)
-	var target_timeline
-	if target_dialogue == "GruncleIntro":
-		target_timeline = gruncle_intro_timeline
-	else:
-		target_timeline = gruncle_idle_timeline
-	
-	#var layout := Dialogic.start(target_dialogue)
-	#layout.register_character(gruncle_resource, $BubbleMarker)
-	
-func _on_timeline_ended():
-	if target_dialogue == "GruncleIntro":
-		target_dialogue = "GruncleIdle"
-	

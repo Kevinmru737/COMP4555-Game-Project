@@ -6,13 +6,14 @@ var DEFAULT_GRAVITY =  2 * ProjectSettings.get_setting("physics/2d/default_gravi
 var gravity = DEFAULT_GRAVITY
 
 @onready var animated_sprite = $AnimatedSprite2D
-
+@onready var walking_sound = $WalkingSound
 # Multiplayer variables
 var direction = 1
 var do_jump = false
 var _is_on_floor = true
 var alive = true
 var input_allowed = true
+var is_walking = false
 
 # Jumping logic
 var is_jumping = false
@@ -31,9 +32,12 @@ func _ready():
 	#if multiplayer.get_unique_id() == player_id:
 	#	$Camera2D.make_current()
 	#else:
+	# disable for titlescreen
 	$Camera2D.enabled = false
 	self.hide()
 	add_to_group("Players")
+	
+	# Adjusting Tater Po's jump height
 	if player_id == 1:
 		jump_velocity = -800
 	
@@ -49,13 +53,22 @@ func _physics_process(delta):
 		if not alive && is_on_floor():
 			_set_alive()
 	
+	#if multiplayer.get_unique_id() == player_id and is_walking :
+	#	if not walking_sound.playing:
+	#		walking_sound.play()
+	#else:
+	#	walking_sound.stop()
+		
+	
 func _anim_handler(prev_y_vel):
 	var new_anim = ""
 
 	# Walk animation
 	if _is_on_floor and not is_jumping:
+		is_walking = true
 		new_anim = _apply_walk_anim()
 	else:
+		is_walking = false
 		new_anim = _apply_jump_anim(prev_y_vel)
 
 	# Only play/send animation if it changed
@@ -68,6 +81,7 @@ func _anim_handler(prev_y_vel):
 			MultiplayerManager._sync_animation.rpc(new_anim, player_id)
 
 func _apply_walk_anim():
+	
 	if direction > 0:
 		return "right_walk"
 	elif direction < 0:

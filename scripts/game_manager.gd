@@ -7,16 +7,26 @@ signal players_connected_signal
 @onready var tutorial_scene = preload("res://scenes/tutorial.tscn")
 @onready var scene_container = $"Scene Container"
 @onready var title_node = title_scene.instantiate()
+@onready var pause_screen = $"../PauseScreen"
 #All Scenes to be loaded in chronological order
-var scene_list = ["res://scenes/level_2.tscn", "res://scenes/level_3.tscn"]
+var scene_list = ["res://scenes/level_1.tscn", "res://scenes/level_2.tscn","res://scenes/credit_screen.tscn"]
 var tilemap_original_state = {}
 var player2_id
 var players_connected = false
 var game_started = false
 
+
+
 func _ready():
 	add_to_group("GameManager")
 	load_scene(title_scene)
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("settings"):
+		if pause_screen.visible:
+			pause_screen.hide()
+		else:
+			pause_screen.show()
 	
 func next_scene():
 	var scene_to_load = scene_list[0]
@@ -41,7 +51,7 @@ func become_host():
 	MultiplayerManager.become_host()
 	
 	#testing dialogue fast
-	MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
+	#MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
 	
 @rpc("authority", "reliable")
 func start_game():

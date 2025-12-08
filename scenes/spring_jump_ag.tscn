@@ -1,31 +1,55 @@
-[gd_scene load_steps=9 format=3 uid="uid://c35i518q26sbe"]
+[gd_scene load_steps=13 format=3 uid="uid://c35i518q26sbe"]
 
 [ext_resource type="Script" uid="uid://b8ykilyg7317l" path="res://scripts/spring_jump.gd" id="1_35cep"]
+[ext_resource type="Texture2D" uid="uid://8ww8rve144ja" path="res://art/props/SIMPLIFIED_MUSHROOM_ANIM_FRAME_2.png" id="2_2b80s"]
 [ext_resource type="Texture2D" uid="uid://w1hwijtwmna5" path="res://art/props/MUSHROOM_PROPS2.png" id="2_nt14l"]
 [ext_resource type="Texture2D" uid="uid://cnepnqguuhl4d" path="res://art/props/MUSHROOM_PROPS.png" id="3_2b80s"]
+[ext_resource type="Texture2D" uid="uid://dkajd7qu4e3xb" path="res://art/props/SIMPLIFIED_MUSHROOM_ANIM_FRAME_1.png" id="3_oxeh6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2os1m"]
 size = Vector2(216, 42.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_35cep"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeb6i"]
+atlas = ExtResource("3_oxeh6")
+region = Rect2(414, 363, 260, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjk6t"]
+atlas = ExtResource("2_2b80s")
+region = Rect2(414, 363, 260, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7mrv"]
 atlas = ExtResource("2_nt14l")
-region = Rect2(113, 59, 230, 260)
+region = Rect2(115, 58, 230, 260)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nt14l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2k8u"]
 atlas = ExtResource("3_2b80s")
-region = Rect2(113, 59, 230, 260)
+region = Rect2(115, 58, 230, 260)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2b80s"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ximhg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_35cep")
+"texture": SubResource("AtlasTexture_xeb6i")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qjk6t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nt14l")
+"texture": SubResource("AtlasTexture_xeb6i")
 }],
 "loop": false,
 "name": &"spring",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7mrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2k8u")
+}],
+"loop": false,
+"name": &"spring_HD",
 "speed": 5.0
 }]
 
@@ -49,7 +73,7 @@ position = Vector2(0, -53)
 shape = SubResource("RectangleShape2D_2os1m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2b80s")
+sprite_frames = SubResource("SpriteFrames_ximhg")
 animation = &"spring"
 
 [node name="SpringSynchronizer" type="MultiplayerSynchronizer" parent="."]

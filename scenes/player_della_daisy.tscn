@@ -1,8 +1,17 @@
-[gd_scene load_steps=54 format=3 uid="uid://bvm1hn2q5qw00"]
+[gd_scene load_steps=57 format=3 uid="uid://bvm1hn2q5qw00"]
 
 [ext_resource type="Script" uid="uid://bpljigsfe88c1" path="res://scripts/fake_player_intro.gd" id="1_vrmip"]
 [ext_resource type="Texture2D" uid="uid://incclpjolruq" path="res://art/characters/DELLA_DAISY_ANIM.png" id="2_ai8ee"]
 [ext_resource type="Texture2D" uid="uid://bi4wnc4mixwyj" path="res://art/characters/Della_Anim.png" id="2_dfo0x"]
+[ext_resource type="Texture2D" uid="uid://dcplq45n63pet" path="res://art/characters/DELLA_DAISY_BACK_ANIM.png" id="2_omsln"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foy6o"]
+atlas = ExtResource("2_omsln")
+region = Rect2(126, 437, 240, 210)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdudy"]
+atlas = ExtResource("2_omsln")
+region = Rect2(376, 437, 240, 210)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p76c"]
 atlas = ExtResource("2_ai8ee")
@@ -198,6 +207,22 @@ region = Rect2(1666, 297, 234, 206)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_omsln"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"back_idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foy6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdudy")
+}],
+"loop": true,
+"name": &"back_idle_1",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0p76c")
@@ -572,7 +597,8 @@ script = ExtResource("1_vrmip")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -52)
 sprite_frames = SubResource("SpriteFrames_omsln")
-animation = &"idle"
+animation = &"back_idle_1"
+frame_progress = 0.11455555
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -45)

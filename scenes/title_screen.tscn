@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://b64eh3a5uh734"]
+[gd_scene load_steps=34 format=3 uid="uid://b64eh3a5uh734"]
 
 [ext_resource type="Script" uid="uid://bhkm8m2ua52n6" path="res://scripts/title_screen.gd" id="1_dc4i4"]
+[ext_resource type="FontFile" uid="uid://cgbh6ctohexex" path="res://art/ui/fonts/BitDaylong11_sRB_.TTF" id="2_mce2t"]
 [ext_resource type="StyleBox" uid="uid://bv3nll7udi6yl" path="res://styles/join_button_style.tres" id="2_tklts"]
 [ext_resource type="Script" uid="uid://dm1yxy7oephsl" path="res://scripts/title_button.gd" id="3_mykxm"]
 [ext_resource type="StyleBox" uid="uid://c3x2af6j6qwvw" path="res://styles/join_button_style_hover.tres" id="3_u26n3"]
@@ -25,9 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://gccfdgd68aq3" path="res://art/environment/fall_level/Fall_BG_5_variation_3.png" id="23_htdhw"]
 [ext_resource type="PackedScene" uid="uid://bvxont8bhjyjn" path="res://scenes/camera_switcher.tscn" id="24_b344i"]
 [ext_resource type="Script" uid="uid://bqt0pxhgpcq1u" path="res://scripts/end_of_intro.gd" id="25_gm4k0"]
-[ext_resource type="AudioStream" uid="uid://cwy2frokp281p" path="res://sound/music/New Age.wav" id="26_mce2t"]
-[ext_resource type="AudioStream" uid="uid://b2cfqinsr1n1x" path="res://sound/ambiance/spring.wav" id="27_htdhw"]
-[ext_resource type="Script" uid="uid://bf4v2wcf38po7" path="res://scripts/audio_stream_player_2.gd" id="28_12ga3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mykxm"]
 bg_color = Color(0.7879986, 0.5388415, 0.29541335, 1)
@@ -51,9 +49,6 @@ region = Rect2(3602, 3773, 798, 241)
 atlas = ExtResource("12_ib7db")
 region = Rect2(6764, 3773, 686, 242)
 
-[sub_resource type="SystemFont" id="SystemFont_p07av"]
-subpixel_positioning = 0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u26n3"]
 size = Vector2(4419, 52)
 
@@ -67,7 +62,7 @@ script = ExtResource("1_dc4i4")
 z_index = 7
 z_as_relative = false
 position = Vector2(962, -546)
-zoom = Vector2(0.73, 0.73)
+zoom = Vector2(1.05, 1.05)
 limit_left = 0
 limit_top = -1080
 limit_right = 3840
@@ -77,6 +72,7 @@ limit_bottom = 0
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="Multiplayer HUD"]
 layout_mode = 1
@@ -104,6 +100,7 @@ size_flags_horizontal = 5
 size_flags_vertical = 3
 theme_override_constants/outline_size = 0
 theme_override_constants/caret_width = 2
+theme_override_fonts/font = ExtResource("2_mce2t")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_mykxm")
 placeholder_text = "Enter IP Address of Host"
@@ -114,6 +111,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_mce2t")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("2_tklts")
 theme_override_styles/pressed = ExtResource("3_u26n3")
@@ -164,7 +162,7 @@ offset_right = 280.0
 offset_bottom = -141.0
 theme_override_colors/font_shadow_color = Color(0.53288054, 0.3106939, 0, 1)
 theme_override_constants/shadow_outline_size = 9
-theme_override_fonts/font = SubResource("SystemFont_p07av")
+theme_override_fonts/font = ExtResource("2_mce2t")
 theme_override_font_sizes/font_size = 50
 text = "Waiting for 2nd Player..."
 
@@ -308,15 +306,6 @@ script = ExtResource("25_gm4k0")
 z_index = 5
 position = Vector2(4160, -373)
 shape = SubResource("RectangleShape2D_b344i")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("26_mce2t")
-volume_db = -20.0
-autoplay = true
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("27_htdhw")
-script = ExtResource("28_12ga3")
 
 [connection signal="pressed" from="Multiplayer HUD/Panel/JoinUI/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="mouse_entered" from="Multiplayer HUD/Panel/HBoxContainer/HostGame" to="Multiplayer HUD/Panel/HBoxContainer/HostGame" method="_on_mouse_entered"]

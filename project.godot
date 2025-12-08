@@ -20,6 +20,7 @@ MultiplayerManager="*res://scripts/multiplayer_manager.gd"
 PlayerRef="*res://scripts/player_ref.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SceneTransitionAnimation="*res://scenes/scene_transition_animation.tscn"
+SoundManager="*res://scenes/sound_manager.tscn"
 
 [dialogic]
 
@@ -77,9 +78,10 @@ glossary/default_case_sensitive=true
 
 [display]
 
-window/size/viewport_width=1368
-window/size/viewport_height=768
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/always_on_top=true
+window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
@@ -130,6 +132,11 @@ next_line={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+settings={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 
