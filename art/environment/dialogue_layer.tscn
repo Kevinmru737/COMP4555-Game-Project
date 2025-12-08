@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkh0d40rgk044"]
+
+[ext_resource type="Texture2D" uid="uid://b4ts6tn7w5b8l" path="res://art/ui/dialogue/Fall_Transition1.png" id="1_715sx"]
+[ext_resource type="Theme" uid="uid://cwrcxua3jotne" path="res://dialogue/themes/dialogue_layer.tres" id="1_ftchp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_715sx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ftchp"]
+
+[node name="DialogueUI" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -672.0
+offset_top = -387.0
+offset_right = -672.0
+offset_bottom = -387.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Anchor" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_ftchp")
+
+[node name="Portrait" type="Sprite2D" parent="Anchor"]
+texture = ExtResource("1_715sx")
+
+[node name="NameBox" type="PanelContainer" parent="Anchor"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = 280.0
+offset_right = -51.0
+offset_bottom = 304.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_715sx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Anchor/NameBox"]
+layout_mode = 2
+text = "Gruncle Dandelion
+"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="TextBox" type="PanelContainer" parent="Anchor"]
+layout_mode = 0
+offset_left = -302.0
+offset_top = 325.0
+offset_right = 458.0
+offset_bottom = 444.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ftchp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Anchor/TextBox"]
+layout_mode = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Anchor"]
+position = Vector2(431, 389)
+polygon = PackedVector2Array(0, 0, 50, 25, 0, 50)

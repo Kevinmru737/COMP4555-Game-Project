@@ -1,59 +1,76 @@
 extends AnimatableBody2D
 
 @onready var sprite = $AnimatableBody2D
-@onready var gingy_intro_timeline = Dialogic.preload_timeline("GingyIntro")
-@onready var gingy_resource= load("res://dialogue/characters/Gingy.dch")
+@onready var camera_switcher = $"../CameraSwitcher"
 # Dialogue Variables
 var player_in_area = false
-var gingy_layout
-var target_dialogue = "GingyIntro"
+var target_dialogue = "GruncleIntro"
+var gruncle_layout
+var dialogue_in_prog = false
 
 func _ready():
 	sprite.play("idle")
-	Dialogic.timeline_ended.connect(_on_timeline_ended)
-	gingy_layout = Dialogic.start(gingy_intro_timeline)
-	gingy_layout.hide()
+	#Dialogic.timeline_ended.connect(_on_timeline_ended)
+	$DialogueUI.hide()
+	#gruncle_layout = Dialogic.start(gruncle_intro_timeline)
+	#gruncle_layout.hide()
+
+func _process(_delta: float) -> void:
+	if player_in_area and not dialogue_in_prog:
+		if Input.is_action_just_pressed("interact_object"):
+			rpc("initiate_dialogue")
+		
+	if dialogue_in_prog:
+		$InteractHint.hide()
 
 func _on_dialogue_detection_body_entered(body: Node2D) -> void:
 	if body.has_method("spawn_player"):
-		if gingy_layout:
-			gingy_layout.show()
+		print("npc range entered")
 		player_in_area = true
-		run_dialogue()
+		#run_dialogue(target_dialogue)
+		$InteractHint.show()
 
+@rpc ("any_peer", "call_local")
+func initiate_dialogue():
+	print("dialogue initiated")
+	dialogue_in_prog = true
+	SceneTransitionAnimation.fade_in()
+	await SceneTransitionAnimation.scene_transition_animation_player.animation_finished
+	camera_switcher.cut_to($Camera2D)
+	
+	#Moving Players
+	for player in get_tree().get_nodes_in_group("Players"):
+		if player.player_id == 1:
+			player.teleport_player($TaterSP.global_position)
+		else:
+			player.teleport_player($DellaSP.global_position)
+		player.input_allowed = false
+		player.hide()
+	SceneTransitionAnimation.fade_out()
+	$DialogueUI.show()
+	
+	
+	
 func _on_dialogue_detection_body_exited(body: Node2D) -> void:
 	if body.has_method("spawn_player"):
-		if gingy_layout:
-			gingy_layout.hide()
+		if gruncle_layout:
+			gruncle_layout.hide()
 		player_in_area = false
+		Dialogic.end_timeline()
+		$InteractHint.hide()
 		
-		
-func run_dialogue():
-	var layout := Dialogic.start(target_dialogue)
-	layout.register_character(gingy_resource, $BubbleMarker)
+func run_dialogue(dialogue: String):
+	Dialogic.start(dialogue)
+	var target_timeline
+	if target_dialogue == "GruncleIntro":
+		target_timeline = gruncle_intro_timeline
+	else:
+		target_timeline = gruncle_idle_timeline
 	
+	#var layout := Dialogic.start(target_dialogue)
+	#layout.register_character(gruncle_resource, $BubbleMarker)
 	
 func _on_timeline_ended():
-	print("Go Save Garlic")
-	if not PlayerRef.player_in_transit:
-		rpc("move_players")
-		
-		
+	if target_dialogue == "GruncleIntro":
+		target_dialogue = "GruncleIdle"
 	
-
-	
-@rpc("any_peer", "call_local")
-func move_players():
-	SceneTransitionAnimation.fade_in()
-	await get_tree().create_timer(1).timeout
-	var players = get_tree().get_nodes_in_group("Players")
-	
-	if players[0]:
-		players[0].position = Vector2(-800, 1200)
-		players[0].change_camera_limit(-1670, -1080, 1670, 11750)
-	
-	if players.size() > 1:
-		players[1].position = Vector2(-1000, -1670)
-		players[1].change_camera_limit(-1670, -3000, -1330, 11750)
-	SceneTransitionAnimation.fade_out()
-	await get_tree().create_timer(1).timeout

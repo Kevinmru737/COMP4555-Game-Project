@@ -18,7 +18,7 @@ func _ready():
 
 func init_player_after_load():
 	rpc("turn_on_camera")
-	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 11750)
+	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
 	get_tree().call_group("Players", "spawn_player")
 	get_tree().call_group("Players", "show")
 

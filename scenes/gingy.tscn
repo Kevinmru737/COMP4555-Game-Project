@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpx7663ahh1sb"]
+[gd_scene load_steps=8 format=3 uid="uid://bpx7663ahh1sb"]
 
+[ext_resource type="Script" uid="uid://xhpxexodudeg" path="res://scripts/gingy.gd" id="1_d5xx8"]
 [ext_resource type="Texture2D" uid="uid://vkrfjfhim4v1" path="res://art/characters/GINGY_ANIM_SEQUENCES.png" id="1_lclac"]
+[ext_resource type="Texture2D" uid="uid://dwc5setpwf3ku" path="res://art/ui/UI_E.png" id="3_0wi7c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_una4e"]
 atlas = ExtResource("1_lclac")
@@ -29,6 +31,7 @@ size = Vector2(552, 334)
 
 [node name="Gingy" type="AnimatableBody2D"]
 z_index = 5
+script = ExtResource("1_d5xx8")
 
 [node name="AnimatableBody2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8uepa")
@@ -45,3 +48,22 @@ shape = SubResource("RectangleShape2D_q7pjq")
 debug_color = Color(0.061213233, 0.62820005, 0.48186225, 0.41960785)
 
 [node name="BubbleMarker" type="Marker2D" parent="."]
+
+[node name="InteractHint" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -240)
+texture = ExtResource("3_0wi7c")
+region_enabled = true
+region_rect = Rect2(168, 162, 114, 120)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -1000
+limit_top = -1080
+limit_right = 3060
+limit_bottom = 0
+
+[node name="TaterSP" type="Marker2D" parent="."]
+position = Vector2(-245, 103)
+
+[node name="DellaSP" type="Marker2D" parent="."]
+position = Vector2(220, 40)

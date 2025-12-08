@@ -98,8 +98,7 @@ func _apply_export_overrides() -> void:
 	panel.add_theme_stylebox_override(&'panel', stylebox)
 
 	## PORTRAIT SETTINGS
-	var portrait_background_color: ColorRect = %PortraitBackgroundColor
-	portrait_background_color.color = portrait_bg_modulate
+
 
 	portrait_panel.get_parent().move_child(portrait_panel, portrait_position)
 

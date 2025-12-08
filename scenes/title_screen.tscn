@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b64eh3a5uh734"]
+[gd_scene load_steps=37 format=3 uid="uid://b64eh3a5uh734"]
 
 [ext_resource type="Script" uid="uid://bhkm8m2ua52n6" path="res://scripts/title_screen.gd" id="1_dc4i4"]
 [ext_resource type="StyleBox" uid="uid://bv3nll7udi6yl" path="res://styles/join_button_style.tres" id="2_tklts"]
@@ -25,6 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://gccfdgd68aq3" path="res://art/environment/fall_level/Fall_BG_5_variation_3.png" id="23_htdhw"]
 [ext_resource type="PackedScene" uid="uid://bvxont8bhjyjn" path="res://scenes/camera_switcher.tscn" id="24_b344i"]
 [ext_resource type="Script" uid="uid://bqt0pxhgpcq1u" path="res://scripts/end_of_intro.gd" id="25_gm4k0"]
+[ext_resource type="AudioStream" uid="uid://cwy2frokp281p" path="res://sound/music/New Age.wav" id="26_mce2t"]
+[ext_resource type="AudioStream" uid="uid://b2cfqinsr1n1x" path="res://sound/ambiance/spring.wav" id="27_htdhw"]
+[ext_resource type="Script" uid="uid://bf4v2wcf38po7" path="res://scripts/audio_stream_player_2.gd" id="28_12ga3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mykxm"]
 bg_color = Color(0.7879986, 0.5388415, 0.29541335, 1)
@@ -64,7 +67,7 @@ script = ExtResource("1_dc4i4")
 z_index = 7
 z_as_relative = false
 position = Vector2(962, -546)
-zoom = Vector2(0.72, 0.72)
+zoom = Vector2(0.73, 0.73)
 limit_left = 0
 limit_top = -1080
 limit_right = 3840
@@ -305,6 +308,15 @@ script = ExtResource("25_gm4k0")
 z_index = 5
 position = Vector2(4160, -373)
 shape = SubResource("RectangleShape2D_b344i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_mce2t")
+volume_db = -20.0
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_htdhw")
+script = ExtResource("28_12ga3")
 
 [connection signal="pressed" from="Multiplayer HUD/Panel/JoinUI/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="mouse_entered" from="Multiplayer HUD/Panel/HBoxContainer/HostGame" to="Multiplayer HUD/Panel/HBoxContainer/HostGame" method="_on_mouse_entered"]

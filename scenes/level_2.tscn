@@ -546,7 +546,7 @@ _data = {
 script = ExtResource("1_6cvei")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1191, -776)
+position = Vector2(1143, -575)
 script = ExtResource("1_j2jmx")
 
 [node name="Tiles" type="Node" parent="."]

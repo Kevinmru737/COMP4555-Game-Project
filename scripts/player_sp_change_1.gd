@@ -1,6 +1,5 @@
 extends Area2D
 
-@onready var spawn_point = $"../SpawnPoint"
 @onready var new_spawn_point = $SPChangePosition
 
 

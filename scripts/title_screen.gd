@@ -50,7 +50,7 @@ func _ready():
 		
 		host_button.focus_mode = Control.FOCUS_NONE
 		join_button.focus_mode = Control.FOCUS_NONE
-		add_fake_players()
+		#add_fake_players()
 	
 
 func _on_players_connected():
