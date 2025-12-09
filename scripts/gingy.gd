@@ -5,6 +5,7 @@ extends AnimatableBody2D
 # Dialogue Variables
 var player_in_area = false
 var dialogue_in_prog = false
+signal dialogue_start
 
 func _ready():
 	sprite.play("idle")
@@ -28,6 +29,7 @@ func _on_dialogue_detection_body_entered(body: Node2D) -> void:
 func initiate_dialogue():
 	print("dialogue initiated")
 	dialogue_in_prog = true
+	dialogue_start.emit()
 	SceneTransitionAnimation.fade_in()
 	await SceneTransitionAnimation.scene_transition_animation_player.animation_finished
 	camera_switcher.cut_to($Camera2D)

@@ -97,8 +97,8 @@ func _fade(alpha: float, time: float) -> void:
 		_configure_fade(false, 0.0)
 
 ## Configure fade layer visibility and appearance
-func _configure_fade(visible: bool, alpha: float) -> void:
-	fade_layer.visible = visible or alpha > 0.0
+func _configure_fade(fade_visible: bool, alpha: float) -> void:
+	fade_layer.visible = fade_visible or alpha > 0.0
 	fade_rect.modulate = Color(0, 0, 0, alpha)
 	fade_rect.size = get_viewport_rect().size
 

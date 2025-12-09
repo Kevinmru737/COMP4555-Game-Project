@@ -7,13 +7,13 @@ var gravity = DEFAULT_GRAVITY
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var walking_sound = $WalkingSound
+
 # Multiplayer variables
 var direction = 1
 var do_jump = false
 var _is_on_floor = true
 var alive = true
 var input_allowed = true
-var is_walking = false
 
 # Jumping logic
 var is_jumping = false
@@ -22,6 +22,12 @@ var jump_velocity_applied = false
 var prev_y = 0
 var target_anim = ""
 var last_anim = ""
+
+#walking variables
+var walking_sound_cooldown: float = 0.0
+var is_walking = false
+var walk_sound_interval: float = 0.5  # seconds between footsteps
+
 
 @export var player_id := 1:
 	set(id):
@@ -41,6 +47,27 @@ func _ready():
 	if player_id == 1:
 		jump_velocity = -800
 	
+
+
+func _process(delta: float) -> void:
+	# Decrease cooldown timer
+	if walking_sound_cooldown > 0:
+		walking_sound_cooldown -= delta
+	
+	# Play walking sound at intervals
+	if multiplayer.get_unique_id() == player_id and is_walking:
+		if walking_sound_cooldown <= 0:
+			rpc("_play_walking_sound")
+			walking_sound_cooldown = walk_sound_interval
+	else:
+		walking_sound.stop()
+		walking_sound_cooldown = 0  # Reset when not walking
+		
+@rpc("any_peer", "call_local")
+func _play_walking_sound():
+	walking_sound.play()
+	
+	
 func _physics_process(delta):
 	_is_on_floor = is_on_floor()
 	prev_y = velocity.y
@@ -53,22 +80,13 @@ func _physics_process(delta):
 		if not alive && is_on_floor():
 			_set_alive()
 	
-	#if multiplayer.get_unique_id() == player_id and is_walking :
-	#	if not walking_sound.playing:
-	#		walking_sound.play()
-	#else:
-	#	walking_sound.stop()
-		
-	
 func _anim_handler(prev_y_vel):
 	var new_anim = ""
 
 	# Walk animation
 	if _is_on_floor and not is_jumping:
-		is_walking = true
 		new_anim = _apply_walk_anim()
 	else:
-		is_walking = false
 		new_anim = _apply_jump_anim(prev_y_vel)
 
 	# Only play/send animation if it changed
@@ -139,6 +157,12 @@ func _movement(delta):
 			velocity.x = direction * MOVEMENT_SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, MOVEMENT_SPEED)
+	
+	# to determine if walking sounds should be played
+	if _is_on_floor and velocity.x != 0:
+		is_walking = true
+	else:
+		is_walking = false
 
 	# Apply gravity
 	if not _is_on_floor:

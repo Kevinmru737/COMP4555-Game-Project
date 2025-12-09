@@ -17,7 +17,7 @@ func _ready():
 	ambient_sound_1.stream = load(ambient_audio_path_1)
 	ambient_sound_2.stream = load(ambient_audio_path_2)
 	ambient_sound_1.volume_db = -15.0
-	ambient_sound_2.volume_db = -15.0
+	ambient_sound_2.volume_db = -25.0
 	add_child(ambient_sound_1)
 	add_child(ambient_sound_2)
 	

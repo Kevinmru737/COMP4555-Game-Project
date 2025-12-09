@@ -1,7 +1,7 @@
 extends Area2D
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	PlayerRef.player_in_transit = true
 	SceneTransitionAnimation.fade_in()
 	await get_tree().create_timer(1).timeout

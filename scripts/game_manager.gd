@@ -1,10 +1,10 @@
 extends Node
 
-signal game_started_signal
+#signal game_started_signal
 signal players_connected_signal
 
 @onready var title_scene = preload("res://scenes/title_screen.tscn")
-@onready var tutorial_scene = preload("res://scenes/tutorial.tscn")
+#@onready var tutorial_scene = preload("res://scenes/tutorial.tscn")
 @onready var scene_container = $"Scene Container"
 @onready var title_node = title_scene.instantiate()
 @onready var pause_screen = $"../PauseScreen"
@@ -21,7 +21,7 @@ func _ready():
 	add_to_group("GameManager")
 	load_scene(title_scene)
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("settings"):
 		if pause_screen.visible:
 			pause_screen.hide()
@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 func next_scene():
 	var scene_to_load = scene_list[0]
 	if scene_to_load == "res://scenes/level_1.tscn" and multiplayer.is_server():
-		rpc_id(1, "start_game")
+		rpc("start_game")
 		print("loading scene", scene_to_load)
 	if scene_to_load:
 		MultiplayerManager.request_scene_change(scene_list[0])

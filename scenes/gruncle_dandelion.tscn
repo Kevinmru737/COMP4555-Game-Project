@@ -66,5 +66,9 @@ position = Vector2(220, 40)
 [node name="DialogueUI" parent="." instance=ExtResource("4_j6y56")]
 follow_viewport_enabled = false
 
+[node name="VoicePlayer" type="AudioStreamPlayer" parent="DialogueUI"]
+
 [connection signal="body_entered" from="DialogueDetection" to="." method="_on_dialogue_detection_body_entered"]
 [connection signal="body_exited" from="DialogueDetection" to="." method="_on_dialogue_detection_body_exited"]
+
+[editable path="DialogueUI"]

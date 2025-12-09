@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpjqy2va46rst"
+path="res://.godot/imported/Maraj_Tashya_GrowingTiny_DellaDaisy_Voicetrack16 .wav-7e4ff6b7e020ad9a3ee9440c8f8fe578.sample"
+
+[deps]
+
+source_file="res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_DellaDaisy_Voicetrack16 .wav"
+dest_files=["res://.godot/imported/Maraj_Tashya_GrowingTiny_DellaDaisy_Voicetrack16 .wav-7e4ff6b7e020ad9a3ee9440c8f8fe578.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

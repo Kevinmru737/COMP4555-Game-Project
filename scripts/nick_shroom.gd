@@ -9,6 +9,7 @@ extends AnimatedSprite2D
 # Dialogue Variables
 var player_in_area = false
 var dialogue_in_prog = false
+signal dialogue_start
 
 func _ready():
 	self.play("default")
@@ -32,6 +33,7 @@ func initiate_dialogue():
 		player.input_allowed = false
 		player.direction = 0
 	dialogue_in_prog = true
+	dialogue_start.emit()
 	
 	await get_tree().create_timer(0.5).timeout
 

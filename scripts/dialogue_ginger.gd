@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var curr_npc = $".."
 @onready var textbox_sound = $TextAdvance
 @onready var camera_switcher = $CameraSwitcher
+@onready var voice_player = $VoicePlayer
 
 #all speakers
 @onready var speaker_ginger = $Anchor/Speakers/Ginger
@@ -34,7 +35,7 @@ enum Name {
 }
 
 
-
+var voice_tracks = {}
 var speaker_name
 var dialog_line
 var dialog_index = 0
@@ -44,7 +45,27 @@ func _ready():
 	$Anchor/DellaAnim.play("idle")
 	for speaker in $Anchor/Speakers.get_children():
 		speaker.add_to_group("Speakers")
-	process_line()
+	_load_voice_tracks()
+	curr_npc.dialogue_start.connect(_dialogue_started)
+
+func _load_voice_tracks():
+	voice_tracks[0] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_Gingy_Voicetrack7.wav")
+	voice_tracks[1] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_Gingy_Voicetrack8.wav")
+	voice_tracks[2] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_TaterPo_Voicetrack9.wav")
+	voice_tracks[3] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_Gingy_Voicetrack10.wav")
+	voice_tracks[4] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_Ric_Voicetrack11.wav")
+	voice_tracks[5] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_Gingy_Voicetrack12.wav")
+	voice_tracks[6] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_Ric_Voicetrack13.wav")
+	voice_tracks[7] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_Ric_Voicetrack14.wav")
+	voice_tracks[8] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_Ric_Voicetrack15.wav")
+	voice_tracks[9] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_DellaDaisy_Voicetrack16 .wav")
+	voice_tracks[10] = preload("res://sound/gingy_vt/Maraj_Tashya_GrowingTiny_TaterPo_Voicetrack17.wav")
+
+func _play_voice(dialog_idx: int):
+	if dialog_idx in voice_tracks:
+		voice_player.stream = voice_tracks[dialog_idx]
+		voice_player.volume_db = -10
+		#voice_player.play()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("next_line") and curr_npc.dialogue_in_prog and not dialog_done:
@@ -56,7 +77,8 @@ func _input(_event: InputEvent) -> void:
 			
 		
 			
-			
+func _dialogue_started():
+	process_line()
 
 func parse_line(line: String):
 	var line_info = line.split(":")
@@ -75,8 +97,10 @@ func process_line():
 	change_speaker(line_info["speaker_name"])
 	name_box.text = line_info["speaker_name"]
 	dialog_box.text = line_info["dialog_line"]
-	dialog_index += 1
+
+	_play_voice(dialog_index)
 	
+	dialog_index += 1	
 	
 func change_speaker(speaker_name: String):
 	get_tree().call_group("Speakers", "hide")
