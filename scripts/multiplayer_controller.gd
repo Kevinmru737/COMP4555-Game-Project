@@ -46,7 +46,7 @@ func _ready():
 	
 	# Adjusting Tater Po's jump height
 	if player_id == 1:
-		jump_velocity = -800
+		jump_velocity = -700
 		jump_type = "instant"
 	else:
 		jump_type = "slow"
