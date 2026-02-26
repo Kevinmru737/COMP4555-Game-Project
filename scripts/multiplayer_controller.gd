@@ -22,6 +22,7 @@ var jump_velocity_applied = false
 var prev_y = 0
 var target_anim = ""
 var last_anim = ""
+var jump_type = "delay" #default is nothing which is the previous jump
 
 #walking variables
 var walking_sound_cooldown: float = 0.0
@@ -46,6 +47,9 @@ func _ready():
 	# Adjusting Tater Po's jump height
 	if player_id == 1:
 		jump_velocity = -800
+		jump_type = "instant"
+	else:
+		jump_type = "slow"
 	
 
 
@@ -114,7 +118,10 @@ func _apply_jump_anim(prev_velocity):
 	# Pre-jump
 	if _is_on_floor and curr_anim != "jump_" + anim_suffix + "_land" and is_jumping and input_allowed:
 		can_move_during_jump = false
-		return "jump_" + anim_suffix + "_pre"
+		if jump_type == "slow":
+			return "jump_" + anim_suffix + "_pre1"
+		else:
+			return "jump_" + anim_suffix + "_up"
 
 	# Rising
 	elif velocity.y < 0 and not _is_on_floor:
@@ -129,7 +136,7 @@ func _apply_jump_anim(prev_velocity):
 	# Landing
 	elif prev_velocity > 0 and is_jumping:
 		can_move_during_jump = false
-		return "jump_" + anim_suffix + "_land"
+		return "jump_" + anim_suffix + "_land_instant"
 
 	return curr_anim  # fallback, keep current animation
 
@@ -175,18 +182,21 @@ func _process_jump(_delta):
 	var curr_frame = animated_sprite.frame
 
 	# Apply jump velocity during pre-jump
-	if curr_anim in ["jump_right_pre", "jump_left_pre"]:
-		if curr_frame == 1 and not jump_velocity_applied:
+	if curr_anim in ["jump_right_pre1", "jump_left_pre1"]:
+		if curr_frame == 3 and not jump_velocity_applied:
 			velocity.y = jump_velocity
 			jump_velocity_applied = true
-
+	if jump_type == "instant" and curr_anim in ["jump_right_up", "jump_left_up"]:
+		if curr_frame == 0 and not jump_velocity_applied:
+			velocity.y = jump_velocity
+			jump_velocity_applied = true
 	# Landing completed
-	elif curr_anim in ["jump_right_land", "jump_left_land"]:
+	elif curr_anim in ["jump_right_land_instant", "jump_left_land_instant"]:
 		# Only set to false once at the start
-		if curr_frame == 0:
-			input_allowed = false
+		#if curr_frame == 0:
+		#	input_allowed = false
 		# Re-enable input when animation stops playing
-		elif not animated_sprite.is_playing():
+		#if not animated_sprite.is_playing():
 			is_jumping = false
 			input_allowed = true
 			

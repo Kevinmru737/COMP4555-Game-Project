@@ -316,6 +316,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3e45w")
+}],
+"loop": false,
+"name": &"jump_left_land_instant",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5c7ya")
 }, {
 "duration": 1.0,
@@ -404,6 +412,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_deokw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kko6")
+}],
+"loop": false,
+"name": &"jump_right_delay",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2y0wo")
 }],
 "loop": false,
@@ -420,6 +439,14 @@ animations = [{
 "loop": true,
 "name": &"jump_right_down1",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kko6")
+}],
+"loop": false,
+"name": &"jump_right_instant",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -451,14 +478,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_deokw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8kko6")
+"texture": SubResource("AtlasTexture_waltt")
 }],
 "loop": false,
-"name": &"jump_right_pre",
-"speed": 10.0
+"name": &"jump_right_land_instant",
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -581,7 +605,7 @@ script = ExtResource("2_ug2so")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_xk3hh")
-animation = &"jump_right_land"
+animation = &"jump_left_land_instant"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ug2so")
