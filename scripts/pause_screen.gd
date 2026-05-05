@@ -40,5 +40,3 @@ func _on_display_settings_button_pressed():
 	current_panel = display_controls
 	main_controls.visible = false
 	display_controls.visible = true
-	
-	

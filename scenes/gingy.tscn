@@ -1244,5 +1244,6 @@ theme_override_font_sizes/normal_font_size = 24
 [node name="TextAdvance" type="AudioStreamPlayer" parent="DialogueUI" unique_id=2116152355]
 stream = ExtResource("10_vo3ks")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="CameraSwitcher" parent="DialogueUI" unique_id=1019881057 instance=ExtResource("11_cy0gx")]

@@ -18,6 +18,10 @@ config/name="GrowingTiny"
 run/main_scene="uid://b3lhw2u5gxcjw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="uid://chentd3jhpmwo"
+
 [autoload]
 
 MultiplayerManager="*res://scripts/multiplayer_manager.gd"

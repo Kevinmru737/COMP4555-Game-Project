@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cgm3o7qy8mlsm"]
+[gd_scene format=3 uid="uid://cgm3o7qy8mlsm"]
 
 [ext_resource type="Script" uid="uid://hw6aeqsbyii1" path="res://scripts/multiplayer_controller.gd" id="1_pistx"]
 [ext_resource type="Script" uid="uid://djbswriipf6jv" path="res://scripts/multiplayer_input.gd" id="2_0p76c"]
@@ -632,51 +632,52 @@ size = Vector2(26, 155)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p76c"]
 size = Vector2(28, 158)
 
-[node name="MultiPlayerPlayer2" type="CharacterBody2D"]
+[node name="MultiPlayerPlayer2" type="CharacterBody2D" unique_id=69874465]
 position = Vector2(-1, 0)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_pistx")
 
-[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1072648191]
 replication_config = SubResource("SceneReplicationConfig_k8tkd")
 
-[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1003217891]
 unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_jlq18")
 script = ExtResource("2_0p76c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=619759402]
 position = Vector2(0, -52)
 sprite_frames = SubResource("SpriteFrames_2gq5w")
 animation = &"jump_left_land_instant"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=785933156]
 position = Vector2(0, -47)
 shape = SubResource("RectangleShape2D_pistx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=681601596]
 limit_left = 0
 limit_top = -1080
 limit_right = 1920
 limit_bottom = 0
 limit_smoothed = true
 
-[node name="DeathTimer" type="Timer" parent="."]
+[node name="DeathTimer" type="Timer" parent="." unique_id=1533162913]
 one_shot = true
 
-[node name="TileDetector" type="Area2D" parent="."]
+[node name="TileDetector" type="Area2D" parent="." unique_id=1025240218]
 collision_layer = 2
 collision_mask = 12
 script = ExtResource("5_0p76c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector" unique_id=258279865]
 position = Vector2(0, -47)
 shape = SubResource("RectangleShape2D_0p76c")
 debug_color = Color(0.7803942, 0.43447652, 0.13396496, 0.41960785)
 
-[node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
+[node name="WalkingSound" type="AudioStreamPlayer2D" parent="." unique_id=1621187364]
 stream = ExtResource("6_nov17")
+bus = &"SFX"
 
 [connection signal="timeout" from="DeathTimer" to="." method="_respawn"]
 [connection signal="body_shape_entered" from="TileDetector" to="TileDetector" method="_on_body_shape_entered"]

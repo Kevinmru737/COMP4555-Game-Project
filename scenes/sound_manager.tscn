@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbtwss2hx5h2"]
+[gd_scene format=3 uid="uid://bbtwss2hx5h2"]
 
 [ext_resource type="Script" uid="uid://b6t75gigxtgnq" path="res://scripts/sound_manager.gd" id="1_shlr6"]
 [ext_resource type="AudioStream" uid="uid://wpq8bnddq6ti" path="res://sound/music/Bg_Music_Game_Cozy_1.wav" id="2_5lwbd"]
 
-[node name="SoundManager" type="Node"]
+[node name="SoundManager" type="Node" unique_id=937176933]
 script = ExtResource("1_shlr6")
 
-[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="." unique_id=969897346]
 stream = ExtResource("2_5lwbd")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
