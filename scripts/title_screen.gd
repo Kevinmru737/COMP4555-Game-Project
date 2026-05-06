@@ -15,6 +15,7 @@ extends Node
 @onready var join_ui = $"Multiplayer HUD/Panel/JoinUI"
 @onready var host_ip_input = $"Multiplayer HUD/Panel/JoinUI/IPLineEdit"
 @onready var join_host = $"Multiplayer HUD/Panel/JoinUI/JoinButton"
+var LOCAL_PC_ADDRESS = "127.0.0.1"
 
 # button animating
 var original_scale: Vector2
@@ -90,11 +91,8 @@ func join_enter_ip():
 		
 func _on_join_button_pressed() -> void:
 	var ip = host_ip_input.text.strip_edges()
-	if ip != "":
-		print(ip)
-		game_manager.join_as_player_2(ip)
-	else:
-		print("Invalid IP Address")
+	game_manager.join_as_player_2(ip)
+
 		
 func add_fake_players():
 	var fake_po = fake_po_scene.instantiate()
@@ -109,6 +107,17 @@ func add_fake_players():
 	print(fake_po_spawn)
 	fake_daisy.global_position = fake_po_spawn + Vector2(150, 0)
 	
+
+func _quick_start() -> void:
+	PlayerRef.player_in_transit = true
+	SceneTransitionAnimation.fade_in()
+	await get_tree().create_timer(1).timeout
+	
+	#removing fake players
+	var fake_players = get_tree().get_nodes_in_group("FakePlayers")
+	for player in fake_players:
+		player.queue_free()
+	game_manager.next_scene()
 
 
 func _on_quit_game_pressed() -> void:

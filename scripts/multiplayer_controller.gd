@@ -39,7 +39,7 @@ func _ready():
 	if multiplayer.get_unique_id() == player_id:
 		$Camera2D.make_current()
 	else:
-	# disable for titlescreen
+	 	#disable for titlescreen
 		$Camera2D.enabled = false
 	self.hide()
 	add_to_group("Players")
@@ -201,7 +201,6 @@ func _process_jump(_delta):
 			input_allowed = true
 			
 func change_camera_limit(left, top, bottom, right):
-	print("Changing camera limits...")
 	$Camera2D.limit_left = left
 	$Camera2D.limit_top = top
 	$Camera2D.limit_right = right
@@ -219,10 +218,13 @@ func mark_dead():
 func teleport_player(new_position: Vector2):
 	self.position = new_position
 
-func spawn_player():
+func spawn_player(sp: Vector2 = MultiplayerManager.respawn_point):
+	position = sp
 	print("spawning player:", player_id)
-	print(player_id, "position", self.position)
-	position = MultiplayerManager.respawn_point
+	if multiplayer.get_unique_id() == self.player_id:
+		var player_cam = self.get_node("Camera2D")
+		player_cam.enabled = true
+		player_cam.make_current()
 	
 
 func _respawn():

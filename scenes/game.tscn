@@ -29,9 +29,6 @@ position = Vector2(144, -395)
 
 [node name="SoundManager" parent="." unique_id=447509890 instance=ExtResource("2_yqjtg")]
 
-[node name="BGMusic" parent="SoundManager" index="0"]
-bus = &"Music"
-
 [node name="PauseScreen" parent="." unique_id=1586786423 instance=ExtResource("4_lbhrr")]
 
 [editable path="SoundManager"]

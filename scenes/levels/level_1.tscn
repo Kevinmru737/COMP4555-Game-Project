@@ -475,7 +475,7 @@ b = Vector2(14.5, 447)
 script = ExtResource("1_fcfvj")
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=2075685338]
-position = Vector2(655, -90)
+position = Vector2(541, -14)
 gizmo_extents = 30.0
 script = ExtResource("2_4nkto")
 
@@ -684,19 +684,13 @@ z_index = 5
 position = Vector2(1288, -295)
 
 [node name="Camera2D" parent="GruncleDandelion" index="4" unique_id=790359584]
-[node name="Camera2D" parent="GruncleDandelion" index="4" unique_id=790359584]
 limit_bottom = 0
 
-[node name="TaterSP" parent="GruncleDandelion" index="5" unique_id=403604768]
 [node name="TaterSP" parent="GruncleDandelion" index="5" unique_id=403604768]
 position = Vector2(-332, 487)
 
 [node name="DellaSP" parent="GruncleDandelion" index="6" unique_id=1244615178]
-[node name="DellaSP" parent="GruncleDandelion" index="6" unique_id=1244615178]
 position = Vector2(128, 487)
-
-[node name="TextAdvance" parent="GruncleDandelion/DialogueUI" parent_id_path=PackedInt32Array(1619797652, 1681958293) index="1" unique_id=1521739385]
-bus = &"SFX"
 
 [node name="KillZone" parent="." unique_id=2106141175 instance=ExtResource("15_6dial")]
 
@@ -752,14 +746,11 @@ z_index = 5
 position = Vector2(11773, -809)
 
 [node name="DialogueDetection" parent="NickShroom" index="0" unique_id=779471856]
-[node name="DialogueDetection" parent="NickShroom" index="0" unique_id=779471856]
 position = Vector2(-452, 487)
 
 [node name="CollisionShape2D" parent="NickShroom/DialogueDetection" index="0" unique_id=54615851]
-[node name="CollisionShape2D" parent="NickShroom/DialogueDetection" index="0" unique_id=54615851]
 position = Vector2(57.5, 59)
 
-[node name="Camera2D" parent="NickShroom" index="1" unique_id=1020451113]
 [node name="Camera2D" parent="NickShroom" index="1" unique_id=1020451113]
 zoom = Vector2(1.5, 1.5)
 

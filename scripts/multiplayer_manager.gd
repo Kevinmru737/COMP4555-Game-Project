@@ -1,9 +1,8 @@
 extends Node
 
 const SERVER_PORT = 8080
-const SERVER_IP = "127.0.0.1"
-
- #local host
+const LOCAL_MACHINE_IP = "127.0.0.1"
+#local host
 
 var multiplayer_scene1 = preload("res://scenes/multiplayer/players/multiplayer_player1.tscn")
 var multiplayer_scene2 = preload("res://scenes/multiplayer/players/multiplayer_player2.tscn")
@@ -28,11 +27,18 @@ func become_host():
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_del_player)
 	
-	_add_player_to_game(1, 1)
+	# we want to spawn the players separately now
+	#_add_player_to_game(1, 1)
+	PlayerRef.player_ref.append({
+		"id": 1,
+		"character": 1
+	})
 	
 func join_as_player_2(ip):
 	print("Player 2 creation attempt")
 	multiplayer_mode_enabled = true
+	if ip == "":
+		ip = LOCAL_MACHINE_IP
 	var client_peer =  ENetMultiplayerPeer.new()
 	print("join ip:", ip)
 	client_peer.create_client(ip, SERVER_PORT)
@@ -54,10 +60,6 @@ func _add_player_to_game(id: int, character: int):
 	player_to_add.player_id = id
 	player_to_add.name = str(id)
 	player_to_add.add_to_group("Players")
-	PlayerRef.player_ref.append({
-		"id": id,
-		"character": character
-	})
 	# After spawning the new player on the server
 	if multiplayer.is_server() and id != multiplayer.get_unique_id():
 		# Send entire player list to the new client
@@ -73,8 +75,20 @@ func _on_client_connected():
 	
 func _on_peer_connected(id: int):
 	print("Peer Connected")
-	_add_player_to_game(id, 2)
+	#_add_player_to_game(id, 2)
+	
+	PlayerRef.player_ref.append({
+		"id": id,
+		"character": 2
+	})
 
+func spawn_players() -> void:
+	for player in PlayerRef.player_ref:
+		if multiplayer.get_unique_id() == 1 and player["id"] == 1:
+			_add_player_to_game(1,1)
+		else:
+			print("spawning playerssss", player["id"])
+			_add_player_to_game(player["id"], 2)
 
 func _del_player(id: int):
 	print("Player %s has left the game." % id)

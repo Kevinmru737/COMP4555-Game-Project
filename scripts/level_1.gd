@@ -13,30 +13,24 @@ func _ready():
 	else:
 		push_error("SpawnPoint not found!")
 	print("level 1 started")
+	
 	MultiplayerManager.respawn_point = spawn_point
-	get_tree().create_timer(0.1).timeout.connect(init_player_after_load) #fix race condition
+	#get_tree().create_timer(0.1).timeout.connect(init_player_after_load) #fix race condition
 	SceneTransitionAnimation.fade_out()
 	switch_backgrounds("Backgrounds", "GruncHouse")
 	game_manager.save_spec_tiles()
-	
+	MultiplayerManager.spawn_players()
 	PlayerRef.player_in_transit = false
+	call_deferred("init_player_after_load")
 
 func init_player_after_load():
 	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
-	get_tree().call_group("Players", "spawn_player")
 	get_tree().call_group("Players", "show")
-	rpc("turn_on_camera")
-
-@rpc("any_peer", "reliable", "call_local")
-func turn_on_camera():
-	print(get_tree().get_nodes_in_group("Players"))
 	for player in get_tree().get_nodes_in_group("Players"):
-		if multiplayer.get_unique_id() == player.player_id:
-			print("found player to turn camera on")
-			var player_cam = player.get_node("Camera2D")
-			player_cam.enabled = true
-			player_cam.make_current()
-
+		if player.player_id == 1:
+			player.spawn_player(spawn_point - Vector2(150,0))
+		else:
+			player.spawn_player()
 
 func switch_backgrounds(old_bg: String, new_bg: String):
 	print("switching backgrounds:", old_bg, " to ", new_bg)
