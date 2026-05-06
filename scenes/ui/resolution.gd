@@ -1,6 +1,7 @@
 extends Control
 
-@onready var resolution_option: OptionButton = $ResolutionOption
+func _ready():
+	$VSyncButton.button_pressed = DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
 
 # Window Mode Dropdown
 func _on_option_button_item_selected(index: int) -> void:
