@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://d00jrigit6kdy" path="res://scripts/game_manager.gd" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://cr1ghrx7mkak3" path="res://scripts/multiplayer/networks/network_manager.gd" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://bbtwss2hx5h2" path="res://scenes/sound_manager.tscn" id="2_yqjtg"]
-[ext_resource type="Script" uid="uid://b7go5ti3l8xh0" path="res://scripts/pause_screen.gd" id="3_lbhrr"]
-[ext_resource type="Texture2D" uid="uid://c0xbjaauohcrh" path="res://art/ui/settings/game_setting_screen.png" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://do3v51n6ctc7t" path="res://scenes/ui/pause_screen.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node" unique_id=1810588245]
 
@@ -30,21 +29,9 @@ position = Vector2(144, -395)
 
 [node name="SoundManager" parent="." unique_id=447509890 instance=ExtResource("2_yqjtg")]
 
-[node name="PauseScreen" type="CanvasLayer" parent="." unique_id=2013416312]
-layer = 3
-script = ExtResource("3_lbhrr")
+[node name="BGMusic" parent="SoundManager" index="0"]
+bus = &"Music"
 
-[node name="Control" type="Control" parent="PauseScreen" unique_id=1091775131]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Settings" type="Sprite2D" parent="PauseScreen/Control" unique_id=1417770637]
-position = Vector2(959.99994, 540)
-scale = Vector2(0.23999998, 0.24)
-texture = ExtResource("3_lnu2h")
+[node name="PauseScreen" parent="." unique_id=1586786423 instance=ExtResource("4_lbhrr")]
 
 [editable path="SoundManager"]

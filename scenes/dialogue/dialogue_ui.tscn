@@ -1133,5 +1133,6 @@ theme_override_font_sizes/normal_font_size = 24
 [node name="TextAdvance" type="AudioStreamPlayer" parent="." unique_id=1521739385]
 stream = ExtResource("7_x1ric")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="CameraSwitcher" parent="." unique_id=1632239847 instance=ExtResource("8_ecd83")]
