@@ -21,15 +21,15 @@
 [ext_resource type="Script" uid="uid://byl8vclnudjk5" path="res://scripts/grunc_house.gd" id="12_d5akn"]
 [ext_resource type="Texture2D" uid="uid://cksiwvkl2lmv2" path="res://art/environment/fall_level/Fall_BG_house_2.png" id="12_tr1x6"]
 [ext_resource type="Texture2D" uid="uid://vcfk2si05des" path="res://art/environment/fall_level/Fall_BG_5_variation_1.png" id="12_x2fux"]
-[ext_resource type="PackedScene" uid="uid://dai0cp3labye2" path="res://scenes/gruncle_dandelion.tscn" id="13_2aecg"]
+[ext_resource type="PackedScene" uid="uid://dai0cp3labye2" path="res://scenes/characters/gruncle_dandelion.tscn" id="13_2aecg"]
 [ext_resource type="PackedScene" uid="uid://dgsomjatjlw3e" path="res://scenes/end_of_level.tscn" id="13_7gny6"]
 [ext_resource type="Texture2D" uid="uid://crmgj8n3eb3ff" path="res://art/environment/fall_level/Fall_BG_house_3.png" id="13_d5akn"]
 [ext_resource type="Texture2D" uid="uid://b1ttkhijic0vx" path="res://art/environment/fall_level/Fall_BG_house_4.png" id="14_wbtxt"]
 [ext_resource type="PackedScene" uid="uid://qh71ikdbvkor" path="res://scenes/KillZone.tscn" id="15_6dial"]
-[ext_resource type="PackedScene" uid="uid://jlvx2tk8j4jp" path="res://scenes/log.tscn" id="24_wbtxt"]
-[ext_resource type="PackedScene" uid="uid://1tq10v2x7yk5" path="res://scenes/nick_shroom.tscn" id="27_mmfjm"]
+[ext_resource type="PackedScene" uid="uid://jlvx2tk8j4jp" path="res://scenes/props/log.tscn" id="24_wbtxt"]
+[ext_resource type="PackedScene" uid="uid://1tq10v2x7yk5" path="res://scenes/characters/nick_shroom.tscn" id="27_mmfjm"]
 [ext_resource type="PackedScene" uid="uid://cbnyi3sjtynfu" path="res://scenes/player_sp_change.tscn" id="28_k8ld0"]
-[ext_resource type="PackedScene" uid="uid://bvxont8bhjyjn" path="res://scenes/camera_switcher.tscn" id="28_mbb35"]
+[ext_resource type="PackedScene" uid="uid://bvxont8bhjyjn" path="res://scenes/ui/camera_switcher.tscn" id="28_mbb35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v8pws"]
 texture = ExtResource("6_mmfjm")
@@ -684,11 +684,14 @@ z_index = 5
 position = Vector2(1288, -295)
 
 [node name="Camera2D" parent="GruncleDandelion" index="4" unique_id=790359584]
+[node name="Camera2D" parent="GruncleDandelion" index="4" unique_id=790359584]
 limit_bottom = 0
 
 [node name="TaterSP" parent="GruncleDandelion" index="5" unique_id=403604768]
+[node name="TaterSP" parent="GruncleDandelion" index="5" unique_id=403604768]
 position = Vector2(-332, 487)
 
+[node name="DellaSP" parent="GruncleDandelion" index="6" unique_id=1244615178]
 [node name="DellaSP" parent="GruncleDandelion" index="6" unique_id=1244615178]
 position = Vector2(128, 487)
 
@@ -715,34 +718,31 @@ region_rect = Rect2(1220, 0, 700, 996.24805)
 [node name="PlayerSPChange1" parent="PlayerSPChanges" unique_id=337368428 instance=ExtResource("28_k8ld0")]
 position = Vector2(2900, -484)
 
-[node name="SPChangePosition" parent="PlayerSPChanges/PlayerSPChange1" index="1"]
+[node name="SPChangePosition" parent="PlayerSPChanges/PlayerSPChange1" index="1" unique_id=1199039004]
 position = Vector2(-167, 12)
 
 [node name="PlayerSPChange2" parent="PlayerSPChanges" unique_id=403024245 instance=ExtResource("28_k8ld0")]
 position = Vector2(5762, -782)
 
-[node name="CollisionShape2D" parent="PlayerSPChanges/PlayerSPChange2" index="0"]
+[node name="CollisionShape2D" parent="PlayerSPChanges/PlayerSPChange2" index="0" unique_id=2027757687]
 position = Vector2(6, 77)
 
-[node name="SPChangePosition" parent="PlayerSPChanges/PlayerSPChange2" index="1"]
+[node name="SPChangePosition" parent="PlayerSPChanges/PlayerSPChange2" index="1" unique_id=1199039004]
 position = Vector2(-182, 18)
 
 [node name="PlayerSPChange3" parent="PlayerSPChanges" unique_id=533291145 instance=ExtResource("28_k8ld0")]
 position = Vector2(6952, -472)
 
-[node name="CollisionShape2D" parent="PlayerSPChanges/PlayerSPChange3" index="0"]
-position = Vector2(0, 0)
-
-[node name="SPChangePosition" parent="PlayerSPChanges/PlayerSPChange3" index="1"]
+[node name="SPChangePosition" parent="PlayerSPChanges/PlayerSPChange3" index="1" unique_id=1199039004]
 position = Vector2(-167, -18)
 
 [node name="PlayerSPChange4" parent="PlayerSPChanges" unique_id=177032519 instance=ExtResource("28_k8ld0")]
 position = Vector2(8707, -490)
 
-[node name="CollisionShape2D" parent="PlayerSPChanges/PlayerSPChange4" index="0"]
+[node name="CollisionShape2D" parent="PlayerSPChanges/PlayerSPChange4" index="0" unique_id=2027757687]
 position = Vector2(0, 56)
 
-[node name="SPChangePosition" parent="PlayerSPChanges/PlayerSPChange4" index="1"]
+[node name="SPChangePosition" parent="PlayerSPChanges/PlayerSPChange4" index="1" unique_id=1199039004]
 position = Vector2(-184, 0)
 
 [node name="CameraSwitcher" parent="." unique_id=933541234 instance=ExtResource("28_mbb35")]
@@ -752,11 +752,14 @@ z_index = 5
 position = Vector2(11773, -809)
 
 [node name="DialogueDetection" parent="NickShroom" index="0" unique_id=779471856]
+[node name="DialogueDetection" parent="NickShroom" index="0" unique_id=779471856]
 position = Vector2(-452, 487)
 
 [node name="CollisionShape2D" parent="NickShroom/DialogueDetection" index="0" unique_id=54615851]
+[node name="CollisionShape2D" parent="NickShroom/DialogueDetection" index="0" unique_id=54615851]
 position = Vector2(57.5, 59)
 
+[node name="Camera2D" parent="NickShroom" index="1" unique_id=1020451113]
 [node name="Camera2D" parent="NickShroom" index="1" unique_id=1020451113]
 zoom = Vector2(1.5, 1.5)
 

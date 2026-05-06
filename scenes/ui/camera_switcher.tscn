@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvxont8bhjyjn"]
+[gd_scene format=3 uid="uid://bvxont8bhjyjn"]
 
 [ext_resource type="Script" uid="uid://houtlw0cehch" path="res://scripts/camera_switcher.gd" id="1_ohsqr"]
 
