@@ -107,19 +107,6 @@ func add_fake_players():
 	print(fake_po_spawn)
 	fake_daisy.global_position = fake_po_spawn + Vector2(150, 0)
 	
-
-func _quick_start() -> void:
-	PlayerRef.player_in_transit = true
-	SceneTransitionAnimation.fade_in()
-	await get_tree().create_timer(1).timeout
-	
-	#removing fake players
-	var fake_players = get_tree().get_nodes_in_group("FakePlayers")
-	for player in fake_players:
-		player.queue_free()
-	game_manager.next_scene()
-
-
 func _on_quit_game_pressed() -> void:
 	get_tree().quit()
 
