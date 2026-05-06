@@ -21,13 +21,22 @@ func _ready():
 	game_manager.save_spec_tiles()
 	MultiplayerManager.spawn_players()
 	PlayerRef.player_in_transit = false
-	call_deferred("init_player_after_load")
+	if not multiplayer.is_server() and multiplayer.get_unique_id() != 1:
+		print(multiplayer.get_unique_id(), "notifying ready")
+		rpc_id(1, "notify_ready")
+		
+@rpc("any_peer", "reliable")
+func notify_ready():
+	rpc("init_player_after_load")
 
+
+@rpc("any_peer", "reliable", "call_local")
 func init_player_after_load():
 	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
 	get_tree().call_group("Players", "show")
 	for player in get_tree().get_nodes_in_group("Players"):
 		if player.player_id == 1:
+			# offsetting tater po's spawn
 			player.spawn_player(spawn_point - Vector2(150,0))
 		else:
 			player.spawn_player()
