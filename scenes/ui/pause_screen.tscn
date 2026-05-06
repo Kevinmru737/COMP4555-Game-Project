@@ -105,7 +105,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="settings_ui" type="VBoxContainer" parent="PauseMenu" unique_id=907540856]
+[node name="SettingsUI" type="VBoxContainer" parent="PauseMenu" unique_id=907540856]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,12 +117,12 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Settings" type="Sprite2D" parent="PauseMenu/settings_ui" unique_id=511121131]
+[node name="Settings" type="Sprite2D" parent="PauseMenu/SettingsUI" unique_id=511121131]
 position = Vector2(996.55, 543.175)
 scale = Vector2(0.853698, 0.99412036)
 texture = ExtResource("2_213y4")
 
-[node name="ColorRect" type="ColorRect" parent="PauseMenu/settings_ui/Settings" unique_id=144643112]
+[node name="ColorRect" type="ColorRect" parent="PauseMenu/SettingsUI/Settings" unique_id=144643112]
 z_index = -10
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,8 +156,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_kvuet")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5newe")
 text = "Back"
 
-[node name="main_controls" type="Control" parent="PauseMenu" unique_id=1787612481]
-visible = false
+[node name="MainControls" type="Control" parent="PauseMenu" unique_id=1787612481]
 layout_mode = 1
 anchor_left = 0.50200003
 anchor_top = 0.5
@@ -168,7 +167,7 @@ offset_top = -221.0
 offset_right = 306.1599
 offset_bottom = 290.0
 
-[node name="DisplaySettingsButton" type="Button" parent="PauseMenu/main_controls" unique_id=545202177]
+[node name="DisplaySettingsButton" type="Button" parent="PauseMenu/MainControls" unique_id=545202177]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.49500003
@@ -191,7 +190,7 @@ text = "Display
 "
 icon_alignment = 1
 
-[node name="AudioSettingsButton" type="Button" parent="PauseMenu/main_controls" unique_id=526384699]
+[node name="AudioSettingsButton" type="Button" parent="PauseMenu/MainControls" unique_id=526384699]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -212,7 +211,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_kvpfn")
 theme_override_styles/hover = SubResource("StyleBoxTexture_rysoc")
 text = "Audio"
 
-[node name="MainMenuButton" type="Button" parent="PauseMenu/main_controls" unique_id=623413954]
+[node name="MainMenuButton" type="Button" parent="PauseMenu/MainControls" unique_id=623413954]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -233,7 +232,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_dinhu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_264po")
 text = "Main Menu"
 
-[node name="Label" type="Label" parent="PauseMenu/main_controls" unique_id=283078847]
+[node name="Title" type="Label" parent="PauseMenu/MainControls" unique_id=283078847]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.47900003
@@ -253,7 +252,7 @@ text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="audio_controls" type="Control" parent="PauseMenu" unique_id=1329962154]
+[node name="AudioControls" type="Control" parent="PauseMenu" unique_id=1329962154]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -268,7 +267,7 @@ offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="master_slider" type="HSlider" parent="PauseMenu/audio_controls" unique_id=1095016722]
+[node name="MasterSlider" type="HSlider" parent="PauseMenu/AudioControls" unique_id=1095016722]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.49800003
@@ -288,7 +287,7 @@ value = 1.0
 script = ExtResource("8_g5rtw")
 audio_bus_name = "Master"
 
-[node name="music_slider" type="HSlider" parent="PauseMenu/audio_controls" unique_id=673655866]
+[node name="MusicSlider" type="HSlider" parent="PauseMenu/AudioControls" unique_id=673655866]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.49600002
@@ -308,7 +307,7 @@ value = 1.0
 script = ExtResource("8_g5rtw")
 audio_bus_name = "Music"
 
-[node name="sfx_slider" type="HSlider" parent="PauseMenu/audio_controls" unique_id=1658555042]
+[node name="SFXSlider" type="HSlider" parent="PauseMenu/AudioControls" unique_id=1658555042]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -328,7 +327,7 @@ value = 1.0
 script = ExtResource("8_g5rtw")
 audio_bus_name = "SFX"
 
-[node name="Label" type="Label" parent="PauseMenu/audio_controls" unique_id=515093642]
+[node name="Title" type="Label" parent="PauseMenu/AudioControls" unique_id=515093642]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.47900003
@@ -348,7 +347,7 @@ text = "Audio"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="PauseMenu/audio_controls" unique_id=1421782122]
+[node name="MasterLabel" type="Label" parent="PauseMenu/AudioControls" unique_id=1421782122]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252
@@ -367,7 +366,7 @@ theme_override_font_sizes/font_size = 50
 text = "Master"
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="PauseMenu/audio_controls" unique_id=1972849187]
+[node name="MusicLabel" type="Label" parent="PauseMenu/AudioControls" unique_id=1972849187]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252
@@ -386,7 +385,7 @@ theme_override_font_sizes/font_size = 50
 text = "Music"
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="PauseMenu/audio_controls" unique_id=1545351189]
+[node name="SFXLabel" type="Label" parent="PauseMenu/AudioControls" unique_id=1545351189]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252
@@ -405,7 +404,7 @@ theme_override_font_sizes/font_size = 50
 text = "SFX"
 vertical_alignment = 1
 
-[node name="mute_all_button" type="CheckBox" parent="PauseMenu/audio_controls" unique_id=869007790]
+[node name="MuteButton" type="CheckBox" parent="PauseMenu/AudioControls" unique_id=869007790]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -421,7 +420,7 @@ alignment = 1
 icon_alignment = 1
 script = ExtResource("9_gyuvn")
 
-[node name="Label5" type="Label" parent="PauseMenu/audio_controls" unique_id=304209034]
+[node name="MuteLabel" type="Label" parent="PauseMenu/AudioControls" unique_id=304209034]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252
@@ -440,7 +439,8 @@ theme_override_font_sizes/font_size = 50
 text = "Mute All"
 vertical_alignment = 1
 
-[node name="display_controls" type="Control" parent="PauseMenu" unique_id=937905192]
+[node name="DisplayControls" type="Control" parent="PauseMenu" unique_id=937905192]
+visible = false
 anchors_preset = 0
 offset_left = 658.0
 offset_top = 319.0
@@ -448,7 +448,7 @@ offset_right = 1270.0
 offset_bottom = 830.0
 script = ExtResource("10_n1irx")
 
-[node name="Label" type="Label" parent="PauseMenu/display_controls" unique_id=35399499]
+[node name="Title" type="Label" parent="PauseMenu/DisplayControls" unique_id=35399499]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.47900003
@@ -468,7 +468,7 @@ text = "Display"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="PauseMenu/display_controls" unique_id=763585970]
+[node name="WindowLabel" type="Label" parent="PauseMenu/DisplayControls" unique_id=763585970]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.418
@@ -487,7 +487,7 @@ theme_override_font_sizes/font_size = 50
 text = "Window Mode:"
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="PauseMenu/display_controls" unique_id=896780210]
+[node name="ResolutionLabel" type="Label" parent="PauseMenu/DisplayControls" unique_id=896780210]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.41300002
@@ -506,7 +506,7 @@ theme_override_font_sizes/font_size = 50
 text = "Resolution:"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="PauseMenu/display_controls" unique_id=2008801191]
+[node name="WindowOption" type="OptionButton" parent="PauseMenu/DisplayControls" unique_id=2008801191]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.492
@@ -520,14 +520,14 @@ offset_bottom = 39.985992
 theme_override_constants/icon_max_width = 0
 theme_override_fonts/font = ExtResource("3_lubob")
 theme_override_font_sizes/font_size = 35
-selected = 0
+selected = 1
 item_count = 2
 popup/item_0/text = "Fullscreen"
 popup/item_0/id = 0
 popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
-[node name="OptionButton2" type="OptionButton" parent="PauseMenu/display_controls" unique_id=1609909133]
+[node name="ResolutionOption" type="OptionButton" parent="PauseMenu/DisplayControls" unique_id=1609909133]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.492
@@ -540,13 +540,18 @@ offset_right = 257.896
 offset_bottom = 39.822968
 theme_override_fonts/font = ExtResource("3_lubob")
 theme_override_font_sizes/font_size = 35
+selected = 0
 item_count = 4
+popup/item_0/text = "1280 x 720"
 popup/item_0/id = 0
+popup/item_1/text = "1920 x 1080"
 popup/item_1/id = 1
+popup/item_2/text = "2560 x 1440"
 popup/item_2/id = 2
+popup/item_3/text = "3840 x 2160"
 popup/item_3/id = 3
 
-[node name="mute_all_button" type="CheckBox" parent="PauseMenu/display_controls" unique_id=455489028]
+[node name="VSyncButton" type="CheckBox" parent="PauseMenu/DisplayControls" unique_id=455489028]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.45400003
@@ -560,9 +565,8 @@ offset_bottom = -7.800659
 scale = Vector2(2.5, 2.5)
 alignment = 1
 icon_alignment = 1
-script = ExtResource("9_gyuvn")
 
-[node name="Label5" type="Label" parent="PauseMenu/display_controls" unique_id=2108203519]
+[node name="VSyncLabel" type="Label" parent="PauseMenu/DisplayControls" unique_id=2108203519]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252
@@ -582,12 +586,13 @@ text = "VSync?"
 vertical_alignment = 1
 
 [connection signal="pressed" from="PauseMenu/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="PauseMenu/main_controls/DisplaySettingsButton" to="." method="_on_display_settings_button_pressed"]
-[connection signal="pressed" from="PauseMenu/main_controls/AudioSettingsButton" to="." method="_on_audio_settings_button_pressed"]
-[connection signal="pressed" from="PauseMenu/main_controls/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="value_changed" from="PauseMenu/audio_controls/master_slider" to="PauseMenu/audio_controls/master_slider" method="_on_value_changed"]
-[connection signal="value_changed" from="PauseMenu/audio_controls/music_slider" to="PauseMenu/audio_controls/music_slider" method="_on_value_changed"]
-[connection signal="value_changed" from="PauseMenu/audio_controls/sfx_slider" to="PauseMenu/audio_controls/sfx_slider" method="_on_value_changed"]
-[connection signal="toggled" from="PauseMenu/audio_controls/mute_all_button" to="PauseMenu/audio_controls/mute_all_button" method="_on_toggled"]
-[connection signal="item_selected" from="PauseMenu/display_controls/OptionButton" to="PauseMenu/display_controls" method="_on_option_button_item_selected"]
-[connection signal="toggled" from="PauseMenu/display_controls/mute_all_button" to="PauseMenu/display_controls/mute_all_button" method="_on_toggled"]
+[connection signal="pressed" from="PauseMenu/MainControls/DisplaySettingsButton" to="." method="_on_display_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenu/MainControls/AudioSettingsButton" to="." method="_on_audio_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenu/MainControls/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="value_changed" from="PauseMenu/AudioControls/MasterSlider" to="PauseMenu/AudioControls/MasterSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="PauseMenu/AudioControls/MusicSlider" to="PauseMenu/AudioControls/MusicSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="PauseMenu/AudioControls/SFXSlider" to="PauseMenu/AudioControls/SFXSlider" method="_on_value_changed"]
+[connection signal="toggled" from="PauseMenu/AudioControls/MuteButton" to="PauseMenu/AudioControls/MuteButton" method="_on_toggled"]
+[connection signal="item_selected" from="PauseMenu/DisplayControls/WindowOption" to="PauseMenu/DisplayControls" method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="PauseMenu/DisplayControls/ResolutionOption" to="PauseMenu/DisplayControls" method="_on_resolution_option_item_selected"]
+[connection signal="toggled" from="PauseMenu/DisplayControls/VSyncButton" to="PauseMenu/DisplayControls" method="_on_v_sync_button_toggled"]
