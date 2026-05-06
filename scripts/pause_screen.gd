@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-@onready var main_controls: Control = $PauseMenu/main_controls
-@onready var audio_controls: Control = $PauseMenu/audio_controls
-@onready var display_controls: Control = $PauseMenu/display_controls
+@onready var main_controls: Control = $PauseMenu/MainControls
+@onready var audio_controls: Control = $PauseMenu/AudioControls
+@onready var display_controls: Control = $PauseMenu/DisplayControls
 
 # Just to track what "panel" user is on (back button functionality)
 var current_panel =  null
