@@ -7,6 +7,7 @@ const LOCAL_MACHINE_IP = "127.0.0.1"
 var multiplayer_scene1 = preload("res://scenes/multiplayer/players/multiplayer_player1.tscn")
 var multiplayer_scene2 = preload("res://scenes/multiplayer/players/multiplayer_player2.tscn")
 
+signal players_ready
 var _player_spawn_node
 var host_mode_enabled = false
 var multiplayer_mode_enabled = false
@@ -64,7 +65,7 @@ func _add_player_to_game(id: int, character: int):
 	if multiplayer.is_server() and id != multiplayer.get_unique_id():
 		# Send entire player list to the new client
 		rpc_id(id, "send_player_list", PlayerRef.player_ref)
-	_player_spawn_node.add_child(player_to_add, true)
+	_player_spawn_node.add_child(player_to_add)
 	
 # On client after create_client
 func _on_client_connected():
@@ -133,21 +134,19 @@ func send_player_list(players):
 	print("sendingList")
 	PlayerRef.player_ref = players
 	_player_spawn_node = get_tree().get_current_scene().get_node("Players")
-	
 	# Find existing player nodes and add them to group
 	for player_data in players:
 		if _player_spawn_node.has_node(str(player_data["id"])):
 			var player_node = _player_spawn_node.get_node(str(player_data["id"]))
 			player_node.add_to_group("Players")
 	
-	var game_manager = get_tree().get_first_node_in_group("GameManager")
-	game_manager.init_player_after_load()
+	#players_ready.emit()
+	
 	
 @rpc("any_peer", "reliable")
 func _sync_animation(target_anim, player_id):
 	#Player nodes are placed under "Players" and named with their player_id
 	var players_root = get_tree().get_current_scene().get_node("Players")
-	
 	if players_root.has_node(str(player_id)):
 		var player_node = players_root.get_node(str(player_id))
 		var sprite = player_node.get_node("AnimatedSprite2D")

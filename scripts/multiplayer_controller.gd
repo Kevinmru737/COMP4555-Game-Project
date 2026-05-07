@@ -38,10 +38,7 @@ var walk_sound_interval: float = 0.5  # seconds between footsteps
 func _ready():
 	if multiplayer.get_unique_id() == player_id:
 		$Camera2D.make_current()
-	else:
-	 	#disable for titlescreen
-		$Camera2D.enabled = false
-	self.hide()
+		print(player_id, " camera enabled")
 	add_to_group("Players")
 	
 	# Adjusting Tater Po's jump height
@@ -220,12 +217,17 @@ func teleport_player(new_position: Vector2):
 
 func spawn_player(sp: Vector2 = MultiplayerManager.respawn_point):
 	position = sp
-	print("spawning player:", player_id)
-	if multiplayer.get_unique_id() == self.player_id:
-		var player_cam = self.get_node("Camera2D")
-		player_cam.enabled = true
-		player_cam.make_current()
-	
+	print("spawn_player called - my peer ID: ", multiplayer.get_unique_id(), " this player_id: ", player_id)
+	#if multiplayer.get_unique_id() == self.player_id:
+#		print("enabling camera for player: ", player_id)
+	#	var player_cam = get_node_or_null("Camera2D")
+#		if player_cam:
+#			player_cam.enabled = true
+	#		player_cam.make_current()
+#		else:
+	#		push_error("Camera2D not found! Node path: " + str(get_path()))
+	#else:
+#		print("skipping camera - not my player")
 
 func _respawn():
 	position = MultiplayerManager.respawn_point

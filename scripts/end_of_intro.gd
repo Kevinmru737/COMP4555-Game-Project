@@ -9,6 +9,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	#removing fake players
 	var fake_players = get_tree().get_nodes_in_group("FakePlayers")
 	for player in fake_players:
+		print("removing", player)
 		player.queue_free()
 		
 		

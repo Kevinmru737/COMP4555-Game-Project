@@ -93,9 +93,3 @@ func reset_tilemap():
 		tilemap.set_cell(cell, data["source"], data["atlas"])
 	
 	
-	
-func init_player_after_load():
-	pass
-	#await get_tree().process_frame # make a better solution future kevin
-	#MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
-	
