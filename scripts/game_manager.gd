@@ -33,10 +33,8 @@ func _input(_event: InputEvent) -> void:
 	
 func next_scene():
 	var scene_to_load = scene_list[0]
-	if scene_to_load == "res://scenes/levels/level_1.tscn" and multiplayer.is_server():
-		rpc("start_game")
-		print("loading scene", scene_to_load)
 	if scene_to_load:
+		print("loading scene", scene_to_load)
 		MultiplayerManager.request_scene_change(scene_list[0])
 		scene_list.remove_at(0)
 		
@@ -46,6 +44,7 @@ func load_scene(scene_resource):
 		child.queue_free()
 	# Add new scene
 	var new_node = scene_resource.instantiate()
+	print("loading scene as: ", new_node.name, " on peer: ", multiplayer.get_unique_id())
 	scene_container.add_child(new_node)
 	return new_node
 
@@ -56,9 +55,7 @@ func become_host():
 	#testing dialogue fast
 	#MultiplayerManager.request_scene_change("res://scenes/level_1.tscn")
 	
-@rpc("authority", "reliable")
-func start_game():
-	MultiplayerManager.request_scene_change("res://scenes/levels/level_1.tscn")
+
 
 func join_as_player_2(ip):
 	print("Join as player 2 pressed")

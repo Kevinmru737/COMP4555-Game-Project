@@ -15,20 +15,19 @@ func _ready():
 	print("level 1 started")
 	
 	MultiplayerManager.respawn_point = spawn_point
-	#get_tree().create_timer(0.1).timeout.connect(init_player_after_load) #fix race condition
 	
 	switch_backgrounds("Backgrounds", "GruncHouse")
 	game_manager.save_spec_tiles()
 	MultiplayerManager.spawn_players()
 	PlayerRef.player_in_transit = false
 	
-	#MultiplayerManager.players_ready.connect(init_player_after_load)
+	MultiplayerManager.players_ready.connect(func(): rpc("notify_ready"))
 	# 2nd player notifies when all players should be initialized
-	if not multiplayer.is_server() and multiplayer.get_unique_id() != 1:
-		print(multiplayer.get_unique_id(), "notifying ready")
-		print("clients player list", get_tree().get_nodes_in_group("Players"))
-		init_player_after_load()
-		rpc("notify_ready")
+	#if not multiplayer.is_server() and multiplayer.get_unique_id() != 1:
+#		print(multiplayer.get_unique_id(), "notifying ready")
+#		print("clients player list", get_tree().get_nodes_in_group("Players"))
+#		init_player_after_load()
+#		rpc("notify_ready")
 		
 # Call when all players have loaded their scenes		
 @rpc("any_peer", "reliable", "call_local")
@@ -38,7 +37,7 @@ func notify_ready():
 
 func init_player_after_load():
 	SceneTransitionAnimation.fade_out()
-	print("sender is:,", multiplayer.get_remote_sender_id())
+	print("players in group: ", get_tree().get_nodes_in_group("Players"))
 	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
 	
 	for player in get_tree().get_nodes_in_group("Players"):

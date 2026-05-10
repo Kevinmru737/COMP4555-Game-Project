@@ -37,9 +37,11 @@ var walk_sound_interval: float = 0.5  # seconds between footsteps
 
 func _ready():
 	if multiplayer.get_unique_id() == player_id:
+		print($Camera2D)
 		$Camera2D.make_current()
 		print(player_id, " camera enabled")
 	add_to_group("Players")
+	
 	
 	# Adjusting Tater Po's jump height
 	if player_id == 1:
@@ -47,6 +49,9 @@ func _ready():
 		jump_type = "instant"
 	else:
 		jump_type = "slow"
+	
+	MultiplayerManager.player_is_ready(player_id)
+
 	
 
 
@@ -202,7 +207,7 @@ func change_camera_limit(left, top, bottom, right):
 	$Camera2D.limit_top = top
 	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
-	
+	print("current camera",get_viewport().get_camera_2d())
 
 func mark_dead():
 	print("Mark player dead!")

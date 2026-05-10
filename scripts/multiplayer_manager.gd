@@ -28,8 +28,6 @@ func become_host():
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_del_player)
 	
-	# we want to spawn the players separately now
-	#_add_player_to_game(1, 1)
 	PlayerRef.player_ref.append({
 		"id": 1,
 		"character": 1
@@ -98,28 +96,29 @@ func _del_player(id: int):
 	_player_spawn_node.get_node(str(id)).queue_free()
 	
 func request_scene_change(new_scene_path):
-	if multiplayer.is_server():
-		print("Server scene change request")
-		server_receive_scene_request(new_scene_path)
-	else:
-		print("Client scene change request")
-		server_receive_scene_request(new_scene_path)
+	#if multiplayer.is_server():
+	#print("Server scene change request")
+	server_receive_scene_request(new_scene_path)
+	#else:
+	#	print("Client scene change request")
+	#	server_receive_scene_request(new_scene_path)
 		#rpc_id(1, "server_receive_scene_request", new_scene_path)
 
 #@rpc("any_peer", "reliable")
 func server_receive_scene_request(new_scene_path):
-	if multiplayer.is_server():
+	var game_manager = get_tree().get_first_node_in_group("GameManager")
+	game_manager.load_scene(load(new_scene_path))
+	#if multiplayer.is_server():
 		#var sender = multiplayer.get_remote_sender_id()
 		#if sender == 0:
 			# Server local call
-		print("Server scene change requested")
-		var game_manager = get_tree().get_first_node_in_group("GameManager")
-		game_manager.load_scene(load(new_scene_path))
-	else:
-		print("Client scene change requested")
+	#	print("Server scene change requested")
+		
+	#	game_manager.load_scene(load(new_scene_path))
+	#else:
+	#	print("Client scene change requested")
 		# Tell client to load scene
-		var game_manager = get_tree().get_first_node_in_group("GameManager")
-		game_manager.load_scene(load(new_scene_path))
+	#	game_manager.load_scene(load(new_scene_path))
 		#rpc_id(multiplayer.get_remote_sender_id(), "client_load_scene", new_scene_path)
 
 
@@ -140,8 +139,11 @@ func send_player_list(players):
 			var player_node = _player_spawn_node.get_node(str(player_data["id"]))
 			player_node.add_to_group("Players")
 	
-	#players_ready.emit()
-	
+@rpc("any_peer", "reliable", "call_local")
+func player_is_ready(id):
+	print(id, " is ready to be initialized")
+	players_ready.emit()
+
 	
 @rpc("any_peer", "reliable")
 func _sync_animation(target_anim, player_id):

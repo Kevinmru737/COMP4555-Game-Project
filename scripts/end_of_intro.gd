@@ -1,7 +1,11 @@
 extends Area2D
 
+var triggered = false
 
 func _on_body_entered(_body: Node2D) -> void:
+	if triggered:
+		return
+	triggered = true
 	PlayerRef.player_in_transit = true
 	SceneTransitionAnimation.fade_in()
 	await get_tree().create_timer(1).timeout
@@ -9,7 +13,6 @@ func _on_body_entered(_body: Node2D) -> void:
 	#removing fake players
 	var fake_players = get_tree().get_nodes_in_group("FakePlayers")
 	for player in fake_players:
-		print("removing", player)
 		player.queue_free()
 		
 		

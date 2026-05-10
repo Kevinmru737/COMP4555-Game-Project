@@ -761,6 +761,8 @@ bus = &"SFX"
 
 [connection signal="body_entered" from="BGSwitches/BGSwitch" to="." method="_on_bg_switch_body_entered"]
 [connection signal="body_entered" from="BGSwitches/BGSwitch2" to="." method="_on_bg_switch_2_body_entered"]
+[connection signal="body_entered" from="GruncleDandelion/DialogueDetection" to="GruncleDandelion" method="_on_dialogue_detection_body_entered"]
+[connection signal="body_exited" from="GruncleDandelion/DialogueDetection" to="GruncleDandelion" method="_on_dialogue_detection_body_exited"]
 
 [editable path="EndOfLevel"]
 [editable path="GruncleDandelion"]
