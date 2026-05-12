@@ -13,6 +13,7 @@ func _ready():
 func _physics_process(_delta):
 	input_direction = Input.get_axis("move_left", "move_right") 
 	
+	
 func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
 		jump.rpc()

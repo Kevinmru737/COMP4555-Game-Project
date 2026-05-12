@@ -79,7 +79,7 @@ func tile_poison(_tilemap: TileMapLayer, _tile_data: TileData, _tile_pos: Vector
 	in_death = true
 	
 	var tween = create_tween()
-	tween.tween_property(player, "modulate", Color.PURPLE, 0.3)
+	tween.tween_property(player, "modulate", Color.LIME_GREEN, 0.3)
 	for i in range(10):
 		tween.tween_interval(0.05)
 	tween.tween_property(player, "modulate", Color.TRANSPARENT, 0.4)

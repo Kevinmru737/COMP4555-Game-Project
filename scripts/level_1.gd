@@ -36,7 +36,7 @@ func notify_ready():
 
 
 func init_player_after_load():
-	SceneTransitionAnimation.fade_out()
+	
 	print("players in group: ", get_tree().get_nodes_in_group("Players"))
 	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
 	
@@ -46,6 +46,8 @@ func init_player_after_load():
 			player.spawn_player(spawn_point - Vector2(150,0))
 		else:
 			player.spawn_player()
+			
+	SceneTransitionAnimation.fade_out()
 
 func switch_backgrounds(old_bg: String, new_bg: String):
 	print("switching backgrounds:", old_bg, " to ", new_bg)

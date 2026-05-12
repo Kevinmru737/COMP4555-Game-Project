@@ -74,7 +74,6 @@ func _on_client_connected():
 	
 func _on_peer_connected(id: int):
 	print("Peer Connected")
-	#_add_player_to_game(id, 2)
 	
 	PlayerRef.player_ref.append({
 		"id": id,

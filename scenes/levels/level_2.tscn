@@ -1066,15 +1066,10 @@ flip_h = true
 position = Vector2(1944, -229)
 
 [node name="TaterSP" parent="Gingy" index="6" unique_id=1202326642]
-[node name="TaterSP" parent="Gingy" index="6" unique_id=1202326642]
 position = Vector2(-300, -40)
 
 [node name="DellaSP" parent="Gingy" index="7" unique_id=430269008]
-[node name="DellaSP" parent="Gingy" index="7" unique_id=430269008]
 position = Vector2(178, -40)
-
-[node name="TextAdvance" parent="Gingy/DialogueUI" parent_id_path=PackedInt32Array(1563183714, 1601450819) index="1" unique_id=2116152355]
-bus = &"SFX"
 
 [node name="VoicePlayer" type="AudioStreamPlayer" parent="Gingy/DialogueUI" parent_id_path=PackedInt32Array(1563183714, 1601450819) index="3" unique_id=611802088]
 
@@ -1171,14 +1166,10 @@ z_index = 5
 position = Vector2(1347, 1287)
 
 [node name="Camera2D" parent="Activators/Garlic1" index="1" unique_id=752715366]
-[node name="Camera2D" parent="Activators/Garlic1" index="1" unique_id=752715366]
 limit_left = -2000
 limit_top = 460
 limit_right = 6000
 limit_bottom = 1540
-
-[node name="TextAdvance" parent="Activators/Garlic1/DialogueUI" parent_id_path=PackedInt32Array(1129482945, 872950260) index="1" unique_id=1810619468]
-bus = &"SFX"
 
 [node name="CameraSwitcher" parent="Activators/Garlic1" unique_id=614305652 instance=ExtResource("37_srjk8")]
 

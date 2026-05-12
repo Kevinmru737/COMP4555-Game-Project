@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const MOVEMENT_SPEED = 300.0
 var jump_velocity = -1000.0
-var DEFAULT_GRAVITY =  2 * ProjectSettings.get_setting("physics/2d/default_gravity")
+var DEFAULT_GRAVITY = 2 * ProjectSettings.get_setting("physics/2d/default_gravity")
 var gravity = DEFAULT_GRAVITY
 
 @onready var animated_sprite = $AnimatedSprite2D
@@ -17,12 +17,13 @@ var input_allowed = true
 
 # Jumping logic
 var is_jumping = false
-var can_move_during_jump = false
+#var can_move_during_jump = false
 var jump_velocity_applied = false
 var prev_y = 0
 var target_anim = ""
 var last_anim = ""
 var jump_type = "delay" #default is nothing which is the previous jump
+var char_dir = 0
 
 #walking variables
 var walking_sound_cooldown: float = 0.0
@@ -39,7 +40,6 @@ func _ready():
 	if multiplayer.get_unique_id() == player_id:
 		print($Camera2D)
 		$Camera2D.make_current()
-		print(player_id, " camera enabled")
 	add_to_group("Players")
 	
 	
@@ -48,7 +48,7 @@ func _ready():
 		jump_velocity = -900
 		jump_type = "instant"
 	else:
-		jump_type = "slow"
+		jump_type = "instant"
 	
 	MultiplayerManager.player_is_ready(player_id)
 
@@ -77,6 +77,7 @@ func _play_walking_sound():
 func _physics_process(delta):
 	_is_on_floor = is_on_floor()
 	prev_y = velocity.y
+	
 
 	if is_multiplayer_authority():
 		_movement(delta)
@@ -115,29 +116,36 @@ func _apply_walk_anim():
 
 func _apply_jump_anim(prev_velocity):
 	var anim_suffix = "right" if direction >= 0 else "left"
+	
+	if direction == 0:
+		if char_dir < 0:
+			anim_suffix = "left"
+		if char_dir > 0:
+			anim_suffix = "right"
+	# direction is the current pressed action
+
+		
+	
 	var curr_anim = animated_sprite.animation
 
 	# Pre-jump
 	if _is_on_floor and curr_anim != "jump_" + anim_suffix + "_land" and is_jumping and input_allowed:
-		can_move_during_jump = false
-		if jump_type == "slow":
-			return "jump_" + anim_suffix + "_pre1"
-		else:
-			return "jump_" + anim_suffix + "_up"
+		#can_move_during_jump = false
+		return "jump_" + anim_suffix + "_up"
 
 	# Rising
 	elif velocity.y < 0 and not _is_on_floor:
-		can_move_during_jump = true
+		#can_move_during_jump = true
 		return "jump_" + anim_suffix + "_up"
 
 	# Falling
 	elif velocity.y > 0 and not _is_on_floor:
-		can_move_during_jump = true
+		#can_move_during_jump = true
 		return "jump_" + anim_suffix + "_down"
 
 	# Landing
 	elif prev_velocity > 0 and is_jumping:
-		can_move_during_jump = false
+		#can_move_during_jump = false
 		return "jump_" + anim_suffix + "_land_instant"
 
 	return curr_anim  # fallback, keep current animation
@@ -146,6 +154,10 @@ func _movement(delta):
 	if input_allowed:
 		direction = %InputSynchronizer.input_direction
 
+	# char_dir is used to keep the correct left/right animation if controls are let go
+	if direction != 0:
+		char_dir = direction
+	
 	# Start jump
 	if do_jump and _is_on_floor and not is_jumping:
 		do_jump = false
@@ -161,11 +173,11 @@ func _movement(delta):
 	if is_jumping:
 		_process_jump(delta)
 
-	if can_move_during_jump or not is_jumping:
-		if direction != 0:
-			velocity.x = direction * MOVEMENT_SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, MOVEMENT_SPEED)
+	#if not is_jumping:
+	if direction != 0:
+		velocity.x = direction * MOVEMENT_SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, MOVEMENT_SPEED)
 	
 	# to determine if walking sounds should be played
 	if _is_on_floor and velocity.x != 0:
@@ -207,7 +219,6 @@ func change_camera_limit(left, top, bottom, right):
 	$Camera2D.limit_top = top
 	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
-	print("current camera",get_viewport().get_camera_2d())
 
 func mark_dead():
 	print("Mark player dead!")
@@ -223,16 +234,6 @@ func teleport_player(new_position: Vector2):
 func spawn_player(sp: Vector2 = MultiplayerManager.respawn_point):
 	position = sp
 	print("spawn_player called - my peer ID: ", multiplayer.get_unique_id(), " this player_id: ", player_id)
-	#if multiplayer.get_unique_id() == self.player_id:
-#		print("enabling camera for player: ", player_id)
-	#	var player_cam = get_node_or_null("Camera2D")
-#		if player_cam:
-#			player_cam.enabled = true
-	#		player_cam.make_current()
-#		else:
-	#		push_error("Camera2D not found! Node path: " + str(get_path()))
-	#else:
-#		print("skipping camera - not my player")
 
 func _respawn():
 	position = MultiplayerManager.respawn_point
