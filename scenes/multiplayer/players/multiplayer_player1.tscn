@@ -32,21 +32,18 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath(".:prev_y")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath(".:input_allowed")
+properties/8/path = NodePath(".:target_anim")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath(".:target_anim")
+properties/9/path = NodePath(".:last_anim")
 properties/9/spawn = true
 properties/9/replication_mode = 1
-properties/10/path = NodePath(".:last_anim")
+properties/10/path = NodePath(".:alive")
 properties/10/spawn = true
 properties/10/replication_mode = 1
-properties/11/path = NodePath(".:alive")
+properties/11/path = NodePath(".:is_walking")
 properties/11/spawn = true
 properties/11/replication_mode = 1
-properties/12/path = NodePath(".:is_walking")
-properties/12/spawn = true
-properties/12/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jlq18"]
 properties/0/path = NodePath("InputSynchronizer:input_direction")
@@ -309,7 +306,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_left_land1",
-"speed": 9.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -471,7 +468,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_right_land1",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -602,9 +599,7 @@ script = ExtResource("2_ug2so")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=67178293]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_xk3hh")
-animation = &"jump_left_land1"
-frame = 3
-frame_progress = 1.0
+animation = &"jump_right_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=253710457]
 position = Vector2(0, 2.625)

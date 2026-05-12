@@ -29,21 +29,18 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath(".:is_jumping")
 properties/6/spawn = true
 properties/6/replication_mode = 1
-properties/7/path = NodePath(".:input_allowed")
+properties/7/path = NodePath(".:target_anim")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath(".:target_anim")
+properties/8/path = NodePath(".:last_anim")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath(".:last_anim")
+properties/9/path = NodePath(".:alive")
 properties/9/spawn = true
 properties/9/replication_mode = 1
-properties/10/path = NodePath(".:alive")
+properties/10/path = NodePath(".:is_walking")
 properties/10/spawn = true
 properties/10/replication_mode = 1
-properties/11/path = NodePath(".:is_walking")
-properties/11/spawn = true
-properties/11/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jlq18"]
 properties/0/path = NodePath("InputSynchronizer:input_direction")

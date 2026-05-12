@@ -13,10 +13,10 @@ var direction = 1
 var do_jump = false
 var _is_on_floor = true
 var alive = true
-var input_allowed = true
 
 # Jumping logic
 var is_jumping = false
+var is_landing = false
 #var can_move_during_jump = false
 var jump_velocity_applied = false
 var prev_y = 0
@@ -41,6 +41,8 @@ func _ready():
 		print($Camera2D)
 		$Camera2D.make_current()
 	add_to_group("Players")
+	
+	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
 	
 	# Adjusting Tater Po's jump height
@@ -87,11 +89,16 @@ func _physics_process(delta):
 		if not alive && is_on_floor():
 			_set_alive()
 	
+func _on_animation_finished():
+	var curr = animated_sprite.animation
+	if curr in ["jump_right_land1", "jump_left_land1"]:
+		is_landing = false
+		
 func _anim_handler(prev_y_vel):
 	var new_anim = ""
 
 	# Walk animation
-	if _is_on_floor and not is_jumping:
+	if _is_on_floor and not is_jumping and not is_landing:
 		new_anim = _apply_walk_anim()
 	else:
 		new_anim = _apply_jump_anim(prev_y_vel)
@@ -115,48 +122,54 @@ func _apply_walk_anim():
 		return "idle"
 
 func _apply_jump_anim(prev_velocity):
-	var anim_suffix = "right" if direction >= 0 else "left"
+	var anim_suffix = "right" if direction > 0 else "left"
 	
 	if direction == 0:
 		if char_dir < 0:
 			anim_suffix = "left"
 		if char_dir > 0:
 			anim_suffix = "right"
-	# direction is the current pressed action
+	# direction is the current pressed action, char_dir is the last pressed direction
 
 		
 	
 	var curr_anim = animated_sprite.animation
 
 	# Pre-jump
-	if _is_on_floor and curr_anim != "jump_" + anim_suffix + "_land" and is_jumping and input_allowed:
-		#can_move_during_jump = false
+	if _is_on_floor and curr_anim != "jump_" + anim_suffix + "_land1" and is_jumping:
 		return "jump_" + anim_suffix + "_up"
 
 	# Rising
-	elif velocity.y < 0 and not _is_on_floor:
-		#can_move_during_jump = true
+	if velocity.y < 0 and not _is_on_floor and is_jumping:
 		return "jump_" + anim_suffix + "_up"
 
 	# Falling
-	elif velocity.y > 0 and not _is_on_floor:
-		#can_move_during_jump = true
+	if velocity.y > 0 and not _is_on_floor:
 		return "jump_" + anim_suffix + "_down"
 
 	# Landing
-	elif prev_velocity > 0 and is_jumping:
-		#can_move_during_jump = false
-		return "jump_" + anim_suffix + "_land_instant"
+	if prev_velocity > 0 and is_jumping:
+		print("landing")
+		is_landing = true
+		is_jumping = false
+		return "jump_" + anim_suffix + "_land1"
+		
+	# Interruptable landing animation
+	elif is_landing:
+		return "jump_" + anim_suffix + "_land1"
+	#elif direction != 0:
+	#	is_jumping = false
 
 	return curr_anim  # fallback, keep current animation
 
 func _movement(delta):
-	if input_allowed:
-		direction = %InputSynchronizer.input_direction
+	direction = %InputSynchronizer.input_direction
 
 	# char_dir is used to keep the correct left/right animation if controls are let go
 	if direction != 0:
 		char_dir = direction
+		if _is_on_floor and is_landing:
+			is_landing = false
 	
 	# Start jump
 	if do_jump and _is_on_floor and not is_jumping:
@@ -165,12 +178,8 @@ func _movement(delta):
 		jump_velocity_applied = false
 		velocity.x = 0
 
-	# Stop horizontal movement on landing
-	if _is_on_floor and is_jumping:
-		velocity.x = 0
-
 	# Jump processing
-	if is_jumping:
+	if is_jumping or is_landing:
 		_process_jump(delta)
 
 	#if not is_jumping:
@@ -190,10 +199,13 @@ func _movement(delta):
 		velocity.y += gravity * delta
 
 	move_and_slide()
+	
 
 func _process_jump(_delta):
 	var curr_anim = animated_sprite.animation
 	var curr_frame = animated_sprite.frame
+	
+
 
 	# Apply jump velocity during pre-jump
 	if curr_anim in ["jump_right_pre1", "jump_left_pre1"]:
@@ -205,14 +217,14 @@ func _process_jump(_delta):
 			velocity.y = jump_velocity
 			jump_velocity_applied = true
 	# Landing completed
-	elif curr_anim in ["jump_right_land_instant", "jump_left_land_instant"]:
+	if curr_anim in ["jump_right_land1", "jump_left_land1"]:
+		is_jumping = false
 		# Only set to false once at the start
-		#if curr_frame == 0:
-		#	input_allowed = false
+		if curr_frame == 3 and _is_on_floor:
+			print("landing finished")
+			is_landing = false
 		# Re-enable input when animation stops playing
 		#if not animated_sprite.is_playing():
-			is_jumping = false
-			input_allowed = true
 			
 func change_camera_limit(left, top, bottom, right):
 	$Camera2D.limit_left = left
