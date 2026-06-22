@@ -678,13 +678,13 @@ position = Vector2(9632, -367)
 z_index = 5
 position = Vector2(1288, -295)
 
-[node name="Camera2D" parent="GruncleDandelion" index="4" unique_id=790359584]
+[node name="Camera2D" parent="GruncleDandelion" index="3" unique_id=790359584]
 limit_bottom = 0
 
-[node name="TaterSP" parent="GruncleDandelion" index="5" unique_id=403604768]
+[node name="TaterSP" parent="GruncleDandelion" index="4" unique_id=403604768]
 position = Vector2(-332, 487)
 
-[node name="DellaSP" parent="GruncleDandelion" index="6" unique_id=1244615178]
+[node name="DellaSP" parent="GruncleDandelion" index="5" unique_id=1244615178]
 position = Vector2(128, 487)
 
 [node name="KillZone" parent="." unique_id=2106141175 instance=ExtResource("15_6dial")]

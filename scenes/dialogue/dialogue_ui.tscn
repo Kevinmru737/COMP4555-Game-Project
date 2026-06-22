@@ -9,8 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://bpomfd6qj2b0a" path="res://sound/effects/Text Box.wav" id="7_x1ric"]
 [ext_resource type="PackedScene" uid="uid://bvxont8bhjyjn" path="res://scenes/ui/camera_switcher.tscn" id="8_ecd83"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6q285"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_14ow7"]
 atlas = ExtResource("3_wlc0t")
 region = Rect2(74, 67, 98, 160)
@@ -1088,44 +1086,39 @@ offset_right = 960.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="Anchor" unique_id=2039050218]
-layout_mode = 1
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6q285")
-
-[node name="NameBox" type="Label" parent="Anchor" unique_id=339211200]
-z_index = 1
-layout_mode = 0
-offset_left = 714.0
-offset_top = 820.0
-offset_right = 900.0
-offset_bottom = 843.0
-theme_override_colors/font_color = Color(0.4627451, 0.28235295, 0.16470589, 1)
-theme_override_fonts/font = ExtResource("2_wlc0t")
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="Anchor" unique_id=363473140]
-texture = ExtResource("1_dwk8m")
-centered = false
-
 [node name="TaterAnim" type="AnimatedSprite2D" parent="Anchor" unique_id=1889157276]
+visible = false
 position = Vector2(1131, 758)
 sprite_frames = SubResource("SpriteFrames_rn5aw")
 animation = &"idle"
 
 [node name="DellaAnim" type="AnimatedSprite2D" parent="Anchor" unique_id=1176322921]
+visible = false
 position = Vector2(1296, 735)
 sprite_frames = SubResource("SpriteFrames_8oo06")
 animation = &"idle"
 
-[node name="DialogBox" type="RichTextLabel" parent="Anchor" unique_id=346832888]
-layout_mode = 0
-offset_left = 655.0
-offset_top = 873.0
-offset_right = 1416.0
-offset_bottom = 973.0
+[node name="Sprite2D" type="Sprite2D" parent="Anchor" unique_id=363473140]
+position = Vector2(3, -608)
+texture = ExtResource("1_dwk8m")
+centered = false
+
+[node name="NameBox" type="Label" parent="Anchor/Sprite2D" unique_id=339211200]
+z_index = 1
+offset_left = 715.0
+offset_top = 822.0
+offset_right = 908.0
+offset_bottom = 845.0
+theme_override_colors/font_color = Color(0.4627451, 0.28235295, 0.16470589, 1)
+theme_override_fonts/font = ExtResource("2_wlc0t")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="DialogBox" type="RichTextLabel" parent="Anchor/Sprite2D" unique_id=346832888]
+offset_left = 658.0
+offset_top = 867.0
+offset_right = 1417.0
+offset_bottom = 976.0
 theme_override_colors/default_color = Color(0.4627451, 0.28235295, 0.16470589, 1)
 theme_override_fonts/normal_font = ExtResource("2_wlc0t")
 theme_override_font_sizes/normal_font_size = 24
