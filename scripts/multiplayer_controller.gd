@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+# Physics Variables
 const MOVEMENT_SPEED = 300.0
 var jump_velocity = -1000.0
 var DEFAULT_GRAVITY = 2 * ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -30,6 +32,8 @@ var walking_sound_cooldown: float = 0.0
 var is_walking = false
 var walk_sound_interval: float = 0.5  # seconds between footsteps
 
+# Player State Variables
+var movement_allowed = true
 
 @export var player_id := 1:
 	set(id):
@@ -50,6 +54,7 @@ func _ready():
 		jump_velocity = -900
 		jump_type = "instant"
 	else:
+		# If we add more jump types this may be relevant, but for now its useless
 		jump_type = "instant"
 	
 	MultiplayerManager.player_is_ready(player_id)
@@ -58,6 +63,10 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+	# Make sure we don't try to process an player who has not yet connected
+	if not multiplayer.get_unique_id():
+		return
+		
 	# Decrease cooldown timer
 	if walking_sound_cooldown > 0:
 		walking_sound_cooldown -= delta
@@ -245,12 +254,10 @@ func teleport_player(new_position: Vector2):
 
 func spawn_player(sp: Vector2 = MultiplayerManager.respawn_point):
 	position = sp
-	print("spawn_player called - my peer ID: ", multiplayer.get_unique_id(), " this player_id: ", player_id)
 
 func _respawn():
 	position = MultiplayerManager.respawn_point
 	gravity = DEFAULT_GRAVITY
-	print("respawned at:", position)
 	$CollisionShape2D.set_deferred("disabled", false)
 	SceneTransitionAnimation.fade_out()
 	

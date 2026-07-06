@@ -30,7 +30,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bm2je"]
 size = Vector2(552, 334)
 
-[node name="GruncleDandelion" type="Node2D" unique_id=2024279014]
+[node name="NPCHandlerDefault" type="Node2D" unique_id=2024279014]
 script = ExtResource("2_axagq")
 
 [node name="AnimatableBody2D" type="AnimatedSprite2D" parent="." unique_id=1414213050]

@@ -80,7 +80,8 @@ func _on_peer_connected(id: int):
 		"character": 2
 	})
 
-func spawn_players() -> void:
+# creating the player instances and adding them to the game scene
+func create_players() -> void:
 	for player in PlayerRef.player_ref:
 		if multiplayer.get_unique_id() == 1 and player["id"] == 1:
 			_add_player_to_game(1,1)

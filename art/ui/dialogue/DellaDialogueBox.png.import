@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ee5ocnrnliuc"
-path="res://.godot/imported/NickDialogue.png-01cbe70c2aca25e86fd2809cee0367f0.ctex"
+uid="uid://bfunenyabxvh4"
+path="res://.godot/imported/DellaDialogueBox.png-413d9755f728402b01b36d544b2629e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/dialogue/NickDialogue.png"
-dest_files=["res://.godot/imported/NickDialogue.png-01cbe70c2aca25e86fd2809cee0367f0.ctex"]
+source_file="res://art/ui/dialogue/DellaDialogueBox.png"
+dest_files=["res://.godot/imported/DellaDialogueBox.png-413d9755f728402b01b36d544b2629e9.ctex"]
 
 [params]
 

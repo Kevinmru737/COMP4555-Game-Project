@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0m1ja814lece"
-path="res://.godot/imported/Dialogue_Gruncle_intro.png-c3e48ec05530764d0e353f0fd15dfa4e.ctex"
+uid="uid://ee5ocnrnliuc"
+path="res://.godot/imported/NickDialogueBox.png-2df3d51b34e869d6c958b591e3c01daf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/dialogue/Dialogue_Gruncle_intro.png"
-dest_files=["res://.godot/imported/Dialogue_Gruncle_intro.png-c3e48ec05530764d0e353f0fd15dfa4e.ctex"]
+source_file="res://art/ui/dialogue/NickDialogueBox.png"
+dest_files=["res://.godot/imported/NickDialogueBox.png-2df3d51b34e869d6c958b591e3c01daf.ctex"]
 
 [params]
 

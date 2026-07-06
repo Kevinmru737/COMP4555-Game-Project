@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://ceq8opaqdcejl" path="res://scripts/nick_shroom.gd" id="3_mt7u2"]
 [ext_resource type="Script" uid="uid://dw7267w27m6it" path="res://scripts/dialogue/dialogue_nick.gd" id="4_5v6ba"]
 [ext_resource type="FontFile" uid="uid://cgbh6ctohexex" path="res://art/ui/fonts/BitDaylong11_sRB_.TTF" id="4_rqnpt"]
-[ext_resource type="Texture2D" uid="uid://ee5ocnrnliuc" path="res://art/ui/dialogue/NickDialogue.png" id="5_5v6ba"]
+[ext_resource type="Texture2D" uid="uid://ee5ocnrnliuc" path="res://art/ui/dialogue/NickDialogueBox.png" id="5_5v6ba"]
 [ext_resource type="Texture2D" uid="uid://c2aehgi3ppu3i" path="res://art/characters/Tater_Po_Anim.png" id="6_0wv2a"]
 [ext_resource type="Texture2D" uid="uid://incclpjolruq" path="res://art/characters/DELLA_DAISY_ANIM.png" id="7_fheky"]
 [ext_resource type="Texture2D" uid="uid://bi4wnc4mixwyj" path="res://art/characters/Della_Anim.png" id="8_0f5sg"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqcojbvppmaiv"
-path="res://.godot/imported/GingerDialogue.png-a4a23313afb5ea0b2cb7251a662e5a5c.ctex"
+uid="uid://cxkjkcmla26vr"
+path="res://.godot/imported/RicDialogueBox.png-060b16f33a7bcf1618e612aad65a3a90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/dialogue/GingerDialogue.png"
-dest_files=["res://.godot/imported/GingerDialogue.png-a4a23313afb5ea0b2cb7251a662e5a5c.ctex"]
+source_file="res://art/ui/dialogue/RicDialogueBox.png"
+dest_files=["res://.godot/imported/RicDialogueBox.png-060b16f33a7bcf1618e612aad65a3a90.ctex"]
 
 [params]
 

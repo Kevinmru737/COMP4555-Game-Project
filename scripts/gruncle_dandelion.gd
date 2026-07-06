@@ -1,24 +1,23 @@
 extends Node2D
-@onready var sprite = $AnimatableBody2D
-@onready var camera_switcher = $"../CameraSwitcher"
+@onready var camera_switcher = $"DialogueUI/CameraSwitcher"
 @onready var dialogue = $DialogueUI
 
 # Dialogue Variables
 var players_in_area = {}  # Track which players are in the area
 var target_dialogue = "fall_gruncle_intro.json" # as named in dialogue_text folder
 
-func _ready():
-	sprite.play("idle")
 
 func _process(_delta: float) -> void:
 	if not dialogue.dialogue_in_prog and players_in_area.size() > 0:
 		if Input.is_action_just_pressed("interact_object"):
 			dialogue.initiate_dialogue.rpc(target_dialogue)
+			
 	
 	if dialogue.dialogue_in_prog:
 		$InteractHint.hide()
 
 func _on_dialogue_detection_body_entered(body: Node2D) -> void:
+	print("npc range entered - not a player tho")
 	if body.has_method("spawn_player"):
 		print("npc range entered")
 		$InteractHint.show()

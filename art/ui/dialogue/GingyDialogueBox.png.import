@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxkjkcmla26vr"
-path="res://.godot/imported/GarlicDialogue.png-408b8080fa20ee2458989708b5c48023.ctex"
+uid="uid://bqcojbvppmaiv"
+path="res://.godot/imported/GingyDialogueBox.png-d19a19f93933ccbff4b22582cd829a3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/dialogue/GarlicDialogue.png"
-dest_files=["res://.godot/imported/GarlicDialogue.png-408b8080fa20ee2458989708b5c48023.ctex"]
+source_file="res://art/ui/dialogue/GingyDialogueBox.png"
+dest_files=["res://.godot/imported/GingyDialogueBox.png-d19a19f93933ccbff4b22582cd829a3f.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mhch0twbd5ou"]
 
-[ext_resource type="Texture2D" uid="uid://b4ts6tn7w5b8l" path="res://art/ui/dialogue/Fall_Transition1.png" id="1_dwk8m"]
+[ext_resource type="Texture2D" uid="uid://b4ts6tn7w5b8l" path="res://art/ui/dialogue/GruncleDialogueBox.png" id="1_dwk8m"]
 [ext_resource type="Script" uid="uid://bh2uu5xp8x8m0" path="res://scripts/dialogue/dialogue_ui.gd" id="1_imsod"]
 [ext_resource type="FontFile" uid="uid://cgbh6ctohexex" path="res://art/ui/fonts/BitDaylong11_sRB_.TTF" id="2_wlc0t"]
 [ext_resource type="Texture2D" uid="uid://c2aehgi3ppu3i" path="res://art/characters/Tater_Po_Anim.png" id="3_wlc0t"]

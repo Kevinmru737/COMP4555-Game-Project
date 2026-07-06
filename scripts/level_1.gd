@@ -18,7 +18,7 @@ func _ready():
 	
 	switch_backgrounds("Backgrounds", "GruncHouse")
 	game_manager.save_spec_tiles()
-	MultiplayerManager.spawn_players()
+	MultiplayerManager.create_players()
 	PlayerRef.player_in_transit = false
 	
 	MultiplayerManager.players_ready.connect(func(): rpc("notify_ready"))

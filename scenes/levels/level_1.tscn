@@ -21,13 +21,15 @@
 [ext_resource type="Script" uid="uid://byl8vclnudjk5" path="res://scripts/grunc_house.gd" id="12_d5akn"]
 [ext_resource type="Texture2D" uid="uid://cksiwvkl2lmv2" path="res://art/environment/fall_level/Fall_BG_house_2.png" id="12_tr1x6"]
 [ext_resource type="Texture2D" uid="uid://vcfk2si05des" path="res://art/environment/fall_level/Fall_BG_5_variation_1.png" id="12_x2fux"]
-[ext_resource type="PackedScene" uid="uid://dai0cp3labye2" path="res://scenes/characters/gruncle_dandelion.tscn" id="13_2aecg"]
 [ext_resource type="PackedScene" uid="uid://dgsomjatjlw3e" path="res://scenes/end_of_level.tscn" id="13_7gny6"]
 [ext_resource type="Texture2D" uid="uid://crmgj8n3eb3ff" path="res://art/environment/fall_level/Fall_BG_house_3.png" id="13_d5akn"]
 [ext_resource type="Texture2D" uid="uid://b1ttkhijic0vx" path="res://art/environment/fall_level/Fall_BG_house_4.png" id="14_wbtxt"]
 [ext_resource type="PackedScene" uid="uid://qh71ikdbvkor" path="res://scenes/KillZone.tscn" id="15_6dial"]
 [ext_resource type="PackedScene" uid="uid://jlvx2tk8j4jp" path="res://scenes/props/log.tscn" id="24_wbtxt"]
+[ext_resource type="Script" uid="uid://dl3tsgudhnavs" path="res://scripts/dialogue/fall_gruncle_intro_npc.gd" id="25_4yk0h"]
+[ext_resource type="Texture2D" uid="uid://biejmbvqfj2wx" path="res://art/characters/GRUNCLE_DANDELION_STILL_ANIM.png" id="26_vmrhw"]
 [ext_resource type="PackedScene" uid="uid://1tq10v2x7yk5" path="res://scenes/characters/nick_shroom.tscn" id="27_mmfjm"]
+[ext_resource type="PackedScene" uid="uid://c4kkbyrexfery" path="res://scenes/characters/npc_handler_default.tscn" id="27_vmrhw"]
 [ext_resource type="PackedScene" uid="uid://cbnyi3sjtynfu" path="res://scenes/player_sp_change.tscn" id="28_k8ld0"]
 [ext_resource type="PackedScene" uid="uid://bvxont8bhjyjn" path="res://scenes/ui/camera_switcher.tscn" id="28_mbb35"]
 
@@ -466,6 +468,28 @@ size = Vector2(20, 256)
 a = Vector2(13.5, -57)
 b = Vector2(14.5, 447)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6y56"]
+atlas = ExtResource("26_vmrhw")
+region = Rect2(51, 783, 170, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fkuv"]
+atlas = ExtResource("26_vmrhw")
+region = Rect2(210, 783, 170, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cfnpk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6y56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fkuv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
 [node name="Level1" type="Node" unique_id=1528382451]
 script = ExtResource("1_fcfvj")
 
@@ -674,18 +698,20 @@ position = Vector2(2418, 87)
 z_index = 5
 position = Vector2(9632, -367)
 
-[node name="GruncleDandelion" parent="." unique_id=1619797652 instance=ExtResource("13_2aecg")]
+[node name="FallGruncleIntroNPC" type="Node2D" parent="." unique_id=133431658]
+position = Vector2(1352, -289)
+script = ExtResource("25_4yk0h")
+
+[node name="AnimatableBody2D" type="AnimatedSprite2D" parent="FallGruncleIntroNPC" unique_id=1758720167]
 z_index = 5
-position = Vector2(1288, -295)
+sprite_frames = SubResource("SpriteFrames_cfnpk")
+animation = &"idle"
 
-[node name="Camera2D" parent="GruncleDandelion" index="3" unique_id=790359584]
+[node name="NPCHandlerDefault" parent="FallGruncleIntroNPC" unique_id=2024279014 instance=ExtResource("27_vmrhw")]
+
+[node name="NPCCamera" parent="FallGruncleIntroNPC/NPCHandlerDefault" index="2" unique_id=790359584]
+limit_top = -1080
 limit_bottom = 0
-
-[node name="TaterSP" parent="GruncleDandelion" index="4" unique_id=403604768]
-position = Vector2(-332, 487)
-
-[node name="DellaSP" parent="GruncleDandelion" index="5" unique_id=1244615178]
-position = Vector2(128, 487)
 
 [node name="KillZone" parent="." unique_id=2106141175 instance=ExtResource("15_6dial")]
 
@@ -756,12 +782,10 @@ bus = &"SFX"
 
 [connection signal="body_entered" from="BGSwitches/BGSwitch" to="." method="_on_bg_switch_body_entered"]
 [connection signal="body_entered" from="BGSwitches/BGSwitch2" to="." method="_on_bg_switch_2_body_entered"]
-[connection signal="body_entered" from="GruncleDandelion/DialogueDetection" to="GruncleDandelion" method="_on_dialogue_detection_body_entered"]
-[connection signal="body_exited" from="GruncleDandelion/DialogueDetection" to="GruncleDandelion" method="_on_dialogue_detection_body_exited"]
 
 [editable path="EndOfLevel"]
-[editable path="GruncleDandelion"]
-[editable path="GruncleDandelion/DialogueUI"]
+[editable path="FallGruncleIntroNPC/NPCHandlerDefault"]
+[editable path="FallGruncleIntroNPC/NPCHandlerDefault/DialogueUI"]
 [editable path="FallBgTilesLog1"]
 [editable path="PlayerSPChanges/PlayerSPChange1"]
 [editable path="PlayerSPChanges/PlayerSPChange2"]

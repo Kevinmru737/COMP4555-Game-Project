@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkh0d40rgk044"]
+[gd_scene format=3 uid="uid://bkh0d40rgk044"]
 
-[ext_resource type="Texture2D" uid="uid://b4ts6tn7w5b8l" path="res://art/ui/dialogue/Fall_Transition1.png" id="1_715sx"]
-[ext_resource type="Theme" uid="uid://cwrcxua3jotne" path="res://dialogue/themes/dialogue_layer.tres" id="1_ftchp"]
+[ext_resource type="Texture2D" uid="uid://b4ts6tn7w5b8l" path="res://art/ui/dialogue/GruncleDialogueBox.png" id="1_715sx"]
+[ext_resource type="Theme" path="res://dialogue/themes/dialogue_layer.tres" id="1_ftchp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_715sx"]
 

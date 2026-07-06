@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4ts6tn7w5b8l"
-path="res://.godot/imported/Fall_Transition1.png-668b20d6be5a3257973c1547daf1e4da.ctex"
+path="res://.godot/imported/GruncleDialogueBox.png-e862b45485e5bcb25dca16f528e2c90e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/dialogue/Fall_Transition1.png"
-dest_files=["res://.godot/imported/Fall_Transition1.png-668b20d6be5a3257973c1547daf1e4da.ctex"]
+source_file="res://art/ui/dialogue/GruncleDialogueBox.png"
+dest_files=["res://.godot/imported/GruncleDialogueBox.png-e862b45485e5bcb25dca16f528e2c90e.ctex"]
 
 [params]
 
