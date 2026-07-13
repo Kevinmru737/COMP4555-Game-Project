@@ -32,20 +32,23 @@ func _ready():
 # Call when all players have loaded their scenes		
 @rpc("any_peer", "reliable", "call_local")
 func notify_ready():
-	init_player_after_load()
-
-
-func init_player_after_load():
-	
-	print("players in group: ", get_tree().get_nodes_in_group("Players"))
-	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
-	
+	# We want to reposition the players before the screen reveals itself
 	for player in get_tree().get_nodes_in_group("Players"):
 		if player.player_id == 1:
 			# offsetting tater po's spawn
 			player.spawn_player(spawn_point - Vector2(150,0))
 		else:
 			player.spawn_player()
+	init_player_after_load()
+
+
+func init_player_after_load():
+	
+	
+	# If changing level size you must change these hardcoded camera limits.
+	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
+	
+	
 			
 	SceneTransitionAnimation.fade_out()
 

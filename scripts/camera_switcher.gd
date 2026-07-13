@@ -31,6 +31,7 @@ func adopt(cam: Camera2D) -> void:
 
 ## Instantly cut to target camera
 func cut_to(target: Camera2D) -> void:
+	print("cutting to",target)
 	if not target:
 		return
 	# Ensure previous camera is disabled before switching

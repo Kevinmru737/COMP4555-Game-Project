@@ -17,9 +17,7 @@ func _process(_delta: float) -> void:
 		$InteractHint.hide()
 
 func _on_dialogue_detection_body_entered(body: Node2D) -> void:
-	print("npc range entered - not a player tho")
 	if body.has_method("spawn_player"):
-		print("npc range entered")
 		$InteractHint.show()
 		# Sync to all clients
 		_sync_player_in_area.rpc(body.player_id, true)

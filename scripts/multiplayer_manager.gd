@@ -86,7 +86,7 @@ func create_players() -> void:
 		if multiplayer.get_unique_id() == 1 and player["id"] == 1:
 			_add_player_to_game(1,1)
 		else:
-			print("spawning playerssss", player["id"])
+			print("spawning player", player["id"])
 			_add_player_to_game(player["id"], 2)
 
 func _del_player(id: int):
