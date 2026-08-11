@@ -7,9 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://dn5ugw85x6v10" path="res://art/ui/settings/audio_settings_button.png" id="5_hp6hx"]
 [ext_resource type="Texture2D" uid="uid://c85550a8jfqy0" path="res://art/ui/settings/main_menu_button.png" id="6_u617w"]
 [ext_resource type="Texture2D" uid="uid://0wy2u6pul8u8" path="res://art/ui/settings/back_button.png" id="7_o01av"]
+[ext_resource type="Texture2D" uid="uid://bmsqi3xc737vc" path="res://art/ui/settings/settings_slider_button.png" id="8_ev5g8"]
 [ext_resource type="Script" uid="uid://bskrk2ak8h47f" path="res://scripts/audio_slider.gd" id="8_g5rtw"]
 [ext_resource type="Script" uid="uid://dffo1hjq1aokj" path="res://scripts/audio_checkbox.gd" id="9_gyuvn"]
+[ext_resource type="Texture2D" uid="uid://cn68b0labhd7o" path="res://art/ui/settings/settings_slider_2.png" id="9_q0pok"]
+[ext_resource type="Texture2D" uid="uid://cclc8y1uc8vq6" path="res://art/ui/settings/settings_slider.png" id="10_epqm3"]
 [ext_resource type="Script" uid="uid://bsa1nlgdrqx6a" path="res://scenes/ui/resolution.gd" id="10_n1irx"]
+[ext_resource type="Texture2D" uid="uid://wvqrjuafpcl5" path="res://art/ui/settings/dropdown_button.png" id="12_0xp02"]
+[ext_resource type="Texture2D" uid="uid://c207i7svgqnc6" path="res://art/ui/settings/dropdown_icon.png" id="12_4uuo1"]
+[ext_resource type="Texture2D" uid="uid://pkrdkjovxbfa" path="res://art/ui/settings/dropdown_icon_2.png" id="13_5jve1"]
+[ext_resource type="Texture2D" uid="uid://b58kn506t4shx" path="res://art/ui/settings/checkbox_icon.png" id="14_1qniv"]
+[ext_resource type="Texture2D" uid="uid://b10w8fspcxjw" path="res://art/ui/settings/checkbox_button.png" id="14_5jve1"]
+[ext_resource type="Texture2D" uid="uid://d2qo21u3xof8s" path="res://art/ui/settings/dropdown_icon_4.png" id="14_c3nig"]
+[ext_resource type="Texture2D" uid="uid://c67yx5egax454" path="res://art/ui/settings/settings_radio_checked.png" id="16_60r4q"]
+[ext_resource type="Texture2D" uid="uid://b6n8g5f0csbsl" path="res://art/ui/settings/settings_radio_unchecked.png" id="17_sjf17"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kice"]
 content_margin_left = 10.0
@@ -66,40 +77,128 @@ content_margin_bottom = 10.0
 texture = ExtResource("6_u617w")
 modulate_color = Color(0.8156863, 0.8156863, 0.8156863, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyq4t"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-expand_margin_top = 6.0
-expand_margin_bottom = 6.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60r4q"]
+texture = ExtResource("9_q0pok")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5rtw"]
-bg_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-expand_margin_top = 6.0
-expand_margin_bottom = 6.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sjf17"]
+texture = ExtResource("10_epqm3")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyuvn"]
-bg_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-expand_margin_top = 6.0
-expand_margin_bottom = 6.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2b0h"]
+texture = ExtResource("10_epqm3")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ontdr"]
+texture = ExtResource("9_q0pok")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cjhpw"]
+texture = ExtResource("10_epqm3")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bs7c5"]
+texture = ExtResource("10_epqm3")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2hx05"]
+texture = ExtResource("9_q0pok")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t3wvy"]
+texture = ExtResource("10_epqm3")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6sof7"]
+texture = ExtResource("10_epqm3")
+texture_margin_left = 100.0
+texture_margin_top = 22.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60r4q"]
+bg_color = Color(0.44313726, 0.29803923, 0.19607843, 0.3529412)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_epqm3"]
+content_margin_bottom = 10.0
+texture = ExtResource("14_c3nig")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 7.0
 
 [sub_resource type="Theme" id="Theme_n1irx"]
 default_font = ExtResource("3_lubob")
 default_font_size = 35
+PopupMenu/colors/font_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_hover_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
+PopupMenu/constants/h_separation = 20
+PopupMenu/constants/indent = 50
+PopupMenu/constants/item_start_padding = 20
+PopupMenu/constants/v_separation = 10
+PopupMenu/icons/radio_checked = ExtResource("16_60r4q")
+PopupMenu/icons/radio_unchecked = ExtResource("17_sjf17")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_60r4q")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_epqm3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4uuo1"]
+content_margin_left = 30.0
+texture = ExtResource("12_4uuo1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qniv"]
+content_margin_left = 30.0
+texture = ExtResource("12_4uuo1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jve1"]
+content_margin_left = 30.0
+texture = ExtResource("12_4uuo1")
+modulate_color = Color(0.90588236, 0.90588236, 0.90588236, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjf17"]
+bg_color = Color(0.44313726, 0.29803923, 0.19607843, 0.3529412)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3vfb"]
+content_margin_bottom = 10.0
+texture = ExtResource("14_c3nig")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="Theme" id="Theme_ev5g8"]
 default_font = ExtResource("3_lubob")
 default_font_size = 35
+PopupMenu/colors/font_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_hover_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
+PopupMenu/constants/h_separation = 20
+PopupMenu/constants/indent = 50
+PopupMenu/constants/item_start_padding = 20
+PopupMenu/constants/v_separation = 10
+PopupMenu/icons/radio_checked = ExtResource("16_60r4q")
+PopupMenu/icons/radio_unchecked = ExtResource("17_sjf17")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_sjf17")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_r3vfb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c3nig"]
+content_margin_left = 30.0
+texture = ExtResource("13_5jve1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gqa84"]
+content_margin_left = 30.0
+texture = ExtResource("13_5jve1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q0pok"]
+content_margin_left = 30.0
+texture = ExtResource("13_5jve1")
+modulate_color = Color(0.90588236, 0.90588236, 0.90588236, 1)
 
 [node name="pause_screen" type="CanvasLayer" unique_id=1586786423]
 layer = 3
@@ -276,6 +375,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MasterSlider" type="HSlider" parent="PauseMenu/AudioControls" unique_id=1095016722]
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.49800003
@@ -283,12 +383,15 @@ anchor_top = 0.21400002
 anchor_right = 0.49800003
 anchor_bottom = 0.21400002
 offset_left = -261.776
-offset_top = -34.35402
+offset_top = -24.354012
 offset_right = 262.224
-offset_bottom = 34.64599
-theme_override_styles/slider = SubResource("StyleBoxFlat_lyq4t")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_g5rtw")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gyuvn")
+offset_bottom = 44.64599
+theme_override_icons/grabber = ExtResource("8_ev5g8")
+theme_override_icons/grabber_highlight = ExtResource("8_ev5g8")
+theme_override_icons/grabber_disabled = ExtResource("8_ev5g8")
+theme_override_styles/slider = SubResource("StyleBoxTexture_60r4q")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_sjf17")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_t2b0h")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -303,12 +406,15 @@ anchor_top = 0.43400002
 anchor_right = 0.49600002
 anchor_bottom = 0.43400002
 offset_left = -262.052
-offset_top = -46.774002
+offset_top = -26.774002
 offset_right = 261.948
-offset_bottom = 47.225998
-theme_override_styles/slider = SubResource("StyleBoxFlat_lyq4t")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_g5rtw")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gyuvn")
+offset_bottom = 67.226
+theme_override_icons/grabber = ExtResource("8_ev5g8")
+theme_override_icons/grabber_highlight = ExtResource("8_ev5g8")
+theme_override_icons/grabber_disabled = ExtResource("8_ev5g8")
+theme_override_styles/slider = SubResource("StyleBoxTexture_ontdr")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_cjhpw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_bs7c5")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -323,12 +429,15 @@ anchor_top = 0.63500005
 anchor_right = 0.5
 anchor_bottom = 0.63500005
 offset_left = -265.0
-offset_top = -49.485016
+offset_top = -4.485016
 offset_right = 259.0
-offset_bottom = 51.514984
-theme_override_styles/slider = SubResource("StyleBoxFlat_lyq4t")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_g5rtw")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gyuvn")
+offset_bottom = 96.514984
+theme_override_icons/grabber = ExtResource("8_ev5g8")
+theme_override_icons/grabber_highlight = ExtResource("8_ev5g8")
+theme_override_icons/grabber_disabled = ExtResource("8_ev5g8")
+theme_override_styles/slider = SubResource("StyleBoxTexture_2hx05")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_t3wvy")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_6sof7")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -382,9 +491,9 @@ anchor_top = 0.34300002
 anchor_right = 0.252
 anchor_bottom = 0.34300002
 offset_left = -111.224
-offset_top = -35.27301
+offset_top = -25.27301
 offset_right = 111.776
-offset_bottom = 35.72699
+offset_bottom = 45.72699
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
@@ -401,9 +510,9 @@ anchor_top = 0.559
 anchor_right = 0.252
 anchor_bottom = 0.559
 offset_left = -111.224
-offset_top = -35.649017
+offset_top = -5.6490173
 offset_right = 111.776
-offset_bottom = 35.350983
+offset_bottom = 65.35098
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
@@ -415,15 +524,17 @@ vertical_alignment = 1
 [node name="MuteButton" type="CheckBox" parent="PauseMenu/AudioControls" unique_id=869007790]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.794
-anchor_right = 0.5
-anchor_bottom = 0.794
-offset_left = -30.999939
-offset_top = -39.73401
-offset_right = -4.599945
-offset_bottom = -7.800659
+anchor_left = 0.507
+anchor_top = 0.892
+anchor_right = 0.507
+anchor_bottom = 0.892
+offset_left = -35.284027
+offset_top = -39.81201
+offset_right = -7.284027
+offset_bottom = -7.878662
 scale = Vector2(2.5, 2.5)
+theme_override_icons/checked = ExtResource("14_1qniv")
+theme_override_icons/unchecked = ExtResource("14_5jve1")
 alignment = 1
 icon_alignment = 1
 script = ExtResource("9_gyuvn")
@@ -432,13 +543,13 @@ script = ExtResource("9_gyuvn")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252
-anchor_top = 0.79300004
+anchor_top = 0.89000005
 anchor_right = 0.252
-anchor_bottom = 0.79300004
+anchor_bottom = 0.89000005
 offset_left = -111.224
-offset_top = -45.223022
+offset_top = -44.79001
 offset_right = 111.776
-offset_bottom = 44.776978
+offset_bottom = 45.20999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
@@ -480,13 +591,13 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.418
-anchor_top = 0.128
+anchor_top = 0.48000002
 anchor_right = 0.418
-anchor_bottom = 0.128
+anchor_bottom = 0.48000002
 offset_left = -212.81601
-offset_top = -35.408005
+offset_top = -35.280014
 offset_right = 213.18399
-offset_bottom = 35.591995
+offset_bottom = 35.719986
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
@@ -498,14 +609,14 @@ vertical_alignment = 1
 [node name="ResolutionLabel" type="Label" parent="PauseMenu/DisplayControls" unique_id=896780210]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.41300002
-anchor_top = 0.46100003
-anchor_right = 0.41300002
-anchor_bottom = 0.46100003
-offset_left = -209.75601
-offset_top = -35.571014
-offset_right = 210.24399
-offset_bottom = 35.428986
+anchor_left = 0.282
+anchor_top = 0.128
+anchor_right = 0.282
+anchor_bottom = 0.128
+offset_left = -129.584
+offset_top = -35.408005
+offset_right = 290.41602
+offset_bottom = 35.591995
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
@@ -518,16 +629,29 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.492
-anchor_top = 0.27400002
+anchor_top = 0.62600005
 anchor_right = 0.492
-anchor_bottom = 0.27400002
+anchor_bottom = 0.62600005
 offset_left = -258.104
-offset_top = -40.014008
-offset_right = 257.896
-offset_bottom = 39.985992
+offset_top = -39.886017
+offset_right = 265.896
+offset_bottom = 40.113983
 theme = SubResource("Theme_n1irx")
 theme_type_variation = &"PopupMenu"
+theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 4
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_constants/line_spacing = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4uuo1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1qniv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5jve1")
 theme_override_constants/arrow_margin = 20
+theme_override_constants/modulate_arrow = 0
+theme_override_icons/arrow = ExtResource("12_0xp02")
 selected = 1
 item_count = 2
 popup/item_0/text = "Fullscreen"
@@ -538,17 +662,26 @@ popup/item_1/id = 1
 [node name="ResolutionOption" type="OptionButton" parent="PauseMenu/DisplayControls" unique_id=1609909133]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.492
-anchor_top = 0.60700005
-anchor_right = 0.492
-anchor_bottom = 0.60700005
-offset_left = -258.104
-offset_top = -40.177032
-offset_right = 257.896
-offset_bottom = 39.822968
+anchor_left = 0.5
+anchor_top = 0.27400002
+anchor_right = 0.5
+anchor_bottom = 0.27400002
+offset_left = -263.0
+offset_top = -40.014008
+offset_right = 261.0
+offset_bottom = 39.985992
 theme = SubResource("Theme_ev5g8")
 theme_type_variation = &"PopupMenu"
+theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_constants/line_spacing = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c3nig")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gqa84")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q0pok")
 theme_override_constants/arrow_margin = 20
+theme_override_constants/modulate_arrow = 0
+theme_override_icons/arrow = ExtResource("12_0xp02")
 selected = 1
 item_count = 4
 popup/item_0/text = "1280 x 720"
@@ -563,17 +696,19 @@ popup/item_3/id = 3
 [node name="VSyncButton" type="CheckBox" parent="PauseMenu/DisplayControls" unique_id=455489028]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.45400003
-anchor_top = 0.794
-anchor_right = 0.45400003
-anchor_bottom = 0.794
-offset_left = -32.848022
-offset_top = -39.73401
-offset_right = -6.4480286
-offset_bottom = -7.800659
+anchor_left = 0.45800003
+anchor_top = 0.83300006
+anchor_right = 0.45800003
+anchor_bottom = 0.83300006
+offset_left = -35.29602
+offset_top = -39.663025
+offset_right = -7.2960205
+offset_bottom = -7.7296753
 scale = Vector2(2.5, 2.5)
 theme_type_variation = &"CheckBox"
 theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
+theme_override_icons/checked = ExtResource("14_1qniv")
+theme_override_icons/unchecked = ExtResource("14_5jve1")
 alignment = 1
 icon_alignment = 1
 
@@ -581,13 +716,13 @@ icon_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252
-anchor_top = 0.79300004
+anchor_top = 0.832
 anchor_right = 0.252
-anchor_bottom = 0.79300004
+anchor_bottom = 0.832
 offset_left = -111.224
-offset_top = -45.223022
+offset_top = -45.152008
 offset_right = 111.776
-offset_bottom = 44.776978
+offset_bottom = 44.847992
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.44313726, 0.29803923, 0.19607843, 1)
