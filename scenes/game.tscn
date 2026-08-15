@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cr1ghrx7mkak3" path="res://scripts/multiplayer/networks/network_manager.gd" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://bbtwss2hx5h2" path="res://scenes/sound_manager.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://do3v51n6ctc7t" path="res://scenes/ui/pause_screen.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b5g6b7xhfyf11" path="res://scenes/controls_tutorial.tscn" id="5_iywne"]
 
 [node name="Game" type="Node" unique_id=1810588245]
 
@@ -30,5 +31,7 @@ position = Vector2(144, -395)
 [node name="SoundManager" parent="." unique_id=447509890 instance=ExtResource("2_yqjtg")]
 
 [node name="PauseScreen" parent="." unique_id=1586786423 instance=ExtResource("4_lbhrr")]
+
+[node name="ControlsTutorial" parent="." unique_id=2107743651 instance=ExtResource("5_iywne")]
 
 [editable path="SoundManager"]

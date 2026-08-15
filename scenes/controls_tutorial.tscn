@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://b5g6b7xhfyf11"]
+
+[ext_resource type="Script" uid="uid://ouv247113ftu" path="res://scripts/controls_tutorial.gd" id="1_cdonp"]
+[ext_resource type="Texture2D" uid="uid://cjt1jxq8ifn2m" path="res://art/ui/keyboard_prompt/wasd_normal.png" id="2_fblp6"]
+[ext_resource type="Texture2D" uid="uid://cfruaara0rpix" path="res://art/ui/keyboard_prompt/wasd_a.png" id="3_feaon"]
+[ext_resource type="Texture2D" uid="uid://da1t6gghet38o" path="res://art/ui/keyboard_prompt/wasd_d.png" id="4_3l8c0"]
+[ext_resource type="Texture2D" uid="uid://bx6rr7vr8t0s" path="res://art/ui/keyboard_prompt/wasd_s.png" id="5_fgeek"]
+[ext_resource type="Texture2D" uid="uid://4dkhpiqukmjn" path="res://art/ui/keyboard_prompt/space_normal.png" id="6_61hi6"]
+[ext_resource type="Texture2D" uid="uid://bg2ivgvb1etxy" path="res://art/ui/keyboard_prompt/space_highlight.png" id="7_d870f"]
+[ext_resource type="Texture2D" uid="uid://8kwma5hy6pab" path="res://art/ui/keyboard_prompt/wasd_w.png" id="8_ujuy5"]
+
+[sub_resource type="Animation" id="Animation_t5du4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Keys:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_fblp6")]
+}
+
+[sub_resource type="Animation" id="Animation_tln3l"]
+resource_name = "a_prompt"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Keys:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_fblp6"), ExtResource("3_feaon"), ExtResource("2_fblp6")]
+}
+
+[sub_resource type="Animation" id="Animation_i7yi0"]
+resource_name = "d_prompt"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Keys:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_fblp6"), ExtResource("4_3l8c0"), ExtResource("2_fblp6")]
+}
+
+[sub_resource type="Animation" id="Animation_05eqb"]
+resource_name = "e_prompt"
+
+[sub_resource type="Animation" id="Animation_075su"]
+resource_name = "s_prompt"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Keys:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_fblp6"), ExtResource("5_fgeek"), ExtResource("2_fblp6")]
+}
+
+[sub_resource type="Animation" id="Animation_2u2yt"]
+resource_name = "space_prompt"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Keys:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_61hi6"), ExtResource("7_d870f"), ExtResource("6_61hi6")]
+}
+
+[sub_resource type="Animation" id="Animation_ptq5c"]
+resource_name = "w_prompt"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Keys:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_fblp6"), ExtResource("8_ujuy5"), ExtResource("2_fblp6")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5g1j"]
+_data = {
+&"RESET": SubResource("Animation_t5du4"),
+&"a_prompt": SubResource("Animation_tln3l"),
+&"d_prompt": SubResource("Animation_i7yi0"),
+&"e_prompt": SubResource("Animation_05eqb"),
+&"s_prompt": SubResource("Animation_075su"),
+&"space_prompt": SubResource("Animation_2u2yt"),
+&"w_prompt": SubResource("Animation_ptq5c")
+}
+
+[node name="ControlsTutorial" type="CanvasLayer" unique_id=2107743651]
+script = ExtResource("1_cdonp")
+
+[node name="Control" type="Control" parent="." unique_id=785535409]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Keys" type="TextureRect" parent="Control" unique_id=234076133]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.91300005
+anchor_top = 0.105000004
+anchor_right = 0.91300005
+anchor_bottom = 0.105000004
+offset_left = -65.96008
+offset_top = -43.4
+offset_right = 65.03992
+offset_bottom = 42.6
+texture = ExtResource("2_fblp6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=81974417]
+libraries/ = SubResource("AnimationLibrary_k5g1j")

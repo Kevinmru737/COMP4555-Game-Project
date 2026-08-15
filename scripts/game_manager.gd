@@ -9,6 +9,7 @@ signal players_connected_signal
 @onready var scene_container = $"Scene Container"
 @onready var title_node = title_scene.instantiate()
 @onready var pause_screen = $"../PauseScreen"
+@onready var controls_tutorial = $"../ControlsTutorial"
 #All Scenes to be loaded in chronological order
 var scene_list = ["res://scenes/levels/level_1.tscn", "res://scenes/levels/level_2.tscn","res://scenes/ui/credit_screen.tscn"]
 var tilemap_original_state = {}

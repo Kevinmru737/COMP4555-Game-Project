@@ -48,6 +48,7 @@ func init_player_after_load():
 			player.spawn_player()
 			
 	SceneTransitionAnimation.fade_out()
+	game_manager.controls_tutorial.start_tutorial()
 
 func switch_backgrounds(old_bg: String, new_bg: String):
 	print("switching backgrounds:", old_bg, " to ", new_bg)
