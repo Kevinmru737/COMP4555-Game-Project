@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dspyydent8vd3" path="res://art/props/main_level_props.png" id="1_0io6i"]
 [ext_resource type="Texture2D" uid="uid://cmcbt2738r00o" path="res://art/props/Soda_Poison_Prop.png" id="2_xr5e0"]
+[ext_resource type="Texture2D" uid="uid://dxrnxaab2i18a" path="res://art/props/Respawn_point_log_intro_.png" id="3_xr5e0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iw4em"]
 texture = ExtResource("1_0io6i")
@@ -91,8 +92,17 @@ texture_region_size = Vector2i(90, 90)
 3:1/0 = 0
 4:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0w1i1"]
+texture = ExtResource("3_xr5e0")
+margins = Vector2i(48, 6)
+texture_region_size = Vector2i(90, 90)
+0:1/size_in_atlas = Vector2i(7, 3)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 90)
+
 [resource]
 tile_size = Vector2i(90, 90)
 sources/0 = SubResource("TileSetAtlasSource_iw4em")
 sources/1 = SubResource("TileSetAtlasSource_hnsmf")
 sources/2 = SubResource("TileSetAtlasSource_nossa")
+sources/3 = SubResource("TileSetAtlasSource_0w1i1")

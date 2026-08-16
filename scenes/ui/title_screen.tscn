@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bvxont8bhjyjn" path="res://scenes/ui/camera_switcher.tscn" id="25_mj62m"]
 [ext_resource type="Script" uid="uid://bqt0pxhgpcq1u" path="res://scripts/end_of_intro.gd" id="26_le3e3"]
 [ext_resource type="Script" uid="uid://b8abip3ernchj" path="res://scripts/list_lobbies.gd" id="27_ivfjy"]
+[ext_resource type="Script" uid="uid://bafsm7g6ahu64" path="res://scripts/levels/level_testing.gd" id="28_a1a6k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mykxm"]
 bg_color = Color(0.7879986, 0.5388415, 0.29541335, 1)
@@ -372,6 +373,30 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="SteamHUD/Panel/Lobbies" unique_id=1255003706]
 layout_mode = 2
 
+[node name="LevelTesting" type="Control" parent="." unique_id=587568988]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("28_a1a6k")
+
+[node name="ShowLevelsButton" type="Button" parent="LevelTesting" unique_id=69635488]
+layout_mode = 0
+offset_left = 1528.0
+offset_top = -856.0
+offset_right = 1702.0
+offset_bottom = -746.0
+text = "Test a Level
+"
+
+[node name="LevelList" type="ItemList" parent="LevelTesting" unique_id=1994974997]
+visible = false
+layout_mode = 0
+offset_left = 1528.0
+offset_top = -856.0
+offset_right = 1702.0
+offset_bottom = -665.0
+
 [connection signal="pressed" from="Multiplayer HUD/Panel/JoinUI/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="mouse_entered" from="Multiplayer HUD/Panel/HBoxContainer/HostGame" to="Multiplayer HUD/Panel/HBoxContainer/HostGame" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Multiplayer HUD/Panel/HBoxContainer/HostGame" to="Multiplayer HUD/Panel/HBoxContainer/HostGame" method="_on_mouse_exited"]
@@ -383,5 +408,7 @@ layout_mode = 2
 [connection signal="pressed" from="Multiplayer HUD/Panel/HBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]
 [connection signal="pressed" from="Multiplayer HUD/Steam" to="." method="_on_steam_pressed"]
 [connection signal="body_entered" from="EndOfIntro" to="EndOfIntro" method="_on_body_entered"]
+[connection signal="pressed" from="LevelTesting/ShowLevelsButton" to="LevelTesting" method="_on_button_pressed"]
+[connection signal="item_activated" from="LevelTesting/LevelList" to="LevelTesting" method="_on_level_list_item_activated"]
 
 [editable path="CameraSwitcher"]

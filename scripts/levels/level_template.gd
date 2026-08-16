@@ -1,42 +1,61 @@
 extends Node
 
 @onready var spec_tiles: TileMapLayer = $SpecialInteract
-@onready var po_cam: Camera2D = $MultiPlayerPlayer1/Camera2D
+@onready var game_manager = get_tree().get_first_node_in_group("GameManager")
 var tilemap_original_state = {}
+var spawn_point: Vector2
 
-
-func _ready() -> void:
-	
-	# Initialize the saved special interact tiles state
+func _ready():
 	spec_tiles.add_to_group("SpecialInteract")
-	save_spec_tiles()
-	po_cam.enabled = true
-	po_cam
 	
+	# If changing level size you must change these hardcoded camera limits.
+	get_tree().call_group("Players", "change_camera_limit", -999999, -999999, 999999, 999999)
 	
+	#removing fake players
+	var fake_players = get_tree().get_nodes_in_group("FakePlayers")
+	for player in fake_players:
+		player.queue_free()
 	
+	var spawn_node = $PoSpawn
+	if spawn_node:
+		spawn_point = spawn_node.position
+	else:
+		push_error("SpawnPoint not found!")
+	print("level started")
 	
+	MultiplayerManager.respawn_point = spawn_point
 	
+	game_manager.save_spec_tiles()
+	MultiplayerManager.create_players()
+	PlayerRef.player_in_transit = false
 	
-# Save the tilemap states of the SpecialInteract TileMapLayer
-func save_spec_tiles():
-	var tilemap = get_tree().get_first_node_in_group("SpecialInteract")
-	tilemap_original_state.clear()
-	
-	# Get all cells in the tilemap
-	for cell in tilemap.get_used_cells():
-		var source_id = tilemap.get_cell_source_id(cell)
-		var atlas_coords = tilemap.get_cell_atlas_coords(cell)
-		tilemap_original_state[cell] = {"source": source_id, "atlas": atlas_coords}
+	MultiplayerManager.players_ready.connect(func(): rpc("notify_ready"))
+	# 2nd player notifies when all players should be initialized
+	#if not multiplayer.is_server() and multiplayer.get_unique_id() != 1:
+#		print(multiplayer.get_unique_id(), "notifying ready")
+#		print("clients player list", get_tree().get_nodes_in_group("Players"))
+#		init_player_after_load()
+#		rpc("notify_ready")
+		
+# Call when all players have loaded their scenes		
+@rpc("any_peer", "reliable", "call_local")
+func notify_ready():
+	# We want to reposition the players before the screen reveals itself
+	for player in get_tree().get_nodes_in_group("Players"):
+		if player.player_id == 1:
+			# offsetting tater po's spawn
+			player.spawn_player(spawn_point - Vector2(150,0))
+		else:
+			player.spawn_player()
+	init_player_after_load()
 
 
-# Reset the SpecialInteract tilemap to it's original state.
-func reset_tilemap():
-	var tilemap = get_tree().get_first_node_in_group("SpecialInteract")
-	tilemap.clear()
+func init_player_after_load():
 	
-	# Restore all tiles from the saved state
-	for cell in tilemap_original_state:
-		var data = tilemap_original_state[cell]
-		tilemap.set_cell(cell, data["source"], data["atlas"])
 	
+	# If changing level size you must change these hardcoded camera limits.
+	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
+	
+	
+			
+	SceneTransitionAnimation.fade_out()
