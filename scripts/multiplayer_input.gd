@@ -15,7 +15,10 @@ func _ready():
 	
 func _physics_process(_delta):
 	if player.movement_allowed:
-		input_direction = Input.get_axis("move_left", "move_right") 
+		input_direction = Input.get_axis("move_left", "move_right")
+	else:
+		# If we turn movement off we want the player to stop moving
+		input_direction = 0
 	
 	
 func _process(_delta):

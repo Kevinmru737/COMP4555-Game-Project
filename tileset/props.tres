@@ -1,0 +1,108 @@
+[gd_resource type="TileSet" format=3 uid="uid://dvn2f0d7otoqs"]
+
+[ext_resource type="Texture2D" uid="uid://dspyydent8vd3" path="res://art/props/main_level_props.png" id="1_0io6i"]
+[ext_resource type="Texture2D" uid="uid://cmcbt2738r00o" path="res://art/props/Soda_Poison_Prop.png" id="2_xr5e0"]
+[ext_resource type="Texture2D" uid="uid://dxrnxaab2i18a" path="res://art/props/Respawn_point_log_intro_.png" id="3_xr5e0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iw4em"]
+texture = ExtResource("1_0io6i")
+texture_region_size = Vector2i(90, 90)
+2:3/0 = 0
+3:3/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+3:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+8:2/0 = 0
+7:2/0 = 0
+11:3/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+12:3/0 = 0
+10:4/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+16:4/0 = 0
+15:4/0 = 0
+14:4/0 = 0
+18:3/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+19:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnsmf"]
+texture = ExtResource("1_0io6i")
+margins = Vector2i(13, 37)
+texture_region_size = Vector2i(90, 90)
+7:7/0 = 0
+8:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+19:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+18:8/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nossa"]
+texture = ExtResource("2_xr5e0")
+margins = Vector2i(0, 78)
+texture_region_size = Vector2i(90, 90)
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0w1i1"]
+texture = ExtResource("3_xr5e0")
+margins = Vector2i(48, 6)
+texture_region_size = Vector2i(90, 90)
+0:1/size_in_atlas = Vector2i(7, 3)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 90)
+
+[resource]
+tile_size = Vector2i(90, 90)
+sources/0 = SubResource("TileSetAtlasSource_iw4em")
+sources/1 = SubResource("TileSetAtlasSource_hnsmf")
+sources/2 = SubResource("TileSetAtlasSource_nossa")
+sources/3 = SubResource("TileSetAtlasSource_0w1i1")

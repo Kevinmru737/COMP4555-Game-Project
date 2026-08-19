@@ -3,7 +3,7 @@ extends Node
 
 signal players_connected_signal
 
-@onready var title_scene = preload("res://scenes/ui/title_screen.tscn")
+@onready var title_scene = load("res://scenes/ui/title_screen.tscn")
 
 
 @onready var scene_container = $"Scene Container"

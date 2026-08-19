@@ -10,6 +10,7 @@ extends CanvasLayer
 var dialog_line
 var dialog_index = 0
 var dialog_done = false
+var process_allowed = true
 
 var dialogue_in_prog = false
 var dialogue = []
@@ -48,16 +49,21 @@ func parse_dialogue_json(target_dialogue):
 @rpc("any_peer", "call_local", "reliable")
 func initiate_dialogue(target_dialogue):
 	
-	parse_dialogue_json(target_dialogue)
+	
 	
 	# Prevent dialogue from being initiated twice
 	if dialogue_in_prog:
 		return
 		
+	# disallow dialogue process during scene transition
+	process_allowed = false
+	
+	
+	parse_dialogue_json(target_dialogue)
+		
 	# Prevent player movement during dialogue
 	# I have it done here so that the player can't move during the scene transition
 	for player in get_tree().get_nodes_in_group("Players"):
-		player.direction = 0
 		player.movement_allowed = false
 		
 	print("dialogue initiated")
@@ -78,11 +84,16 @@ func initiate_dialogue(target_dialogue):
 	await get_tree().create_timer(0.5).timeout
 	
 	SceneTransitionAnimation.fade_out()
+	await SceneTransitionAnimation.scene_transition_animation_player.animation_finished
+	
+	# allows the player to progress the dialogue
+	process_allowed = true
+	
 	self.show()
 
 	
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("next_line") and dialogue_in_prog and not dialog_done:
+	if Input.is_action_just_pressed("next_line") and dialogue_in_prog and not dialog_done and process_allowed:
 		if dialog_index == len(dialogue):
 			end_dialogue()
 
@@ -99,7 +110,6 @@ func parse_line(line: String):
 
 # Breaks a dialogue line into/returns a dictionary of its constituent parts
 func process_line():
-	print(dialog_index)
 	if dialog_index > 0:
 		textbox_sound.play()
 	var line = dialogue[dialog_index]
@@ -127,8 +137,10 @@ func end_dialogue():
 	await SceneTransitionAnimation.scene_transition_animation_player.animation_finished
 	#Moving Players
 	for player in get_tree().get_nodes_in_group("Players"):
+		print(player)
 		player.movement_allowed = true
 		if multiplayer.get_unique_id() == player.player_id:
+			print(player,"camera turn on attempt")
 			camera_switcher.cut_to(player.get_node("Camera2D"))
 	SceneTransitionAnimation.fade_out()
 	self.hide()

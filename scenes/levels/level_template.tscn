@@ -1,0 +1,25 @@
+[gd_scene format=4 uid="uid://cd6qhcaiyluub"]
+
+[ext_resource type="Script" uid="uid://byitpatuhhexn" path="res://scripts/levels/level_template.gd" id="1_7hipx"]
+[ext_resource type="TileSet" uid="uid://dbmkllkixod75" path="res://tileset/fall_ground_def.tres" id="1_eyte8"]
+[ext_resource type="TileSet" uid="uid://dvn2f0d7otoqs" path="res://tileset/props.tres" id="3_gr3xe"]
+
+[node name="LevelTemplate" type="Node" unique_id=768600836]
+script = ExtResource("1_7hipx")
+
+[node name="BaseWorld" type="TileMapLayer" parent="." unique_id=1977472950]
+tile_map_data = PackedByteArray("AAAAAP7/AwABAAQAAAAAAP//AwABAAUAAAABAP7/AwACAAQAAAABAP//AwACAAUAAAACAP7/AwADAAQAAAACAP//AwADAAUAAAADAP7/AwAEAAQAAAADAP//AwAEAAUAAAAEAP7/AwAFAAQAAAAEAP//AwAFAAUAAAAFAP7/AwAGAAQAAAAFAP//AwAGAAUAAAAGAP7/AwAHAAQAAAAGAP//AwAHAAUAAAAHAP7/AwABAAQAAAAHAP//AwABAAUAAAAIAP7/AwACAAQAAAAIAP//AwACAAUAAAAJAP7/AwADAAQAAAAJAP//AwADAAUAAAAKAP7/AwAEAAQAAAAKAP//AwAEAAUAAAALAP7/AwAFAAQAAAALAP//AwAFAAUAAAAMAP7/AwAGAAQAAAAMAP//AwAGAAUAAAANAP7/AwAHAAQAAAANAP//AwAHAAUAAAAOAP7/AwAIAAQAAAAOAP//AwAIAAUAAAAPAP7/AwABAAQAAAAPAP//AwABAAUAAAAQAP7/AwACAAQAAAAQAP//AwACAAUAAAARAP7/AwADAAQAAAARAP//AwADAAUAAAASAP7/AwAEAAQAAAASAP//AwAEAAUAAAATAP7/AwAFAAQAAAATAP//AwAFAAUAAAAUAP7/AwAGAAQAAAAUAP//AwAGAAUAAAAVAP7/AwAHAAQAAAAVAP//AwAHAAUAAAAWAP7/AwAIAAQAAAAWAP//AwAIAAUAAAA=")
+tile_set = ExtResource("1_eyte8")
+
+[node name="SpecialInteract" type="TileMapLayer" parent="." unique_id=1541870337]
+tile_set = ExtResource("1_eyte8")
+
+[node name="DecorProp" type="TileMapLayer" parent="." unique_id=1191547661]
+tile_map_data = PackedByteArray("AAANAP7/AwAAAAEAAAA=")
+tile_set = ExtResource("3_gr3xe")
+
+[node name="PoSpawn" type="Marker2D" parent="." unique_id=1411568513]
+position = Vector2(94, -217)
+
+[node name="DellaSpawn" type="Marker2D" parent="." unique_id=1278491100]
+position = Vector2(314, -217)
