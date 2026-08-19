@@ -134,10 +134,10 @@ func send_player_list(players):
 	PlayerRef.player_ref = players
 	_player_spawn_node = get_tree().get_current_scene().get_node("Players")
 	# Find existing player nodes and add them to group
-	for player_data in players:
-		if _player_spawn_node.has_node(str(player_data["id"])):
-			var player_node = _player_spawn_node.get_node(str(player_data["id"]))
-			player_node.add_to_group("Players")
+	#for player_data in players:
+	#	if _player_spawn_node.has_node(str(player_data["id"])):
+	#		var player_node = _player_spawn_node.get_node(str(player_data["id"]))
+	#		player_node.add_to_group("Players")
 	
 @rpc("any_peer", "reliable", "call_local")
 func player_is_ready(id):

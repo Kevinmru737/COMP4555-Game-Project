@@ -583,6 +583,7 @@ size = Vector2(56.5, 62.75)
 size = Vector2(61, 68.5)
 
 [node name="MultiPlayerPlayer1" type="CharacterBody2D" unique_id=1420719648]
+z_index = 1
 position = Vector2(1, 0)
 collision_layer = 2
 collision_mask = 5

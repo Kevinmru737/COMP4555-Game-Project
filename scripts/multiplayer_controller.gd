@@ -41,7 +41,8 @@ var movement_allowed = true
 		%InputSynchronizer.set_multiplayer_authority(id)
 
 func _ready():
-	if multiplayer.get_unique_id() == player_id:
+	if multiplayer.get_unique_id() == player_id :
+		print(player_id, "turning on camera")
 		$Camera2D.make_current()
 		# player 2 should signal for initiation of all players only
 		if multiplayer.get_unique_id() != 1:
@@ -56,7 +57,7 @@ func _ready():
 	
 	# Adjusting Tater Po's jump height
 	if player_id == 1:
-		jump_velocity = -900
+		jump_velocity = -700
 		jump_type = "instant"
 	else:
 		# If we add more jump types this may be relevant, but for now its useless
