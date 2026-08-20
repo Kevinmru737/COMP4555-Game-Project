@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://bx1cenn2c5o3y"]
-
-[ext_resource type="PackedScene" uid="uid://cd6qhcaiyluub" path="res://scenes/levels/level_template.tscn" id="1_h2ki4"]
-
-[node name="LevelTemplate" unique_id=768600836 instance=ExtResource("1_h2ki4")]
-
-[node name="SpecialInteract" parent="." index="1" unique_id=1541870337]
-tile_map_data = PackedByteArray(0, 0, 7, 0, 252, 255, 4, 0, 10, 0, 1, 0, 0, 0, 10, 0, 253, 255, 5, 0, 3, 0, 3, 0, 0, 0)

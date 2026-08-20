@@ -6,7 +6,7 @@ const MOVEMENT_SPEED = 300.0
 var jump_velocity = -1000.0
 var DEFAULT_GRAVITY = 2 * ProjectSettings.get_setting("physics/2d/default_gravity")
 var gravity = DEFAULT_GRAVITY
-var GLIDE_GRAVITY = DEFAULT_GRAVITY * 0.2
+@export var GLIDE_GRAVITY = DEFAULT_GRAVITY * 0.2
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var walking_sound = $WalkingSound

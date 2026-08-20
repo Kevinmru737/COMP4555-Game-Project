@@ -3,18 +3,22 @@
 [ext_resource type="Script" uid="uid://byitpatuhhexn" path="res://scripts/levels/level_template.gd" id="1_7hipx"]
 [ext_resource type="TileSet" uid="uid://dbmkllkixod75" path="res://tileset/fall_ground_def.tres" id="1_eyte8"]
 [ext_resource type="TileSet" uid="uid://dvn2f0d7otoqs" path="res://tileset/props.tres" id="3_gr3xe"]
+[ext_resource type="Texture2D" uid="uid://ef7rfdbh44fk" path="res://art/environment/fall_level/Fall_BG_1.png" id="5_j81xe"]
 
 [node name="LevelTemplate" type="Node" unique_id=768600836]
 script = ExtResource("1_7hipx")
 
 [node name="BaseWorld" type="TileMapLayer" parent="." unique_id=1977472950]
+z_index = 5
 tile_map_data = PackedByteArray("AAAAAP7/AwABAAQAAAAAAP//AwABAAUAAAABAP7/AwACAAQAAAABAP//AwACAAUAAAACAP7/AwADAAQAAAACAP//AwADAAUAAAADAP7/AwAEAAQAAAADAP//AwAEAAUAAAAEAP7/AwAFAAQAAAAEAP//AwAFAAUAAAAFAP7/AwAGAAQAAAAFAP//AwAGAAUAAAAGAP7/AwAHAAQAAAAGAP//AwAHAAUAAAAHAP7/AwABAAQAAAAHAP//AwABAAUAAAAIAP7/AwACAAQAAAAIAP//AwACAAUAAAAJAP7/AwADAAQAAAAJAP//AwADAAUAAAAKAP7/AwAEAAQAAAAKAP//AwAEAAUAAAALAP7/AwAFAAQAAAALAP//AwAFAAUAAAAMAP7/AwAGAAQAAAAMAP//AwAGAAUAAAANAP7/AwAHAAQAAAANAP//AwAHAAUAAAAOAP7/AwAIAAQAAAAOAP//AwAIAAUAAAAPAP7/AwABAAQAAAAPAP//AwABAAUAAAAQAP7/AwACAAQAAAAQAP//AwACAAUAAAARAP7/AwADAAQAAAARAP//AwADAAUAAAASAP7/AwAEAAQAAAASAP//AwAEAAUAAAATAP7/AwAFAAQAAAATAP//AwAFAAUAAAAUAP7/AwAGAAQAAAAUAP//AwAGAAUAAAAVAP7/AwAHAAQAAAAVAP//AwAHAAUAAAAWAP7/AwAIAAQAAAAWAP//AwAIAAUAAAA=")
 tile_set = ExtResource("1_eyte8")
 
 [node name="SpecialInteract" type="TileMapLayer" parent="." unique_id=1541870337]
+z_index = 5
 tile_set = ExtResource("1_eyte8")
 
 [node name="DecorProp" type="TileMapLayer" parent="." unique_id=1191547661]
+z_index = 5
 tile_map_data = PackedByteArray("AAANAP7/AwAAAAEAAAA=")
 tile_set = ExtResource("3_gr3xe")
 
@@ -23,3 +27,23 @@ position = Vector2(94, -217)
 
 [node name="DellaSpawn" type="Marker2D" parent="." unique_id=1278491100]
 position = Vector2(314, -217)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1168499754]
+position = Vector2(4755, -540)
+texture = ExtResource("5_j81xe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1539725290]
+position = Vector2(960, -540)
+texture = ExtResource("5_j81xe")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=756184689]
+position = Vector2(2874, -540)
+texture = ExtResource("5_j81xe")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1233531188]
+position = Vector2(6658, -540)
+texture = ExtResource("5_j81xe")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=680919515]
+position = Vector2(8578, -540)
+texture = ExtResource("5_j81xe")
