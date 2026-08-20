@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dmkdghfl2suf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asi4r"]
+size = Vector2(420.5, 35)
+
+[node name="Fan" type="Node2D" unique_id=1151912140]
+z_index = 6
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1106091925]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0.49803922, 1, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1127362067]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FAN"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1334176300]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1607779164]
+position = Vector2(210.75, 19.5)
+shape = SubResource("RectangleShape2D_asi4r")

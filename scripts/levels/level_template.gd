@@ -8,20 +8,19 @@ var spawn_point: Vector2
 func _ready():
 	spec_tiles.add_to_group("SpecialInteract")
 	
-	# If changing level size you must change these hardcoded camera limits.
-	get_tree().call_group("Players", "change_camera_limit", -999999, -999999, 999999, 999999)
 	
 	#removing fake players
 	var fake_players = get_tree().get_nodes_in_group("FakePlayers")
 	for player in fake_players:
 		player.queue_free()
 	
-	var spawn_node = $PoSpawn
-	if spawn_node:
-		spawn_point = spawn_node.position
-	else:
-		push_error("SpawnPoint not found!")
-	print("level started")
+	var po_spawn_node = $PoSpawn
+	var della_spawn_node = $DellaSpawn
+	for player in get_tree().get_nodes_in_group("Players"):
+		if player.player_id == 1:
+			spawn_point = po_spawn_node.position
+		else:
+			spawn_point = della_spawn_node.position
 	
 	MultiplayerManager.respawn_point = spawn_point
 	
@@ -30,16 +29,17 @@ func _ready():
 	PlayerRef.player_in_transit = false
 	
 	MultiplayerManager.players_ready.connect(func(): rpc("notify_ready"))
-	# 2nd player notifies when all players should be initialized
-	#if not multiplayer.is_server() and multiplayer.get_unique_id() != 1:
-#		print(multiplayer.get_unique_id(), "notifying ready")
-#		print("clients player list", get_tree().get_nodes_in_group("Players"))
-#		init_player_after_load()
-#		rpc("notify_ready")
 		
 # Call when all players have loaded their scenes		
 @rpc("any_peer", "reliable", "call_local")
 func notify_ready():
+	if not multiplayer.is_server() :
+		var players = PlayerRef.player_ref
+		var _player_spawn_node = get_tree().get_current_scene().get_node("Players")
+		for player_data in players:
+			if _player_spawn_node.has_node(str(player_data["id"])):
+				var player_node = _player_spawn_node.get_node(str(player_data["id"]))
+				player_node.add_to_group("Players")
 	# We want to reposition the players before the screen reveals itself
 	for player in get_tree().get_nodes_in_group("Players"):
 		if player.player_id == 1:
@@ -51,11 +51,7 @@ func notify_ready():
 
 
 func init_player_after_load():
-	
-	
 	# If changing level size you must change these hardcoded camera limits.
-	get_tree().call_group("Players", "change_camera_limit", 0, -1080, 0, 12300)
+	get_tree().call_group("Players", "change_camera_limit", -999999, -999999, 999999, 999999)
 	
-	
-			
 	SceneTransitionAnimation.fade_out()

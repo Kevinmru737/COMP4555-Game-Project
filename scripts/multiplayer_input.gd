@@ -30,11 +30,28 @@ func _process(_delta):
 	# Controls used by Della
 	if player.player_id != 1:
 		#if player.is_multiplayer_authority():
-		if Input.is_action_pressed("up"):
+		if Input.is_action_pressed("ability_up"):
 			glide.rpc()
-		if Input.is_action_just_released("up"):
+		if Input.is_action_just_released("ability_up"):
 			reset_glide.rpc()
+		#if Input.is_action_pressed("ability_down"):
+		#	brace.rpc()
+		#if Input.is_action_just_released("ability_down"):
+		#	unbrace.rpc()
+		
 
+@rpc("call_local")
+func brace():
+	if multiplayer.is_server() and player._is_on_floor:
+		$"../Brace".show()
+		
+		
+@rpc("call_local")
+func unbrace():
+	if multiplayer.is_server() and player._is_on_floor:
+		$"../Brace".hide()
+	
+		
 	
 @rpc("call_local")
 func glide():
